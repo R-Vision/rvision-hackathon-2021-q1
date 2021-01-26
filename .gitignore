@@ -1,0 +1,5 @@
+.vscode/*
+text/*
+APT_CyberCriminal_Campagin_Collections/*
+.pytest_cache/*
+~/.gitignore
