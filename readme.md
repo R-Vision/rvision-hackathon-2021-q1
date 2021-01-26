@@ -56,7 +56,7 @@
 
 ## Наборы для проникновения [INTRUSION_SET]
 
-* <https://github.com/mitre/cti/blob/master/enterprise-attack/intrusion-set/intrusion-set--fd19bd82-1b14-49a1-a176-6cdc46b8a826.json >
+* <https://github.com/mitre/cti/blob/master/enterprise-attack/intrusion-set/intrusion-set--fd19bd82-1b14-49a1-a176-6cdc46b8a826.json>
 
 ## Вредоносные группировки [THREAT_ACTOR]
 
@@ -80,7 +80,7 @@
 
 ## MITRE техники и сабтехники (в первую очередь, ENTERPRISE) [MITRE_ATTACK]
 
-* <https://attack.mitre.org >
+* <https://attack.mitre.org>
 * <https://raw.githubusercontent.com/mitre/cti/master/enterprise-attack/enterprise-attack.json>
 
 ## Вредоносные кампании [CAMPAIGN]
