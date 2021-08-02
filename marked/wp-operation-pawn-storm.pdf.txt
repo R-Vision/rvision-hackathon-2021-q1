@@ -55,7 +55,7 @@ Next-Level Phishing Targets ....................................................
 
 Case 1: <ORG>Ministry of Defense</ORG>, <COUNTRY>Hungary</COUNTRY> .............................................................................11
 
-Case 2: <ORG>OSCE</OSCE>, <COUNTRY>Austria</COUNTRY> ....................................................................................................13
+Case 2: <ORG>OSCE</ORG></OSCE>, <COUNTRY>Austria</COUNTRY> ....................................................................................................13
 
 Case 3: SAIC, <COUNTRY>United States</COUNTRY> ...........................................................................................13
 
@@ -674,7 +674,7 @@ with a C&C server
 2387C1671A002BC 
 B</IOC>), a keylogger
 
-<IOC>Conhost.dll<IOC> drops 
+<IOC>Conhost.dll</IOC> drops 
 <IOC>netui.dll</IOC> (SHA-1: 
 <IOC>5A452E7248A8D37 
 45EF53CF2B1F3D7 
@@ -763,7 +763,7 @@ countries
 <COUNTRY>Germany</COUNTRY>
 
 • <ORG>Organization for Security and Co-
-operation in Europe</ORG> (<ORG>OSCE</OSCE>) (<COUNTRY>Austria</COUNTRY>)
+operation in Europe</ORG> (<ORG>OSCE</ORG></OSCE>) (<COUNTRY>Austria</COUNTRY>)
 
 • Pakistani military officials
 
@@ -854,7 +854,7 @@ Forces Exhibition & Conference” <IOC>sofexjordan.com</IOC> <IOC>sofexjordan201
 
 13
 
-CASE 2: <ORG>OSCE</OSCE>, <COUNTRY>Austria</COUNTRY>
+CASE 2: <ORG>OSCE</ORG></OSCE>, <COUNTRY>Austria</COUNTRY>
 
 • Malicious news domain: <IOC>vice-news.com</IOC>
 
@@ -864,7 +864,7 @@ CASE 2: <ORG>OSCE</OSCE>, <COUNTRY>Austria</COUNTRY>
 
 • Real <SOFTWARE>OWA</SOFTWARE> domain: log-in.osce.org
 
-This attack targeted <ORG>OSCE</OSCE> employees in 
+This attack targeted <ORG>OSCE</ORG></OSCE> employees in 
 <COUNTRY>Austria</COUNTRY>. Although the attackers used similar 
 tactics, they did not spoof a conference 
 website. They instead used a fake version of 
@@ -873,9 +873,9 @@ the news website, news.vice.com.
  
 Comparison of the legitimate (top) and spoofed 
 
-(bottom) <SOFTWARE>OWA</SOFTWARE> log-in pages of <ORG>OSCE</OSCE>
+(bottom) <SOFTWARE>OWA</SOFTWARE> log-in pages of <ORG>OSCE</ORG></OSCE>
 
-Even though <ORG>OSCE</OSCE> provides better security 
+Even though <ORG>OSCE</ORG></OSCE> provides better security 
 for webmail users compared with the other 
 targets via one-time session token use during 
 log-in, attackers can still steal highly sensitive 
@@ -1025,7 +1025,7 @@ used.
 
 Messaging security solutions such as <ORG>Trend 
 Micro</ORG>™ <SOFTWARE>InterScan</SOFTWARE>™ Messaging Security 
-[15] and the <SOFTWARE>ScanMail<SOFTWARE>™ Suite for <SOFTWARE>Microsoft 
+[15] and the <SOFTWARE>ScanMail</SOFTWARE>™ Suite for <SOFTWARE>Microsoft 
 Exchange</SOFTWARE> [16] can send suspicious email 
 attachments to a sandbox for analysis, thus 
 protecting recipients from threats. Other 
@@ -1219,7 +1219,7 @@ http://www.trendmicro.com/us/index.html
 	Attack Evolution
 	Next-Level Phishing Targets
 	Case 1: <ORG>Ministry of Defense</ORG>, <COUNTRY>Hungary</COUNTRY>
-	Case 2: <ORG>OSCE</OSCE>, <COUNTRY>Austria</COUNTRY>
+	Case 2: <ORG>OSCE</ORG></OSCE>, <COUNTRY>Austria</COUNTRY>
 	Case 3: SAIC, <COUNTRY>United States</COUNTRY>
 	Case 4: Academi
 

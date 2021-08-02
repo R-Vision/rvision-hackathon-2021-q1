@@ -41,7 +41,7 @@ goals and attack resources. The suspected state-sponsor link to China’s govern
 that it likely has an incentive to continue targeting a variety of industries, especially one’s
 highlighted as priority for China’s economic development.
 
-On <TIMESTAMP>Friday, 13 January<TIMESTAMP>, <ORG>QuoIntelligence</ORG> (<ORG>QuoINT</ORG>) detected a new <THREAT_ACTOR>WINNTI</THREAT_ACTOR> sample uploaded to a
+On <TIMESTAMP>Friday, 13 January</TIMESTAMP>, <ORG>QuoIntelligence</ORG> (<ORG>QuoINT</ORG>) detected a new <THREAT_ACTOR>WINNTI</THREAT_ACTOR> sample uploaded to a
 public virus scanner from a German location. Following our preliminary analysis, we assessed
 with high confidence that the sample was used to target a previously unreported German
 

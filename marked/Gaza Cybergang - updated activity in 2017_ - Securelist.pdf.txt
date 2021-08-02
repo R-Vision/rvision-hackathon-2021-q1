@@ -42,7 +42,7 @@ The <THREAT_ACTOR>Gaza cybergang</THREAT_ACTOR> is an Arabic-language, political
 
 cybercriminal group, operating <TIMESTAMP>since 2012</TIMESTAMP> and actively targeting the
 
-<COUNTRY>MENA</COUNTRY> (<COUNTRY>Middle East North Africa</COUNTRY) region. The <THREAT_ACTOR>Gaza cybergang</THREAT_ACTOR>’s attacks
+<COUNTRY>MENA</COUNTRY> (<COUNTRY>Middle East North AfricaGaza</COUNTRY></COUNTRY) region. The <THREAT_ACTOR>Gaza cybergang</THREAT_ACTOR>’s attacks
 
 have never slowed down and its typical targets include government
 

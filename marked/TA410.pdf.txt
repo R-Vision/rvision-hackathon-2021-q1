@@ -11,7 +11,7 @@ U.S. Utilities Sector Returns with New Malware
 
 Blog
 Threat Insight
-<THREAT_ACTOR>TA410</THREAT_ACTOR>: The Group Behind<CAMPAIGN>LookBack</CAMPAIGN> Attacks Against <COUNTRY>U.S.</COUNTRY> <INDUSTRY>Utilities Sector<INDUSTRY> Returns with
+<THREAT_ACTOR>TA410</THREAT_ACTOR>: The Group Behind<CAMPAIGN>LookBack</CAMPAIGN> Attacks Against <COUNTRY>U.S.</COUNTRY> <INDUSTRY>Utilities Sector</INDUSTRY> Returns with
 New Malware
 
 https://www.proofpoint.com/us/blog/threat-insight/ta410-group-behind-lookback-attacks-against-us-utilities-sector-returns-new?utm_source=dlvr.it&utm_medium=twitter
@@ -169,7 +169,7 @@ Domains Related by SSL Certificate:
 
 <IOC>www.mails.energysemi[.]com</IOC>
 
-<IOC>www.powersafetraining[.]net<IOC>
+<IOC>www.powersafetraining[.]net</IOC>
 <IOC>www.powersafetrainings[.]org</IOC>
 
 <CAMPAIGN>LookBack</CAMPAIGN>

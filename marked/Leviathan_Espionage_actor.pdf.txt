@@ -129,8 +129,8 @@ student’swork.
 <TIMESTAMP>February 2015</TIMESTAMP>
 
 <TIMESTAMP>From February to October of 2015</TIMESTAMP>, our colleagues at <ORG>F‑Secure</ORG> and <ORG>McAfee</ORG> reported on campaigns [3][4] by this
-actor targeting <COUNTRY>South China Sea</COUNTRY> interests. During this time, the group utilized <SOFTWARE>Microsoft Excel<SOFTWARE> and <SOFTWARE>Word</SOFTWARE>
-documents with macros to target the <ORG>Philippines Department of Justice<ORG>, <ORG>APEC</ORG> organizers, and an international
+actor targeting <COUNTRY>South China Sea</COUNTRY> interests. During this time, the group utilized <SOFTWARE>Microsoft Excel</SOFTWARE> and <SOFTWARE>Word</SOFTWARE>
+documents with macros to target the <ORG>Philippines Department of Justice</ORG>, <ORG>APEC</ORG> organizers, and an international
 law firm. Targeting of these companies is different from that which we typically observe for this actor; however it
 still centers around marine and naval issues as related to <COUNTRY>South China sea</COUNTRY> politics.
 
@@ -142,7 +142,7 @@ most of the attachments in this campaign did not contain meaningful content
 The period between <TIMESTAMP>November 2014</TIMESTAMP> and <TIMESTAMP>January 2015</TIMESTAMP> marked one of the earlier instances in which Proofpoint
 observed persistent exploitation attempts by this actor. The actor generally emailed <SOFTWARE>Microsoft Excel</SOFTWARE> documents
 with malicious macros to <COUNTRY>US</COUNTRY> universities with military interests, most frequently related to <ORG>THE Navy</ORG>. The actor
-also occasionally used macro‑laden <SOFTWARE>Microsoft Word<SOFTWARE> documents to target other <COUNTRY>US</COUNTRY> research and development
+also occasionally used macro‑laden <SOFTWARE>Microsoft Word</SOFTWARE> documents to target other <COUNTRY>US</COUNTRY> research and development
 organizations with military and intelligence ties during this period.
 
 Emails were often very simple with a greeting and an attachment. On other occasions, it appears that the
@@ -170,7 +170,7 @@ and scripts
 
 Example 1: <IOC>Resume.rtf</IOC>
 
-The “<IOC>resume.rtf</IOC>” file from the <TIMESTAMP>September 19, 2017<TIMESTAMP> attack retrieves the malicious SOAP WSDL definition named
+The “<IOC>resume.rtf</IOC>” file from the <TIMESTAMP>September 19, 2017</TIMESTAMP> attack retrieves the malicious SOAP WSDL definition named
 “<IOC>readme.txt</IOC> “ using an anonymous FTP logon to the attacker’s server.
 
 Figure 6: SOAP WSDL definition (“<IOC>readme.txt</IOC>“)
@@ -273,7 +273,7 @@ domain is a fraudulent lookalike domain.
 There is an extensive configuration section at the top of the script. The "jmpUrlList" provides the initial C&C
 servers, which are used to determine the secondary C&C server as well as additional commands to execute. It is
 worth noting that the secondary C&C may be the same as the first. We have observed attacker‑controlled web
-servers, compromised victim web servers, and <ORG>Technet<ORG> and <ORG>Pastebin</ORG> web pages used for the initial C&C.
+servers, compromised victim web servers, and <ORG>Technet</ORG> and <ORG>Pastebin</ORG> web pages used for the initial C&C.
 
 The initial C&C response is parsed with a regex. The backdoor first looks for the secondary encoded C&C server
 using the "jmpRegex" regex. Next, the backdoor looks for additional code to execute using the "codeRegex"
@@ -387,7 +387,7 @@ scripts (<TIMESTAMP>Sep 19, 2017</TIMESTAMP>)
 
 <IOC>39c952c7e14b6be5a9cb1be3f05eafa22e1115806e927f4e2dc85d609bc0eb36</IOC> SHA256 <IOC>Favicon.ico</IOC> (<TIMESTAMP>Sep 19, 2017</TIMESTAMP>)
 
-<IOC>5860ddc428ffa900258207e9c385f843a3472f2fbf252d2f6357d458646cf362</IOC> SHA256 <MALWARE>Cobalt Strike</MALWARE> (<TIMESTAMP>Sep 19, 2017<TIMESTAMP>)
+<IOC>5860ddc428ffa900258207e9c385f843a3472f2fbf252d2f6357d458646cf362</IOC> SHA256 <MALWARE>Cobalt Strike</MALWARE> (<TIMESTAMP>Sep 19, 2017</TIMESTAMP>)
 
 <IOC>ced7ca9625543d3d3d09f70223cc19f0d99e21792854452df5ba84b3a59d17b8</IOC> SHA256 <IOC>20170720_final_pm_app‑2.doc</IOC> (<TIMESTAMP>August 2017</TIMESTAMP>)Document hash (<TIMESTAMP>August 2017</TIMESTAMP>)
 

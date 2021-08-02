@@ -233,7 +233,7 @@ possible that the use of obfs3 indicates the attackers’ understanding of its e
 against outbound connection monitoring.
 
 Another notable spoofed domain used during this campaign is the “<IOC>maps-modon[.]club</IOC>”
-domain. The domain “<IOC>maps.modon.gov[.]sa</IO\>” was compromised in <TIMESTAMP>December 2016</TIMESTAMP>, and
+domain. The domain “<IOC>maps.modon.gov[.]sa</IOC></IO\>” was compromised in <TIMESTAMP>December 2016</TIMESTAMP>, and
 the “<IOC>maps-modon[.]club</IOC>” domain created on <TIMESTAMP>December 8, 2016</TIMESTAMP>. The domain shared the
 
 https://securelist.com/twas-the-night-before/91599/ntgsa_home/

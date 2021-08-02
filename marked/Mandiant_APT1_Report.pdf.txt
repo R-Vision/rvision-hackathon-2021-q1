@@ -687,20 +687,20 @@ communication and control department” (<THREAT_ACTOR>Unit 61398</THREAT_ACTOR>
 B%A4%E9%83%A8, accessed <TIMESTAMP>February 6, 2013</TIMESTAMP>.
 
  Address: 上海市浦东新区大同路118弄甲 (Pudong New Area, <CITY>Shanghai</CITY>, Datong Road 118 A)
- Building Name: 中国人民解放军第61398部队司令部 (<ORG>People’s Liberation Army</ORG> <THREAT_ACTOR>Unit 61398<THREAT_ACTOR> Headquarters)
+ Building Name: 中国人民解放军第61398部队司令部 (<ORG>People’s Liberation Army</ORG> <THREAT_ACTOR>Unit 61398</THREAT_ACTOR> Headquarters)
 
  Chinese phone book listing building name and address; http://114.mingluji.com/minglu/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E6%B0%
 91%E8%A7%A3%E6%94%BE%E5%86%9B%E7%AC%AC61398%E9%83%A8%E9%98%9F%E5%8F%B8%E4%BB%A4%E9%83%A8_0, 
 accessed <TIMESTAMP>February 6, 2013</TIMESTAMP>.
 
  Address: 上海市浦东新区高桥镇大同路135号 (Pudong New Area, <CITY>Shanghai</CITY> <CITY>Gaoqiao Town</CITY>, Datong Road 135)
- Building Name: 中国人民解放军第61398部队 (<ORG>People’s Liberation Army</ORG> <THREAT_ACTOR>Unit 61398<THREAT_ACTOR>)
+ Building Name: 中国人民解放军第61398部队 (<ORG>People’s Liberation Army</ORG> <THREAT_ACTOR>Unit 61398</THREAT_ACTOR>)
 
  Chinese phone book listing building name and address; http://114.mingluji.com/minglu/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E6%B0%9
 1%E8%A7%A3%E6%94%BE%E5%86%9B%E7%AC%AC61398%E9%83%A8%E9%98%9F_0, accessed <TIMESTAMP>February 6, 2013</TIMESTAMP>.
 
  Address: 上海市浦东新区高桥镇大同路153号 (Pudong New Area, <CITY>Shanghai</CITY> <CITY>Gaoqiao Town</CITY>, Datong Road 153)
- Building Name: 中国人民解放军第61398部队 (<ORG>People’s Liberation Army</ORG> <THREAT_ACTOR>Unit 61398<THREAT_ACTOR>)
+ Building Name: 中国人民解放军第61398部队 (<ORG>People’s Liberation Army</ORG> <THREAT_ACTOR>Unit 61398</THREAT_ACTOR>)
  Chinese phone book listing building name and address; http://114.mingluji.com/minglu/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E6%B0%9
 
 1%E8%A7%A3%E6%94%BE%E5%86%9B%E7%AC%AC61398%E9%83%A8%E9%98%9F, accessed <TIMESTAMP>February 6, 2013</TIMESTAMP>.
@@ -1262,8 +1262,8 @@ Details click here.
 FIGure 15: <THREAT_ACTOR>APT1</THREAT_ACTOR> spear Phishing email 
 
 At first glance, the email appeared to be from <ORG>Mandiant</ORG>’s CEO, <IDENTITY>Kevin Mandia</IDENTITY>. However, further scrutiny shows that 
-the email was not sent from a <ORG>Mandiant</ORG> email account, but from “<IOC>kevin.mandia@rocketmail.com<IOC>”. <SOFTWARE>Rocketmail</SOFTWARE> is a 
-free webmail service. The account “<IOC>kevin.mandia@rocketmail.com<IOC>” does not belong to <IDENTITY>Mr. Mandia</IDENTITY>. Rather, an <THREAT_ACTOR>APT1</THREAT_ACTOR> 
+the email was not sent from a <ORG>Mandiant</ORG> email account, but from “<IOC>kevin.mandia@rocketmail.com</IOC>”. <SOFTWARE>Rocketmail</SOFTWARE> is a 
+free webmail service. The account “<IOC>kevin.mandia@rocketmail.com</IOC>” does not belong to <IDENTITY>Mr. Mandia</IDENTITY>. Rather, an <THREAT_ACTOR>APT1</THREAT_ACTOR> 
 actor likely signed up for the account specifically for this spear phishing event. If anyone had clicked on the link that 
 day (which no one did, thankfully), their computer would have downloaded a malicious ZIP file named “<IOC>Internal_Discussion_Press_Release_In_Next_Week8.zip</IOC>”. This file contained a malicious executable that installs a custom <THREAT_ACTOR>APT1</THREAT_ACTOR> 
 backdoor that we call <MALWARE>WEBC2-TABLE</MALWARE>.
@@ -2588,7 +2588,7 @@ Chinese hackers, <THREAT_ACTOR>APT1</THREAT_ACTOR> attackers do not like to be c
 of <COUNTRY>China</COUNTRY> (<ORG>CPC</ORG>), which deployed the GFWoC as a censorship measure to restrict access to web sites such as google.
 com, facebook.com, and twitter.com. Additionally, the nature of the hackers’ work requires them to have control of 
 network infrastructure outside the GFWoC. This creates a situation where the easiest way for them to log into <ORG>Facebook</ORG> 
-and <ORG>Twitter</ORG> is directly from their attack infrastructure. Once noticed, this is an effective way to discover their real 
+and <ORG>Twitter</ORG></ORG> is directly from their attack infrastructure. Once noticed, this is an effective way to discover their real 
 identities.
 
 what is the Great Firewall of <COUNTRY>China</COUNTRY>?

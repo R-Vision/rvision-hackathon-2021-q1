@@ -1159,7 +1159,7 @@ International honors
 
 The company is recognized by <ORG>Gartner</ORG> as a threat intelligence vendor with 
 strong cyber security focus and the ability to provide leading insight to the 
-Eastern European region and recommended by the <ORG>Organization for Security and Co-operation in Europe</ORG> (<ORG>OSCE</ORG>). In <TIMESTAMP>2017</TIMESTAMP> <ORG>IDC</ORG> Report named <ORG>Group-IB</ORG> the 
+Eastern European region and recommended by the <ORG>Organization for Security and Co-operation in Europe</ORG> (<ORG>OSCE</ORG></ORG>). In <TIMESTAMP>2017</TIMESTAMP> <ORG>IDC</ORG> Report named <ORG>Group-IB</ORG> the 
 leader of the Russian Threat Intelligence Services Market. The company is a 
 member of the <ORG>World Economic Forum</ORG> working group on cybersecurity.
 
@@ -1265,9 +1265,9 @@ IP Country Certificate name Comments
 
 <IOC>202.129.24.4</IOC> <COUNTRY>Thailand</COUNTRY> vpn334555897.softether.net <ORG>CAT-Northeast Telecom</ORG>
 
-<IOC>78.89.183.37</IOC> <COUNTRY>Kuwait</COUNTRY> vpn401107085.softether.net <ORG>Wataniya Telecom</OR>
+<IOC>78.89.183.37</IOC> <COUNTRY>Kuwait</COUNTRY> vpn401107085.softether.net <ORG>Wataniya Telecom</ORG></OR>
 
-<IOC>31.3.225.57</IOC> <COUNTRY>USA<COUNTRY> vpn204475098.softether.net Dedicated server hosting
+<IOC>31.3.225.57</IOC> <COUNTRY>USA</COUNTRY> vpn204475098.softether.net Dedicated server hosting
 
 <IOC>207.162.24.86</IOC> <COUNTRY>Canada</COUNTRY> vpn311153980.softether.net <ORG>Universite du Quebec</ORG>
 
@@ -1565,7 +1565,7 @@ www.fartit.com/emailAddress=master@fartit.com
 <IOC>187.109.80.61</IOC>
 <IOC>212.219.35.51</IOC>
 
-<IOC>6e55459ddbc666e5d6f89844f5d2a2647be426ca<IOC>
+<IOC>6e55459ddbc666e5d6f89844f5d2a2647be426ca</IOC>
 
 www.wikaba.com/emailAddress=master@wikaba.com
 
@@ -1581,7 +1581,7 @@ www.telecomm.com/emailAddress=consult@www.telecom.com
 
 www.instanthq.com/emailAddress=master@instanthq.com
 
-<TIMESTAMP>2016-11-01</TIMESTAMP> <IOC>2.32.113.178<IOC>
+<TIMESTAMP>2016-11-01</TIMESTAMP> <IOC>2.32.113.178</IOC>
 
 <IOC>a8b0b4f42547aaf608f062c6f9aa1e3fb33caaf0</IOC>
 
@@ -2005,7 +2005,7 @@ architecture, tools, attribution32
 
 Arguments Description
 
-<IOC>dropper.exe<IOC> -x [key] -l Enumerates system services
+<IOC>dropper.exe</IOC> -x [key] -l Enumerates system services
 
 <IOC>dropper.exe</IOC> -x [key] -e 
 [servicename] [config]

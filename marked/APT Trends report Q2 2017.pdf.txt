@@ -74,7 +74,7 @@ threat actors. Topping the list of ‘attention grabbers’ were the <THREAT_ACT
 actors.
 
 <TIMESTAMP>March</TIMESTAMP> and <TIMESTAMP>April</TIMESTAMP> started off with a bang, with the discovery of three zero-day exploits
-being used in-the-wild by <THEAT_ACTOR>Sofacy</THREAT_ACTOR> and <THREAT_ACTOR>Turla</THREAT_ACTOR>: two of these targeted <SOFTWARE>Microsoft Office</SOFTWARE>’s
+being used in-the-wild by <THREAT_ACTOR>Sofacy</THREAT_ACTOR></THREAT_ACTOR> and <THREAT_ACTOR>Turla</THREAT_ACTOR>: two of these targeted <SOFTWARE>Microsoft Office</SOFTWARE>’s
 Encapsulated PostScript (EPS) and the third being a <SOFTWARE>Microsoft Windows</SOFTWARE> Local Privilege
 Escalation (LPE).  <THREAT_ACTOR>Sofacy</THREAT_ACTOR> was discovered utilizing both <CVE>CVE-2017-0262</CVE> (an EPS
 vulnerability) and <CVE>CVE-2017-0263</CVE> (LPE) over the Easter holiday, targeting a swath of
@@ -157,7 +157,7 @@ double as next-stage payload delivery mechanisms for an infected network. A nota
 feature of the Lambert campaigns is the level of precision with which targets are
 chosen; <MALWARE>Gray Lambert</MALWARE>’s victimology is primarily focused on strategic verticals in <COUNTRY>ASIA</COUNTRY>
 and <COUNTRY>Middle East</COUNTRY>. During this investigation, <ORG>GReAT</ORG> researchers have also discovered
-two additional <THREAT_ACTOR>Lambert<THREAT_ACTOR> families (<MALWARE>Red Lambert</MALWARE> and <MALWARE>Brown Lambert</MALWARE>) currently under
+two additional <THREAT_ACTOR>Lambert</THREAT_ACTOR> families (<MALWARE>Red Lambert</MALWARE> and <MALWARE>Brown Lambert</MALWARE>) currently under
 investigation for Q3.  Below is a list of report titles for reference:
 
 1. <MALWARE>EQUATIONVECTOR</MALWARE> – A Generational Breakdown of the <MALWARE>PeddleCheap</MALWARE>

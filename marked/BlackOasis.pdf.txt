@@ -77,7 +77,7 @@ by <ORG>FIREEYE</ORG>.
 new targeted attacks
 leveraging zero-day
 exploit
-By <ORG>GReAT<ORG> on <TIMESTAMP>October 16, 2017. 2:28 pm</TIMESTAMP>
+By <ORG>GReAT</ORG> on <TIMESTAMP>October 16, 2017. 2:28 pm</TIMESTAMP>
 
 mailto:intelreports@kaspersky.com
 https://helpx.adobe.com/security/products/flash-player/apsb17-32.html
@@ -321,7 +321,7 @@ of tools. Although <THREAT_ACTOR>Gamma International</THREAT_ACTOR> itself was h
 
 Fisher in <TIMESTAMP>2014</TIMESTAMP>, the breach was not as serious as it was in the case of
 
-<ORG>HackingTeam</ORG>. Additionally, <THREAT_ACTOR>Gamma<THREAT_ACTOR> had two years to recover from the
+<ORG>HackingTeam</ORG>. Additionally, <THREAT_ACTOR>Gamma</THREAT_ACTOR> had two years to recover from the
 
 attack and pick up the pace.
 

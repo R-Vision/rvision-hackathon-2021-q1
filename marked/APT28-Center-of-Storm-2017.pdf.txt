@@ -177,7 +177,7 @@ Germany’s Federal Office for Security in Information Technology (BSI)
 announced that<THREAT_ACTOR>APT28</THREAT_ACTOR> was likely responsible for the spear phishing 
 emails sent to members of several German political parties.  The head 
 of Germany’s domestic intelligence agency, <ORG>Bundesamt für Verfassungsschutz</ORG> (<ORG>BfV</ORG>), also attributed the <TIMESTAMP>JUNE 2015</TIMESTAMP> compromise of 
-the <ORG>Bundestag<ORG>’s networks to<THREAT_ACTOR>APT28</THREAT_ACTOR>.5,6 
+the <ORG>Bundestag</ORG>’s networks to<THREAT_ACTOR>APT28</THREAT_ACTOR>.5,6 
 
 <ORG>Kyrgyzstan Ministry  
 of Foreign Affairs</ORG>
@@ -449,8 +449,8 @@ it is very in fashion now.”39
 33. Fancy Bears’ HT (fancybears). “@AnonPress Greetings. We hacked #<ORG>WADA</ORG>. We have Proof of American Athletes taking doping. Fancybear.net.” 
 34.  Ibid.
 35.  “<ORG>WADA</ORG> Confirms Attack by Russian Cyber Espionage Group.”<ORG>World Anti-Doping Agency</ORG>. <TIMESTAMP>13 Sept. 2016</TIMESTAMP>.
-36.  Russian Hackers Leak <IDENTITY>Simone Biles</TIMESTAMP> and <TIMESTAMP>Serena Williams</TIMESTAMP> Files.” <ORG>The BBC</ORG>. <TIMESTAMP>13 Sept. 2016</TIMESTAMP>. Web. <TIMESTAMP>29 Dec. 2016</TIMESTAMP>. 
-37.  Rumsby, Ben. “US Superstars <IDENTITY>Serena</IDENTITY> and <IDENTITY>Venus Williams</IDENTITY> and <IDENTITY>Simone Biles</IDENTITY> Given Drugs Exemption, Russian Hackers Reveal.” <ORG>The Telegraph</ORG>. <TIMESTAMP>14 Sept. 2016</TIMESTAMP>. Web. <TIMESTAMP>29 Dec. 2016</TIMESTAMP>. 
+36.  Russian Hackers Leak <IDENTITY>Simone Biles</IDENTITY></TIMESTAMP> and <TIMESTAMP>Serena Williams</TIMESTAMP> Files.” <ORG>The BBC</ORG>. <TIMESTAMP>13 Sept. 2016</TIMESTAMP>. Web. <TIMESTAMP>29 Dec. 2016</TIMESTAMP>. 
+37.  Rumsby, Ben. “US Superstars <IDENTITY>Serena</IDENTITY> and <IDENTITY>Venus Williams</IDENTITY> and <IDENTITY>Simone Biles</IDENTITY></IDENTITY> Given Drugs Exemption, Russian Hackers Reveal.” <ORG>The Telegraph</ORG>. <TIMESTAMP>14 Sept. 2016</TIMESTAMP>. Web. <TIMESTAMP>29 Dec. 2016</TIMESTAMP>. 
 38.  Luhn, Alec.”Fancy Bears Origins Unclear But<COUNTRY>RUSSIA</COUNTRY> Seizes Chance to Put Boot into <ORG>WADA</ORG>.” <TIMESTAMP>15 Sept. 2016</TIMESTAMP>. Web. <TIMESTAMP>29 Dec. 2016</TIMESTAMP>. 
 39.  Gibson, Owen. “Russian Sports Minister Vitaly Mutko Denies Link to <ORG>WADA</ORG> Hackers. <ORG>The Guardian</ORG>. <TIMESTAMP>14 Sept. 2016</TIMESTAMP>. Web. <TIMESTAMP>29 Dec. 2016</TIMESTAMP>. 
 
@@ -486,7 +486,7 @@ unknown group
 purporting to 
 be affiliated with 
 Anonymous, claims 
-via <ORG>Twitter</ORG> to have 
+via <ORG>Twitter</ORG></ORG> to have 
 compromised <ORG>WADA</ORG>, 
 and directs readers 
 to a website hosting 
@@ -495,7 +495,7 @@ stolen documents.33
 In tweets to 
 international 
 journalists and  
-<ORG>Twitter</ORGR> accounts  
+<ORG>Twitter</ORG></ORGR> accounts  
 that disseminate 
 hacktivist and 
 information security 
