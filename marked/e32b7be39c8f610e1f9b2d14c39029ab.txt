@@ -1,0 +1,321 @@
+<THREAT_ACTOR>APT37</THREAT_ACTOR> (<THREAT_ACTOR>REAPER</THREAT_ACTOR>)
+The Overlooked North Korean Actor
+PY
+SPECIAL REPORT
+
+2 SPECIAL REPORT <THREAT_ACTOR>APT37</THREAT_ACTOR> (<THREAT_ACTOR>REAPER</THREAT_ACTOR>): THE OVERLOOKED NORTH KOREAN ACTOR 3
+CONTENTS
+INTRODUCTION
+Introduction 3 On Feb. 2, 2018, we published a blog detailing the use of an Adobe Flash zero-day
+Targeting and Mission 4 vulnerability (CVE-2018-4878) by a suspected North Korean cyber espionage group
+that we now track as <THREAT_ACTOR>APT37</THREAT_ACTOR> (<THREAT_ACTOR>Reaper</THREAT_ACTOR>). Recent examination of this group’s activities by
+Initial Infection Vectors 7
+<ORG>FireEye</ORG> iSIGHT Intelligence reveals <THREAT_ACTOR>APT37</THREAT_ACTOR> has expanded its operations in both scope
+Exploited Vulnerabilities 8
+and sophistication. <THREAT_ACTOR>APT37</THREAT_ACTOR>’s toolset, which includes access to zero-day vulnerabilities
+Command and Control Infrastructure 9
+and wiper malware, combined with heightened tensions in <GEO>Northeast Asia</GEO> and North
+Malware 10 Korea’s penchant for norm breaking, means this group should be taken seriously.
+Attribution 12
+We assess with high confidence that this activity is carried out on behalf of the North
+Outlook and Implications 13
+<ORG>Korean government</ORG> given malware development artifacts and targeting that aligns
+Appendix: Malware Used by <THREAT_ACTOR>APT37</THREAT_ACTOR> 14
+with North Korean state interests. <ORG>FireEye</ORG> iSIGHT Intelligence believes that <THREAT_ACTOR>APT37</THREAT_ACTOR> is
+aligned with the activity publicly reported as <THREAT_ACTOR>Scarcruft</THREAT_ACTOR> and <THREAT_ACTOR>Group123</THREAT_ACTOR>.
+
+4 SPECIAL REPORT <THREAT_ACTOR>APT37</THREAT_ACTOR> (REAPER): THE OVERLOOKED NORTH KOREAN ACTOR 5
+We judge that <THREAT_ACTOR>APT37</THREAT_ACTOR>’s primary mission is
+Targeting covert intelligence gathering in support of <GEO>North
+Korea</GEO>’s strategic military, political and economic
+and Mission interests. This is based on consistent targeting
+of South Korean public and private entities and
+social engineering. <THREAT_ACTOR>APT37</THREAT_ACTOR>’s recently expanded
+targeting scope also appears to have direct
+<THREAT_ACTOR>APT37</THREAT_ACTOR> has likely been active since at least 2012
+relevance to <GEO>North Korea</GEO>’s strategic interests.
+and focuses on targeting the public and private
+sectors primarily in <GEO>South Korea</GEO>. In 2017, <THREAT_ACTOR>APT37</THREAT_ACTOR>
+From 2014 to 2017, <THREAT_ACTOR>APT37</THREAT_ACTOR> targeting
+expanded its targeting beyond the Korean
+concentrated primarily on the <GEO>South Korean
+peninsula</GEO> to include <GEO>Japan</GEO>, <GEO>Vietnam</GEO> and the
+<INDUSTRY>government</INDUSTRY>, <INDUSTRY>military</INDUSTRY>, <INDUSTRY>defense industrial base</INDUSTRY>,
+<GEO>Middle East</GEO>, and to a wider range of industry
+and <INDUSTRY>media</INDUSTRY> sector. Lure materials (Fig. 2)
+verticals, including <INDUSTRY>chemicals</INDUSTRY>, <INDUSTRY>electronics</INDUSTRY>,
+typically leveraged the Korean language and
+<INDUSTRY>manufacturing</INDUSTRY>, <INDUSTRY>aerospace</INDUSTRY>, <INDUSTRY>automotive</INDUSTRY> and
+featured themes such as <GEO>Korean peninsula</GEO>
+healthcare entities (Fig. 1).
+reunification or sanctions.
+Figure 1. <THREAT_ACTOR>APT37</THREAT_ACTOR> Targeting Scope.
+Figure 2. “2016 Korean
+Reunification Conference Form”
+(MD5:183be2035d5a546670d2b9deeca4eb59).
+
+6 SPECIAL REPORT <THREAT_ACTOR>APT37</THREAT_ACTOR> (REAPER): THE OVERLOOKED NORTH KOREAN ACTOR 7
+In 2017, <THREAT_ACTOR>APT37</THREAT_ACTOR> targeted a Middle Eastern <THREAT_ACTOR>APT37</THREAT_ACTOR> targeted a research fellow, advisory
+company that entered into a joint venture member, and journalist associated with different
+with the <ORG>North Korean government</ORG> to provide North Korean human rights issues and strategic
+telecommunications service to the country (read organizations. It also targeted an entity in <GEO>Japan</GEO>
+on for a case study). At that time, other targets associated with the <ORG>United Nations</ORG> missions on
+included individuals involved in international sanctions and human rights. <THREAT_ACTOR>APT37</THREAT_ACTOR> distributed
+affairs and trade issues, the general director of a <MALWARE>SLOWDRIFT</MALWARE> malware using a lure referencing
+Vietnamese international trading and transport the <ORG>Korea Global Forum</ORG> against academic and
+company, and possibly individuals working with strategic institutions located in <GEO>South Korea</GEO>.
+Olympics organizations assisting in securing Notably, the email was sent from a compromised
+resources for athletes. South Korean institute that conducts studies on
+<GEO>North Korea</GEO>. The string “durihana,” which is also
+North Korean defector and human rights-related the name of a Christian missionary organization
+targeting provides further evidence that <THREAT_ACTOR>APT37</THREAT_ACTOR> that works with North Korean defectors, was
+conducts operations aligned with the interests of included in an <THREAT_ACTOR>APT37</THREAT_ACTOR> weaponized document
+<GEO>North Korea</GEO>. sent to an individual who works with a North
+Korean human rights organization.
+Initial Infection Vectors
+We believe a Middle Eastern organization In May 2017, <THREAT_ACTOR>APT37</THREAT_ACTOR> used a bank In addition to the aforementioned spear phishing tactics, <THREAT_ACTOR>APT37</THREAT_ACTOR>
+was targeted by <THREAT_ACTOR>APT37</THREAT_ACTOR> because it had liquidation letter as a spear phishing lure leverages a variety of methods to deliver malware. These include
+been involved with a North Korean against a board member of a Middle
+company and a business deal went bad. Eastern financial company. The specially
+strategic web compromises typical of targeted cyber espionage
+CASE STUDY: This firm was targeted shortly after media crafted email included an attachment operations, as well as the use of torrent file-sharing sites to distribute
+reports of this schism had gone public. The containing exploit code for CVE-2017- malware more indiscriminately.
+Targeting of Middle targeting effort may have been an attempt
+by the <ORG>North Korean government</ORG> to gather
+0199, a vulnerability in Microsoft Office
+that had been disclosed just a month
+Eastern Organization information on a former business partner. earlier. Once opened, the malicious
+Numerous campaigns have employed social engineering tactics
+with Business ties to The operation exemplifies <THREAT_ACTOR>APT37</THREAT_ACTOR>’s tactics,
+techniques and procedures (TTPs), and
+document communicated with a
+compromised website, most likely to
+tailored specifically to desired targets. Lures and websites of particular
+interest to South Korean organizations (e.g. reunification) are regularly
+<GEO>North Korea</GEO> reflects the advanced capabilities of this surreptitiously download and install a leveraged in campaigns. Multiple South Korean websites were abused
+espionage group. backdoor called <MALWARE>SHUTTERSPEED</MALWARE> (MD5: in strategic web compromises to deliver newer variants of <MALWARE>KARAE</MALWARE>
+7c2ebfc7960aac6f8d58b37e3f092a9c).
+and <MALWARE>POORAIM</MALWARE> malware. Identified sites included South Korean
+The tool would enable <THREAT_ACTOR>APT37</THREAT_ACTOR> to collect
+system information, take screenshots and conservative media and a news site for North Korean refugees and
+download additional malicious files to the defectors. In one instance, <THREAT_ACTOR>APT37</THREAT_ACTOR> weaponized a video downloader
+victim computer. application with <MALWARE>KARAE</MALWARE> malware that was indiscriminately distributed
+to South Korean victims through torrent websites.
+
+8 SPECIAL REPORT <THREAT_ACTOR>APT37</THREAT_ACTOR> (REAPER): THE OVERLOOKED NORTH KOREAN ACTOR 9
+CVE-2018-4878 (Zero-day vulnerability)
+CVE-2017-0199
+CVE-2013-4979
+CVE-2013-4979
+CVE-2015-2387
+CVE-2015-2545
+CVE-2015-7645
+CVE-2015-5122
+CVE-2016-4117
+CVE-2014-8439
+CVE Release Date
+CVE-2016-1019
+Exploit
+CVE-2015-5119
+CVE-2015-2419
+CVE-2015-3105
+FEB JAN DEC NOV OCT SEP AUG JUL JUN MAY APR MAR FEB JAN DEC NOV OCT SEP AUG JUL JUN MAY APR MAR FEB JAN DEC NOV OCT SEP AUG JUL JUN MAY APR MAR FEB JAN DEC NOV OCT SEP AUG JUL JUN MAY APR MAR FEB JAN
+2018 2017 2016 2015 2014
+Figure 3. Timeline of CVE Release Dates vs. Dates of <THREAT_ACTOR>APT37</THREAT_ACTOR> CVE Exploitation.
+Exploited Vulnerabilities Command and Control Infrastructure
+<THREAT_ACTOR>APT37</THREAT_ACTOR> frequently exploits vulnerabilities in Hangul exploited a zero-day Adobe Flash vulnerability, <THREAT_ACTOR>APT37</THREAT_ACTOR> uses a variety of techniques for command <THREAT_ACTOR>APT37</THREAT_ACTOR> relies on compromised websites to host
+Word Processor (HWP) due to the software’s CVE-2018-4878, to distribute <MALWARE>DOGCALL</MALWARE> malware to and control. They leverage compromised servers, second stage malware. Small websites focused
+prevalence in <GEO>South Korea</GEO>. Further, the group South Korean victims. messaging platforms and cloud service providers on subjects such as aromatherapy and scuba
+recently demonstrated access to zero-day to avoid detection. The group often relies on diving have been leveraged, and were most likely
+vulnerabilities (CVE-2018-0802) and has the While use and discovery of zero-day exploits over compromised sites to host second stage malware compromised opportunistically and made to host
+flexibility to quickly incorporate recently publicized the past several years has expanded beyond a payloads. Over time, <THREAT_ACTOR>APT37</THREAT_ACTOR> has changed the email malicious payloads.
+vulnerabilities into spear phishing and strategic web nation-state dominated environment to include providers to set up command and control accounts
+compromise operations. These capabilities suggest commercial vendors of cyber espionage capabilities in a possible attempt to cover their tracks and cause <THREAT_ACTOR>APT37</THREAT_ACTOR> has improved its operational security over
+a high operational tempo and specialized expertise. and sophisticated financially motivated actors, access misdirection. These tactics have been refined over the time. For example, early 2015 use of <MALWARE>SLOWDRIFT</MALWARE>
+to zero-day exploits remains a factor in distinguishing years as <THREAT_ACTOR>APT37</THREAT_ACTOR> evolves to evade network defenders. involved credentials associated with Korea related
+<THREAT_ACTOR>APT37</THREAT_ACTOR> has repeatedly deployed exploits, especially sophisticated or well-resourced actors. mail servers such as “Daum.net”. Later, in 2015
+in Flash, quickly after vulnerabilities are initially <THREAT_ACTOR>APT37</THREAT_ACTOR> has used various legitimate platforms as and early 2016, <THREAT_ACTOR>APT37</THREAT_ACTOR> pivoted to different email
+publicized (see Table 1). CVE-2016-4117, CVE- Figure 3 details the vulnerabilities exploited by command and control for its malware tools. While providers such as Gmail and “hmamail.com” in an
+2016-1019 and CVE-2015-3043 were all exploited <THREAT_ACTOR>APT37</THREAT_ACTOR>, comparing the time of exploitation to the some early campaigns leveraged <MALWARE>POORAIM</MALWARE>, which attempt to anonymize activity. Then from mid-2016
+by <THREAT_ACTOR>APT37</THREAT_ACTOR> in this way. <ORG>FireEye</ORG> iSIGHT Intelligence time the CVE was released. abused AOL Instant Messenger, newer activity onward, <THREAT_ACTOR>APT37</THREAT_ACTOR> began using @yandex.com and @
+confirmed that since at least November 2017, <THREAT_ACTOR>APT37</THREAT_ACTOR> deploys DOGCALL, which uses cloud storage APIs india.com email accounts -- possibly an attempt to
+such as pCloud and Dropbox. cause misattribution.
+
+10 SPECIAL REPORT <THREAT_ACTOR>APT37</THREAT_ACTOR> (REAPER): THE OVERLOOKED NORTH KOREAN ACTOR 11
+Malware
+<THREAT_ACTOR>APT37</THREAT_ACTOR> employs a diverse suite of malware for initial intrusion Along with custom malware used for espionage purposes, It is possible that <THREAT_ACTOR>APT</THREAT_ACTOR>37’s distribution of <MALWARE>KARAE</MALWARE> malware
+and exfiltration. Their malware is characterized by a focus <THREAT_ACTOR>APT37</THREAT_ACTOR> also has access to destructive malware. In April 2017, via torrent websites could assist in creating and maintaining
+on stealing information from victims, with many set up to <THREAT_ACTOR>APT37</THREAT_ACTOR> targeted South Korean military and government botnets for future distributed denial-of-service (DDoS)
+automatically exfiltrate data of interest. Figure 4 shows APT37’s organizations with the <MALWARE>DOGCALL</MALWARE> backdoor and <MALWARE>RUHAPPY</MALWARE> attacks, or for other activity such as financially motivated
+malware usage over time. A full breakdown of the malware we wiper malware. Although the wiper capability was not campaigns or disruptive operations. Disruptive and
+associate with <THREAT_ACTOR>APT37</THREAT_ACTOR>, along with how it is detected by <ORG>FireEye</ORG> used in the identified instance, <MALWARE>RUHAPPY</MALWARE> can overwrite a destructive cyber threat activity, including the use of wiper
+devices, is available in the Appendix. machine's Master Boot Record (MBR), causing the system to malware, public leaks of proprietary materials by false
+fail to boot into preconfigured partitions. hacktivist personas, DDoS attacks and electronic warfare
+tactics such as GPS signal jamming is consistent with past
+behavior by other North Korean actors.
+2015 2016 2017 2018 Figure 4.
+Timeline of <THREAT_ACTOR>APT37</THREAT_ACTOR> Malware Use
+By First and Last Observed
+JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC JAN Compile Times.
+<MALWARE>KARAE</MALWARE>
+<MALWARE>SOUNDWAVE</MALWARE>
+<MALWARE>ZUMKONG</MALWARE>
+<MALWARE>RICECURRY</MALWARE>
+<MALWARE>CORALDECK</MALWARE>
+<MALWARE>POORAIM</MALWARE>
+<MALWARE>SLOWDRIFT</MALWARE>
+<MALWARE>MILKDROP</MALWARE>
+<MALWARE>GELCAPSULE</MALWARE>
+<MALWARE>DOGCALL</MALWARE>
+<MALWARE>HAPPYWORK</MALWARE>
+<MALWARE>RUHAPPY</MALWARE>
+<MALWARE>SHUTTERSPEED</MALWARE>
+<MALWARE>WINERACK</MALWARE>
+
+12 SPECIAL REPORT <THREAT_ACTOR>APT37</THREAT_ACTOR> (REAPER): THE OVERLOOKED NORTH KOREAN ACTOR 13
+Attribution • An individual we believe to be the
+developer behind several <THREAT_ACTOR>APT37</THREAT_ACTOR>
+a dip around noon. Additional activity
+occurred late into the evening. This
+malware payloads inadvertently is consistent with media reporting of
+disclosed personal data showing that extremely long hours for North Korean
+the actor was operating from an IP workers.
+We assess with high confidence that address and access point associated
+<THREAT_ACTOR>APT37</THREAT_ACTOR> acts in support of the North with <GEO>North Korea</GEO>. • The majority of <THREAT_ACTOR>APT37</THREAT_ACTOR> activity
+<ORG>Korean government</ORG> and is primarily continues to target <GEO>South Korea</GEO>, North
+based in <GEO>North Korea</GEO>. This assessment • The compilation times of <THREAT_ACTOR>APT37</THREAT_ACTOR> Korean defectors, and organizations
+is based on multiple factors, including malware is consistent with a developer and individuals involved in Korean
+<THREAT_ACTOR>APT37</THREAT_ACTOR>’s targeting profile, insight into operating in the North Korea time Peninsula reunification efforts. Similarly,
+the group’s malware development zone (UTC +8:30) and follows what is <THREAT_ACTOR>APT37</THREAT_ACTOR> targeting of a Middle Eastern
+and probable links to a North Korean believed to be a typical North Korean company in 2017 is also consistent
+individual believed to be the developer workday (Fig. 5). The majority of with North Korean objectives given the
+of several of <THREAT_ACTOR>APT37</THREAT_ACTOR>’s proprietary malware compilation times occurred entity’s extensive relationships inside
+malware families: between 10:00 a.m. and 7:00 p.m., with <GEO>North Korea</GEO>.
+12 a.m.
+1 a.m.
+2 a.m
+Figure 5. <THREAT_ACTOR>APT37</THREAT_ACTOR> Compile Times Against Local Time in <GEO>North Korea</GEO>.
+3 a.m
+4 a.m
+5 a.m
+6 a.m
+7 a.m
+8 a.m
+9 a.m.
+10 a.m Outlook and Implications
+11 a.m.
+12 p.m.
+<GEO>North Korea</GEO> has repeatedly demonstrated a The slow transformation of regional actors into
+1 p.m. willingness to leverage its cyber capabilities for global threats is well established. Minor incidents
+a variety of purposes, undeterred by notional in <GEO>Ukraine</GEO>, the <GEO>Middle East</GEO> and <GEO>South Korea</GEO> have
+2 p.m.
+redlines and international norms. Though they heralded the threats, which are now impossible to
+3 p.m. have primarily tapped other tracked suspected ignore. In some cases, the global economy connects
+North Korean teams to carry out the most organizations to aggressive regional actors. In other
+4 p.m.
+aggressive actions, <THREAT_ACTOR>APT37</THREAT_ACTOR> is an additional tool cases, a growing mandate draws the actor on to
+5 p.m. available to the regime, perhaps even desirable for the international stage. Ignored, these threats enjoy
+its relative obscurity. We anticipate <THREAT_ACTOR>APT37</THREAT_ACTOR> will be the benefit of surprise, allowing them to extract
+6 p.m.
+leveraged more and more in previously unfamiliar significant losses on their victims, many of whom
+7 p.m. roles and regions, especially as pressure mounts have never previously heard of the actor.
+on their sponsor.
+8 p.m.
+9 p.m.
+10 p.m.
+11 p.m.
+Frequency
+
+14 SPECIAL REPORT <THREAT_ACTOR>APT37</THREAT_ACTOR> (REAPER): THE OVERLOOKED NORTH KOREAN ACTOR 15
+Appendix: Malware Used by <THREAT_ACTOR>APT37</THREAT_ACTOR>
+Malware Description Detected as Malware Description Detected as
+<MALWARE>CORALDECK</MALWARE> <MALWARE>CORALDECK</MALWARE> is an exfiltration tool that searches for specified <MALWARE>APT.InfoStealer.Win.CORALDECK</MALWARE> <MALWARE>MILKDROP</MALWARE> <MALWARE>MILKDROP</MALWARE> is a launcher that sets a persistence registry <MALWARE>FE_Trojan_Win32_MILKDROP</MALWARE>_1
+files and exfiltrates them in password protected archives using key and launches a backdoor.
+hardcoded HTTP POST headers. <MALWARE>CORALDECK</MALWARE> has been observed <MALWARE>FE_APT_InfoStealer_Win</MALWARE>_
+dropping and using Winrar to exfiltrate data in password <MALWARE>CORALDECK_1</MALWARE> <MALWARE>POORAIM</MALWARE> <MALWARE>POORAIM</MALWARE> malware is designed with basic backdoor <MALWARE>Backdoor.APT.POORAIM</MALWARE>
+protected RAR files as well as WinImage and zip archives.
+functionality and leverages AOL Instant Messenger
+for command and control communications. <MALWARE>POORAIM</MALWARE>
+<MALWARE>DOGCALL</MALWARE> <MALWARE>DOGCALL</MALWARE> is a backdoor commonly distributed as an encoded <MALWARE>FE_APT_RAT_DOGCALL</MALWARE> includes the following capabilities: System information
+binary file downloaded and decrypted by shellcode following the enumeration, File browsing, manipulation and exfiltration,
+exploitation of weaponized documents. <MALWARE>DOGCALL</MALWARE> is capable of <MALWARE>FE_APT_Backdoor_Win32_</MALWARE> Process enumeration, Screen capture, File execution,
+capturing screenshots, logging keystrokes, evading analysis with <MALWARE>DOGCALL_1</MALWARE> Exfiltration of browser favorites, and battery status.
+anti-virtual machine detections, and leveraging cloud storage APIs Exfiltrated data is sent via files over AIM.
+such as Cloud, Box, Dropbox, and Yandex.
+<MALWARE>APT.Backdoor.Win.DOGCALL</MALWARE>
+<MALWARE>POORAIM</MALWARE> has been involved in campaigns against South
+<MALWARE>DOGCALL</MALWARE> was used to target <ORG>South Korean Government</ORG> and Korean media organizations and sites relating to North
+military organizations in March and April 2017. Korean refugees and defectors since early 2014.
+The malware is typically dropped using an HWP exploit in a lure Compromised sites have acted as watering holes to
+document. deliver newer variants of <MALWARE>POORAIM</MALWARE>.
+The wiper tool, <MALWARE>RUHAPPY</MALWARE>, was found on some of the systems <MALWARE>RICECURRY</MALWARE> <MALWARE>RICECURRY</MALWARE> is a Javascript based profiler used to <MALWARE>Exploit.APT.RICECURRY</MALWARE>
+targeted by <MALWARE>DOGCALL</MALWARE>. While <MALWARE>DOGCALL</MALWARE> is primarily an espionage fingerprint a victim's web browser and deliver malicious
+tool, <MALWARE>RUHAPPY</MALWARE> is a destructive wiper tool meant to render code in return. Browser, operating system, and Adobe
+systems inoperable. Flash version are detected by <MALWARE>RICECURRY</MALWARE>, which may be
+a modified version of PluginDetect.
+<MALWARE>GELCAPSULE</MALWARE> <MALWARE>GELCAPSULE</MALWARE> is a downloader traditionally dropped or <MALWARE>FE_APT_Downloader_Win32</MALWARE>_
+downloaded by an exploit document. <MALWARE>GELCAPSULE</MALWARE> has been <MALWARE>GELCAPSULE_1</MALWARE> <MALWARE>RUHAPP</MALWARE>Y <MALWARE>RUHAPPY</MALWARE> is a destructive wiper tool seen on systems <MALWARE>FE_APT_Trojan_Win32_RUHAPPY_1</MALWARE>
+observed downloading <MALWARE>SLOWDRIFT</MALWARE> to victim systems. targeted by <MALWARE>DOGCALL</MALWARE>. It attempts to overwrite the MBR,
+causing the system not to boot. When victims' systems
+<MALWARE>HAPPYWORK</MALWARE> <MALWARE>HAPPYWORK</MALWARE> is a malicious downloader that can download and F<MALWARE>E_APT_Downloader_</MALWARE> attempt to boot, the string "Are you Happy?" is displayed.
+execute a second-stage payload, collect system information, and <MALWARE>HAPPYWORK</MALWARE>
+beacon it to the command and control domains. The collected The malware is believed to be tied to the developers of
+system information includes: computer name, user name, system <MALWARE>FE_APT_Exploit_HWP_Happy</MALWARE> <MALWARE>DOGCALL</MALWARE> and <MALWARE>HAPPYWORK</MALWARE> based on similar PDB paths
+manufacturer via registry, IsDebuggerPresent state, and execution in all three.
+path.
+<MALWARE>Downloader.APT.HAPPYWORK</MALWARE>
+<MALWARE>SHUTTERSPEED</MALWARE> <MALWARE>SHUTTERSPEED</MALWARE> is a backdoor that can collect system <MALWARE>FE_APT_Backdoor_SHUTTERSPEED</MALWARE>
+In November 2016, <MALWARE>HAPPYWORK</MALWARE> targeted government and information, acquire screenshots, and download/execute
+financial targets in <GEO>South Korea</GEO>. an arbitrary executable. <MALWARE>SHUTTERSPEED</MALWARE> typically <MALWARE>APT.Backdoor.SHUTTERSPEED</MALWARE>
+requires an argument at runtime in order to execute fully.
+<MALWARE>KARAE</MALWARE> <MALWARE>Karae</MALWARE> backdoors are typically used as first-stage malware after an <MALWARE>FE_APT_Backdoor_Karae_enc</MALWARE> Observed arguments used by <MALWARE>SHUTTERSPEED</MALWARE> include:
+'help', 'console', and 'sample'. <MALWARE>APT.Backdoor.SHUTTERSPEED</MALWARE>
+initial compromise. The backdoors can collect system information,
+upload and download files, and may be used to retrieve a second- <MALWARE>FE_APT_Backdoor_Karae</MALWARE>
+stage payload. The malware uses public cloud-based storage The spear phishing email messages contained documents
+providers for command and control. exploiting RTF vulnerability CVE-2017-0199.
+<MALWARE>Backdoor.APT.Karae</MALWARE>
+In March 2016, <MALWARE>KARAE</MALWARE> malware was distributed through Many of the compromised domains in the command
+torrent file-sharing websites for South Korean users. During and control infrastructure are linked to South Korean
+this campaign, the malware used a YouTube video downloader companies. Most of these domains host a fake webpage
+application as a lure. pertinent to targets.
+
+Malware Description Detected as
+<MALWARE>SLOWDRIFT</MALWARE> <MALWARE>SLOWDRIFT</MALWARE> is a launcher that communicates via cloud based <MALWARE>FE_APT_Downloader_Win_</MALWARE>
+infrastructure. It sends system information to the attacker SLOWDRIFT_1
+command and control and then downloads and executes
+additional payloads. <MALWARE>FE_APT_Downloader_Win_</MALWARE>
+<MALWARE>SLOWDRIFT_2</MALWARE>
+Lure documents distributing <MALWARE>SLOWDRIFT</MALWARE> were not tailored for
+specific victims, suggesting that <MALWARE>TEMP.Reaper</MALWARE> is attempting to <MALWARE>APT.Downloader.SLOWDRIFT</MALWARE>
+widen its target base across multiple industries and in the private
+sector.
+<MALWARE>SLOWDRIFT</MALWARE> was seen being deployed against academic and
+strategic targets in South Korea using lure emails with documents
+leveraging the HWP exploit.
+Recent <MALWARE>SLOWDRIFT</MALWARE> samples were uncovered in June 2017 with
+lure documents pertaining to cyber crime prevention and news
+stories. These documents were last updated by the same actor
+who developed <MALWARE>KARAE</MALWARE>, <MALWARE>POORAIM</MALWARE> and <MALWARE>ZUMKONG</MALWARE>.
+<MALWARE>SOUNDWAVE</MALWARE> <MALWARE>SOUNDWAVE</MALWARE> is a windows based audio capturing utility. Via FE_APT_HackTool_Win32_
+command line it accepts the -l switch (for listen probably), <MALWARE>SOUNDWAVE</MALWARE>_1
+captures microphone input for 100 minutes, writing the
+data out to a log file in this format: C:\Temp\HncDownload\
+YYYYMMDDHHMMSS.log.
+<MALWARE>ZUMKONG</MALWARE> <MALWARE>ZUMKONG</MALWARE> is a credential stealer capable of harvesting usernames <MALWARE>FE_APT_Trojan_Zumkong</MALWARE>
+and passwords stored by Internet Explorer and Chrome browsers.
+Stolen credentials are emailed to the attacker via HTTP POST <MALWARE>Trojan.APT.Zumkong</MALWARE>
+requests to mail[.]zmail[.]ru.
+<MALWARE>WINERACK</MALWARE> <MALWARE>WINERACK</MALWARE> is backdoor whose primary features include user and <MALWARE>FE_APT_Backdoor</MALWARE>_<MALWARE>WINERACK</MALWARE>
+host information gathering, process creation and termination,
+filesystem and registry manipulation, as well as the creation <MALWARE>Backdoor.APT.WINERACK</MALWARE>
+of a reverse shell that utilizes statically-linked Wine cmd.exe
+code to emulate Windows command prompt commands. Other
+capabilities include the enumeration of files, directories, services,
+active windows and processes.
+<ORG>FireEye</ORG>, Inc <ORG>FireEye</ORG>, Inc.
+© 2018 <ORG>FireEye</ORG>, Inc. All rights reserved. <ORG>FireEye</ORG> is a registered trademark of <ORG>FireEye</ORG>, Inc. 601 McCarthy Blvd. Milpitas, CA 95035
+All other brands, products, or service names are or may be trademarks 408.321.6300
+or service marks of their respective owners. SP.APT37.EN-US.22018 877 FIREEYE (347.3393)
+info@FireEye.com
+www.FireEye.com

@@ -1,0 +1,1307 @@
+<CAMPAIGN>OPERATION ARID VIPER</CAMPAIGN>
+Bypassing the <ORG>Iron Dome</ORG>
+<ORG>Trend Micro</ORG> Threat Research Team
+
+CONTENTS
+Introduction.................................................................................................i
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN>............................................................................. 1
+Targets.............................................................................................. 1
+Infection Chain.................................................................................. 1
+C&C Infrastructure............................................................................ 5
+Operation Advtravel.............................................................................. 9
+C&C Infrastructure............................................................................ 9
+Malware.......................................................................................... 13
+Victims............................................................................................ 15
+<ORG>TREND MICRO</ORG> LEGAL DISCLAIMER
+fpupdate.info Server....................................................................... 16
+The information provided herein is for general
+information and educational purposes only. It is not
+Victims........................................................................................ 16 intended and should not be construed to constitute
+legal advice. The information contained herein may
+linksis.info Server........................................................................ 17 not be applicable to all situations and may not reflect
+the most current situation. Nothing contained herein
+Attribution........................................................................................... 17 should be relied on or acted upon without the benefit
+of legal advice based on the particular facts and
+<IDENTITY>Khalid Samra</IDENTITY>.................................................................................. 17 circumstances presented and nothing herein should
+be construed otherwise. Trend Micro reserves the
+<IDENTITY>Ahmed Jmal</IDENTITY>.................................................................................... 19 right to modify the contents of this document at any
+time without prior notice.
+<IDENTITY>Mahmoud Hashem</IDENTITY>......................................................................... 19 Translations of any material into other languages
+are intended solely as a convenience. Translation
+Dev_hima....................................................................................... 20 accuracy is not guaranteed nor implied. If any
+questions arise related to the accuracy of a
+VIRUS_HIMA.............................................................................. 24 translation, please refer to the original language
+official version of the document. Any discrepancies
+or differences created in the translation are not
+<IDENTITY>Mohammed Khaled</IDENTITY>........................................................................ 25 binding and have no legal effect for compliance or
+enforcement purposes.
+<IDENTITY>Fathy Mostafa</IDENTITY>................................................................................. 25
+Although <ORG>Trend Micro</ORG> uses reasonable efforts to
+Other Individuals............................................................................. 26 include accurate and up-to-date information herein,
+<ORG>Trend Micro</ORG> makes no warranties or representations
+of any kind as to its accuracy, currency, or
+Conclusion.................................................................................................ii completeness. You agree that access to and use
+of and reliance on this document and the content
+References............................................................................................... iii thereof is at your own risk. Trend Micro disclaims all
+warranties of any kind, express or implied. Neither
+Appendix..................................................................................................iv <ORG>Trend Micro</ORG> nor any party involved in creating,
+producing, or delivering this document shall be liable
+for any consequence, loss, or damage, including
+direct, indirect, special, consequential, loss of
+business profits, or special damages, whatsoever
+arising out of access to, use of, or inability to use,
+or in connection with the use of this document, or
+any errors or omissions in the content thereof. Use
+of this information constitutes acceptance for use in
+an “as is” condition.
+
+INTRODUCTION
+The South Korean Fake Banking App Scam Research Paper
+<ORG>Trend Micro</ORG> researchers discovered an ongoing malware code over the years. They often employ scores
+campaign that targets Israeli victims and leverages of teams working on different sections of their
+network infrastructure in <GEO>Germany</GEO>. The campaign has malicious programs.
+strong attribution ties to Arab parties located in the <GEO>Gaza</GEO>
+Of course, not all nation states have the same
+Strip and elsewhere.
+resources at their disposal when it comes to
+Picture the following reconstruction based on one creating sophisticated malware. In fact, for
+attack—an employee in an <ORG>Israeli government</ORG> research every <MALWARE>Stuxnet</MALWARE>, there are hundreds of rather
+facility receives and opens a highly targeted phishing straightforward spear-phishing campaigns.
+email. A pornographic movie starts to play on his screen,
+• Targets: Over time, state-sponsored malware
+which he hurriedly closes before any of his colleagues
+have been targeting victims that can be clustered
+notice. He then thinks nothing more of the event.
+into specific groups—regions or vertical industries.
+Minutes later, an attacker from somewhere in the <GEO>Gaza</GEO> This could be a telltale sign that whoever is behind
+Strip in <GEO>Palestine</GEO> gets notified that a new victim’s system a highly targeted attack has loftier interests than
+has been successfully infected. The attacker then merely stealing money.
+proceeds to exfiltrate a package containing all of the
+It is also worth noting that not all politically motivated
+interesting documents from the newly infected system.
+attacks are carried out by the governments that would
+Israel is one of the most highly defended countries in most likely benefit from them. They can be the work
+the world, sheltered behind the legendary “Iron Dome.” of hacktivists, patriotic hacking groups, or to further
+[1] But all of that counts for nothing when an attacker— complicate things, enemy nations using the name of
+possibly seeking out revenge for Israeli air strikes on supposed culprits to carry out attacks. Welcome to the
+<GEO>Gaza</GEO> last year—circumvents all of that to strike right at wonderfully complex world of geopolitical malware!
+the heart of the <ORG>Israeli administration</ORG>. [2]
+This research paper tells the story of a highly targeted
+The Internet is quickly becoming a battlefield for new attack campaign that raised all kinds of red flags. What
+age wars, a chessboard where a new game is played by we have dubbed “Operation Arid Viper” refers to a
+world powers comprising enemies and allies. This is a campaign that exclusively targets victims in Israel. This
+new take on an old game, that of deception, duplicity, and particular case showed that not only countries are looking
+espionage in world politics. The ability to attack an enemy at Israel through the crosshairs; a few organizations who
+without needing to declare war is a very useful thing in consider themselves the country’s adversaries are, too.
+such a game, as is being able to spy on enemies cloaked As such, we cannot discount that this attack could have
+by distance and faint electronic traces. been made by a rogue organization that is trying to shake
+the chessboard of world politics.
+For a security company, the most complicated thing is to
+determine the motivation behind an electronic attack. In <CAMPAIGN>Operation Arid Viper</CAMPAIGN> uses malware delivered via phishing
+rare cases, we do find state-sponsored espionage. And emails to steal documents from target systems. This
+the most useful clues we count on to discern between paper—a collaborative effort of the <ORG>Trend Micro</ORG> Forward-
+threat actors or those behind highly targeted attacks and <ORG>Looking Threat Research Team</ORG> and fellow threat defense
+other cybercriminals include: experts—reveals the campaign’s technical details and its
+targets as well as details on a number of individuals who
+• Complexity: The level of sophistication employed
+appear to be tied to the campaign. Special thanks also
+by some of these highly targeted attacks goes
+goes out to the <ORG>United</ORG> <ORG>States</ORG> <ORG>Air Force</ORG> (<ORG>USAF</ORG>) Office of
+over and beyond normal cybercrime. Government
+Special Investigations for their assistance and partnership
+agencies with the manpower to create the kind of
+in this endeavor.
+malware for highly targeted attacks perfect their
+2 © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+OPERATION ARID VIPER
+Targets
+Threat intelligence from within <ORG>Trend Micro</ORG> was used to determine who
+the targets of an ongoing campaign dubbed “<CAMPAIGN>Operation Arid Viper</CAMPAIGN>” have
+been so far. Based on IP addresses associated with malware infections
+tied to the campaign’s core infrastructure, we were able to determine its
+targets—a government office, transport service/infrastructure providers,
+a military organization, and an academic institution in Israel. It also
+targeted an academic institution in <GEO>Kuwait</GEO> along with several other
+unidentified Israeli individuals.
+Research also revealed an interesting Twitter conversation between
+@Ramzi_MHADHBI, a Tunisian blogger, and @waleedassar, a reverse
+engineer currently working as a senior security researcher at the <ORG>Al
+Jazeera Media Network</ORG>. Their exchange mentioned two of the domains
+associated with <MALWARE>Operation Arid Viper</MALWARE> malware, suggesting that one or
+both of them may have also been targeted. <CAMPAIGN>Operation Arid Viper</CAMPAIGN> targeted
+various Israeli organizations
+across industries.
+Infection Chain
+As will be made clear later, Operation <THREAT_ACTOR>Arid Viper</THREAT_ACTOR> aimed to extract victim
+information though it also paid much attention to its means of getting
+into target systems. The campaign used the most popular targeted
+attack infection vector—a simple phishing email from a nonexistent
+sender to a specific recipient. It targeted organizations from various
+industries with a clear focus on Israel.
+The spear-phishing email came with a compressed file attachment
+and a more or less credible social engineering ploy to trick victims into
+opening it and running the embedded .EXE file. The .RAR file Twitter conversation between
+attachment contains an .SCR file that when executed drops two more @<IDENTITY>Ramzi_MHADHBI</IDENTITY> and
+files onto an infected system. One file is a short pornographic video in @waleedassar
+.FLV or .MPG format, depending on the samples seen. The other file is
+a Windows® binary file sporting the icon of the well-known Internet
+communication program, Skype™.
+Operation <THREAT_ACTOR>Arid</THREAT_ACTOR> <THREAT_ACTOR>Viper</THREAT_ACTOR> was unusual in that it had a pornographic component in hopes
+of taking user focus away from the infection or the fact that something strange is
+happening. It targeted professionals who might be receiving very inappropriate
+content at work and so would hesitate to report the incident. These victims’ failure to
+act on the threat could have then allowed the main malware to remain undiscovered.
+The attackers used a distinct and likely successful strategy previously unseen when it
+came to avoiding incident response team investigations.
+1 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+It is also worth mentioning that variations in the spear-phishing
+elements were seen across attacks though the idea behind them was
+the same. They all used a socially engineered email with a malicious file
+attachment and had a pornographic element as shown in the infection
+chain.
+Once executed, the binary accesses a command-and-control (C&C)
+server to immediately download an updated module and check if the
+infected system is already known or if it has been newly infected.
+Each infected system is assigned a unique identifier comprising
+its hard disk name and a specific set of numbers. Specific URLs
+are used for command and control. Note how often the unique
+identifier is used in all kinds of communication with C&C servers.
+Below are sample commands for a system with the unique ID,
+VMwareVirtualIDEHardDrive—1268730784.
+• /session/aadd_rtemp.
+php?n=VMwareVirtualIDEHardDrive—1268730784: To add
+the system’s record or perhaps start a communication session.
+• /session/gget_rtemp.
+php?n=VMwareVirtualIDEHardDrive—1268730784: To get a
+record or perhaps continue a communication session. <CAMPAIGN>Operation Arid Viper</CAMPAIGN> infection
+chain
+• /flupdate/3.html: To download an updated .EXE file.
+Incidentally, even though the file that
+should be downloaded—3.html—
+was hard-coded into the original
+malicious binary, the C&C server
+has sequentially numbered similar
+though not identical binaries such
+as 1.html, 2.html, and so on. These
+varied from sample to sample but
+were all Base64-encoded strings.
+The malware also commonly set
+the User-Agent for communication
+to “SK,” “Skypee,” or “Skype” as
+shown in the Wireshark log.
+The previously mentioned paths—
+aadd_temp and gget_rtemp—varied
+a little from sample to sample and
+User-Agent Wireshark log for “SK,” “Skypee,” or “Skype”
+C&C server to C&C server but the
+communication
+request formatting was the same. A
+nonexhaustive list of other paths
+seen include:
+2 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+• /new/add_tree.php?name=[SYSTEM- • /new/view_flash_random.
+ID]&date=[TODAYS DATE] php?name=[SYSTEM-ID]&serial=[SERIAL
+NUM]
+• /new/all_file_info1.php?name=[SYSTEM-
+ID]&user=[NUM]&file=[DD-MM-YYYY HH-MM. • /new/update.php
+uml]&type=msn
+• /new/view_file_order.php?name=[SYSTEM-ID]
+• /new/all_file_info1.php?name=[SYSTEM-
+• /new/view_file_up.php?name=[SYSTEM-ID]
+ID]&user=[NUM]&file=[DD-MM-YYYY HH-MM.
+rml]&type=log • /new/view_random_order.
+php?name=[SYSTEM-ID]
+• /new/all_file_info1.php?name=[SYSTEM-
+ID]&user=[NUM]&file=[DD-MM-YYYY HH-MM. • /down/add_temp.php?name= [SYSTEM-ID]
+dll]&type=img • /new/add_tuser.php?name=[SYSTEM-ID]&use
+• /new/all_file_info1.php?name=[SYSTEM- • /new/chang_flag.php
+ID]&user=[NUM]&file=[DD-MM-YYYY HH-MM.
+rml]&type=tree • /new/chang_rfflag.php
+• /new/get_flash.php?name=[SYSTEM- • /new/chang_rflag.php
+ID]&serial=[SERIAL NUM] • /new/n_chang_fflag.php
+• /new/get_tree.php?name=[SYSTEM- • /mians/aadd_rtemp.php?n=[SYSTEM-ID]
+ID]&date=[DD-MM-YYYY]
+• /mians/gget_rtemp.php?n=[SYSTEM-ID]
+• /new/get_statu.php?name=[SYSTEM-ID]
+• /session/aadd_rtemp.php?n=[SYSTEM-ID]
+• /new/view_flash_files.php?name=[SYSTEM-
+• /session/gget_rtemp.php?n=[SYSTEM-ID]
+ID]&serial=[SERIAL NUM]
+When the second-stage malware runs, it sets itself to auto-
+run with each system reboot in the guise of an Internet
+communication software. This is accomplished with an old-
+fashioned auto-start registry key such as HKCU\SOFTWARE\
+Microsoft\Windows\CurrentVersion\Run—“Skype = <path\
+name.exe”>. This keeps the path and name of the .EXE
+file dropped into the registry key. It also copies itself into
+%SystemDrive%\Program Files\Messenger via a hard-coded
+path. In addition to using “Skype” in the registry, the malware
+also frequently spoofed the Skype icon. All of the malware
+samples seen had portable executable (PE) file sections
+written in Arabic.
+The malware logs in to the C&C console by calling a very
+specific PHP script on the C&C server—/products/add_user.ph
+p?name=VMwareVirtualIDEHardDrive—1268730784&user=38.
+The number it creates for the user parameter—38 in the
+example—was chosen from the malware client to identify
+the session. It then starts searching the whole hard disk for
+documents—.DOC, .XLS, .PPT, and .TXT files. Each document The Wireshark log (top) shows the files
+found is reported to the C&C server using the format, GET / the malware sends to a C&C server.
+products/file_order3.php?name=VMwareVirtualIDEHardDri The assembly code section (bottom)
+ve—1268730784&path=C:/Documents%20and%20Settings/ searches for .XLS files to steal.
+user/Templates/winword.doc.
+3 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+The C&C server immediately responds if each document is interesting or not. This
+decision probably comes from a hard-coded black list on the server side to likely
+prevent the client from sending out default templates and generic readme.txt files.
+The server also tries to avoid requesting for duplicates of files it already has in further
+stealing sessions. It has two possible responses:
+• Response for an interesting document:
+HTTP/1.1 200 OK
+Date: Thu, 02 Oct 2014 14:49:45 GMT
+Server: Apache/2.4.10 (Unix) OpenSSL/1.0.1e-fips mod_
+bwlimited/1.4
+X-Powered-By: PHP/5.5.16
+Transfer-Encoding: chunked
+Content-Type: text/html
+4
+6
+done
+0
+• Response for an uninteresting document:
+HTTP/1.1 200 OK
+Date: Thu, 02 Oct 2014 14:49:23 GMT
+Server: Apache/2.4.10 (Unix) OpenSSL/1.0.1e-fips mod_
+bwlimited/1.4
+X-Powered-By: PHP/5.5.16
+Transfer-Encoding: chunked
+Content-Type: text/html
+2
+2
+The client then proceeds to list down all of the interesting documents to steal. These
+are compressed in a 0.txt file and uploaded to a C&C server via a POST request such
+as POST /products/fupdates.php. This request comprises a single POST parameter
+formatted as a GET parameter such as account=38&name=VMwareVirtualIDEHardD
+rive—1268730784&folder=tree&fname=02-10-2014 10-50.rml&s=<base64-file>.
+The server presumably uses the account value, which is the same as the previously
+mentioned user value, to track sessions where particular files are uploaded. The
+fname parameter is the .ZIP file’s name and contains a specific date and time. The
+0.txt file is deleted after the upload.
+At the end of the file upload, the client issues the request, /products/all_file_info1.ph
+p?name=VMwareVirtualIDEHardDrive—1268730784&user=38&file=02-10-2014%20
+10-50.rml&type=tree, to make sure everything went smoothly.
+As shown, a single execution allows the malware client to steal documents from
+infected systems. After carrying out all of its routines, the malware routinely checks
+back with the C&C server to see if it should continue running using the path,
+/products/get_statu.php?name=VMwareVirtualIDEHardDrive—1268730784. A
+response containing run11 tells it to continue running whereas stop disables it to
+possibly avoid infecting uninteresting systems.
+4 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+Operation Arid Viper Research Paper
+C&C Infrastructure
+Using an initial malware sample and its corresponding C&C server,
+we looked through internal <ORG>Trend Micro</ORG> databases to compile a list of
+similar malware that contact the same server. All cases revealed that the
+malware essentially exhibited the same behaviors previously outlined.
+The first C&C server found was pstcmedia.com. A quick search
+revealed that another site—mixedwork.com—hosted on the same IP
+address—188.40.81.136—also acted as a C&C server. Although the
+pstcmedia.com site changed IP addresses, mixedwork.com seemed to
+stay on this IP address. The other IP addresses pstcmedia.com used
+include 192.254.132.26 and 54.255.143.112. The second IP address has
+been sink-holed by other security researchers.
+To find other domains that may be part of the same campaign or used by
+the same perpetrators, an investigation of domain registration data was
+conducted. The C&C server that pstcmedia.com used was registered
+using the personal email address, khalid.samraa@gmail.com. More
+details on this can be found in the attribution section.
+The main page of mixedwork.com also contained a decoy redirection to
+the legitimate site, http://channel9.msdn.com/events/mix. But on its 404
+page, it is interesting to note the mention of the email address, ahmed.
+jmal1989@gmail.com, as site administrator.
+An in-depth look at <ORG>Trend Micro™</ORG> Smart Protection Network™ feedback
+for network activity similar to the previously mentioned URL paths
+allowed us to identify where the following active C&C servers were at
+various times:
+• ahmedfaiez.info
+• flushupdate.com
+• flushupate.com
+• ineltdriver.info
+• mediahitech.com
+The first three servers have all been hosted at some point on the same
+IP addresses—188.40.75.132 and 188.40.106.84—located in <GEO>Hetzner</GEO>,
+<GEO>Germany</GEO>. A more in-depth look at the first IP address revealed that
+among several other domains, it also hosts two—advtravel.info and
+fpupdate.info—that have clear ties to cybercriminal activities although not
+necessarily to the same campaign being investigated.
+A closer look at the last two C&C servers revealed that they have been
+misconfigured and allowed directory listing. Inside them were large
+amounts of victim data analyzed in the Operation Advtravel section.
+5 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+Maltego® map showing the relationships among the sites, IP addresses, and servers seen in the featured
+campaigns
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN>’s main C&C servers have been configured so their main pages
+redirected visitors to other web pages as shown in the table below.
+C&C Server Site It Redirects To
+ahmedfaiez.info Simply shows the word “test”
+flushupate.com helpx.adobe.com/flash-player.html
+flushupdate.com get.adobe.com/flashplayer
+ineltdriver.com downloadcenter.intel.com/default.aspx
+mediahitech.info Not resolving anymore
+mixedwork.com visitmix.com/work
+6 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+C&C Server Site It Redirects To
+plmedgroup.com palmgroupasia.com
+pstcmedia.com A parked page
+A check of the Domain Name System (DNS) Start of Authority (SOA) and Whois
+records of each identified C&C server turned up several other interesting email
+addresses, more details on all of which can be found in the attribution section. The
+table below shows our findings.
+Email Addresses Used in DNS SOA
+C&C Server
+and Whois Records
+advtravel.info* moh.s009@gmail.com
+moh.s009@gmail.com
+ahmedfaiez.info
+mahmoud.hashem12@gmail.com
+flushupate.com moh.s009@gmail.com
+flushupdate.com moh.s009@gmail.com
+moh.s009@gmail.com
+fpupdate.info*
+mahmoud.hashem12@gmail.com
+ineltdriver.com moh.s009@gmail.com
+mediahitech.info mahmoud.hashem12@gmail.com
+mixedwork.com ahmed.jmal1989@gmail.com
+plmedgroup.com ahmed.jmal1989@gmail.com
+pstcmedia.com khalid.samraa@gmail.com
+Note that C&C server names marked with * are part of a separate campaign—Advtravel.
+7 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+The malware binary hashes and their respective C&C servers, along with the dates they were first seen,
+allowed us to create a timeline of attacks that shows how much <CAMPAIGN>Operation Arid Viper</CAMPAIGN> has evolved over
+time.
+8 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+OPERATION ADVTRAVEL
+Ongoing <CAMPAIGN>Operation Advtravel</CAMPAIGN> differed from <CAMPAIGN>Operation Arid Viper</CAMPAIGN> in terms of the
+malware used, their chosen victims, and attribution information. But it does bear
+certain similarities to <CAMPAIGN>Operation Arid Viper</CAMPAIGN> that we believe merits its addition to this
+paper. The cybercriminals behind this campaign may have some ties with the threat
+actors behind <CAMPAIGN>Operation Arid Viper</CAMPAIGN>, which include:
+• They shared servers for command and control.
+• They used the same email addresses to register their domains—advtravel.
+info, fpupdate.info, and linksis.info.
+• Their perpetrators had ties to the <GEO>Gaza</GEO> Strip.
+C&C Infrastructure
+While conducting our investigation, we came across an Advtravel C&C
+server that shared the same infrastructure with <CAMPAIGN>Operation Arid Viper</CAMPAIGN>.
+It is particularly interesting to note that the advtravel.info site left its
+server’s root directory structure completely open to the public. This,
+combined with some other cybercriminal activities elaborated in the
+attribution section, led us to believe that the <CAMPAIGN>Advtravel</CAMPAIGN> attackers were
+less-skilled than those behind <CAMPAIGN>Operation Arid Viper</CAMPAIGN>.
+Publicly accessible <CAMPAIGN>Advtravel</CAMPAIGN>
+An analysis of December 2014 data shows that <CAMPAIGN>Advtravel</CAMPAIGN>’s C&C server site root directory
+directory could be publicly accessed. This allowed us to download copies
+of its entire content to study as part of our investigation before its owners
+realized their mistake and locked it down. Earlier versions of data from
+September 2014 were also downloaded.
+The advtravel.info directory had several files and folders. Although we were not able
+to exhaustively analyze every file on it, details on its most interesting components are
+highlighted below:
+• B1312.zip: This is a 1.4GB compressed backup of all of the other files on the
+C&C server. Leaving this file on the server allowed us to look inside the code
+of the .PHP files the attackers used.
+• /apps/: This main directory contains stolen victim data, along with several
+PHP scripts that uploaded it to the server. It used the format, /apps/A[3
+nums]X/[COMPUTERNAME_USERNAME] where A[3 nums]X represents a
+particular subcampaign while /[COMPUTERNAME_USERNAME] identifies a
+unique victim. The three digits in the folder format seem to indicate the month
+of the year, as they ranged from 001 to 012. Further analysis of the dates
+when the data was stolen, however, disproved that theory.
+An exhaustive analysis of every file on the server is beyond the scope of this
+paper but the details of the most interesting components are:
+9 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+ /apps/A[3 nums]X/ison.on: This refers to  FileList.txt: List of files in a directory
+the last time stolen data was uploaded in on an infected system, frequently
+the format, dd-mm-yyyy-hh-mm-ss. where the malware was executed.
+ /apps/A[3 nums]X/data/: This contains  pdata.txt: List of stolen website login
+screenshots taken from infected systems, credentials.
+along with the following files, the presence
+ webrowser.txt: List of stolen web
+of which varied from victim to victim:
+browser credentials.
+ allips.txt: Contains victims’ local and
+ wifi.txt: List of stolen Wi-Fi connection
+external IP addresses.
+credentials.
+ CurrentProcess.txt: List of running
+ workdata.txt: Contains the infection
+processes on infected systems.
+date, OS, user domain name,
+ cmpinf.txt: Contains the infection username, and a line labeled APP_
+date, OS, user domain name, and PATH=, which indicates which directory
+username. the malware was installed on.
+ downinf.txt: Contains the infection date,  Winkey.log: Log of victims’ keystrokes.
+OS, user domain name, username,
+ Other files that the attacker manually
+and status such as “Download
+ordered his malware to directly
+Complete :).”
+steal from the victim. These include
+ DrivesList.txt: List of all of an infected documents, pictures, and so on.
+system’s drives.
+ /data/: This contains three .EXE files
+shown in the table below.
+File Name MD5 Hash Purpose
+Drops HKTL_
+getchr.exe 77f590608eadcbbcc07de8d26607611f
+PASSVIEW
+Hacking tool
+that gets
+getcmppass.
+6d63f1c6962f290156c6459d1158a715 browser and
+exe
+Wi-Fi network
+passwords
+ccaac14d265915f4fdc6229ec6c9e854 An index of over 400
+Logs compromised systems from
+log.exe
+keystrokes
+b9b763980e33e390480c4a0d7c63adec just one subcampaign
+ /del/: This has been formatted like the /apps/ folder and also contains
+stolen victim data, particularly pictures, documents, and passwords.
+ /downs/: This contains several tools like those in the /apps/ folder as
+shown in the following table.
+10 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+File Name MD5 Hash Purpose
+Contains the text https://www.
+facebook.com/messages/
+LODALODALODA, which
+Mkhaled.txt b2690a9ac508cfe49f9db76695e18f00 sends a Facebook message
+to <IDENTITY>Mohamed Khaled</IDENTITY> (https://
+www.facebook.com/
+LODALODALODA)
+Copies pat2.exe and patver.
+aa.bat 1e63925edff6ea3449b7d3468443a52f tmp from the \appdata\
+roaming\explr\ folder
+Backdoor that accesses the
+appnew.exe ef5a37a6dcb1c417f4324730ce56be48
+C&C server, devhelx.no-ip.org
+Backdoor that accesses the
+appsrv.exe 2da94e47a68d9a137504106a513a3559
+C&C server, devhelx.no-ip.org
+estad.scr d6951e596910ec6105512ed002f24aa1 Downloads pat2.exe
+Backdoor that accesses the
+ez.exe 293d37cf8c62076de739f4bd68e685bb
+C&C server, devhelx.no-ip.org
+Hacking tool that comes in the
+kms.rar 6fa049b83def6c41154558c706b6605d form of a password-protected
+archive file
+Drops WinKey.log where
+log.exe ccaac14d265915f4fdc6229ec6c9e854
+keystrokes are logged
+.ZIP file that contains pswd2.
+out.rar c69bb266bede466825f21d900453f45e exe detected as TROJ_
+STRPADT.A
+Dropped .TXT file that
+pswd2.exe 0472d67eadb9aaa0491398bd14f6229f contains URLs, usernames,
+and passwords
+Dropped .TXT file that
+pswd4.exe d8209defc3966076737401d0a22d27d3 contains URLs, usernames,
+and passwords
+start.exe 0ae436d95cc1eb6a9b57df984734973e Downloads pat2.exe
+svrg.exe c8d387bb135d9acef3dfcf56464078fb Modifies the auto-run registry
+11 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+File Name MD5 Hash Purpose
+Detected as TROJ_
+usbf2.exe d57e0f5f0320f1b3fd8ae81a370170d0 STRPADT.A and downloads
+pat2.exe
+Detected as TROJ_
+usbf4.exe e36680a19601f84af6d311e1fb847eef STRPADT.A and downloads
+pat2.exe
+vvb.exe 2a38ff709549b97b4e42b6fae81c6177 Modifies the auto-run registry
+vvb.sfx.exe f747d5f998e48279cad7e9ed46e86a6b Drops VVB.exe
+ /pat/: This contains two files as shown in the table below.
+File Name MD5 Hash Purpose
+SFX archive that installs
+pat2.exe 7171feeedd345a7d50091e76fc7e3ac4
+micro.exe
+aa55cb19c3a61c0177e75198c70d6fa3 First sample is a normal file
+pat4.exe while the second is detected
+dcd2314f1af5dd1fd3e317bdf32faabb as TROJ_STRPADT.A
+ /patlogs/: Every action that the C&C server carries out is logged in a
+series of detailed log files here. Each log file uses the format, Log_A[3
+letters]X_[COMPUTERNAME_USERNAME]_m-dd-yyyy-hh-mm-ss.log.
+Log snippet showing victim data stolen by an
+attacker logged in as admin@dhs
+12 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+ /rpts/: This contained several empty subdirectories and two files as shown
+in the table below.
+File Name MD5 Hash Purpose
+pat.exe 2e5da32b07c531a6508b77f624bbeb22 Same file as start.exe
+app11.exe 342f79337765760ad4e392eb67d5ed2c MSI installer for dotnet2
+ /tools/: This contains some .PHP files, two .EXE files, and a .TXT file as
+shown in the table below.
+File Name MD5 Hash Purpose
+dotnet2.exe c64fd1f972822ed84378c7058fea0744 Legitimate .NET installer
+wininstl.exe 342f79337765760ad4e392eb67d5ed2c Same file as app11.exe
+ LastIps.txt: This is a long list of IP addresses that correspond to people
+accessing the advtravel.info/tools/ip.php page. Based on geolocation data,
+these people came from all over the world. The actual last login by the
+attacker to the server can be geolocated to Gaza in Palestine.
+The advtravel.info domain was moved to privacy-protected Whois in 2013. From
+2007 to 2012 though, it was registered to:
+Registrant Name:Adv Travels
+Registrant Organization:Adv Travels
+Registrant Street1:4401 Bayou Boulevard
+Registrant Street2:
+Registrant Street3:
+Registrant City:<GEO>Pensacola</GEO>
+Registrant State/Province:<GEO>Florida</GEO>
+Registrant Postal Code:32503
+Registrant Country:<GEO>US</GEO>
+Registrant Phone:+01804777777
+Registrant Phone Ext.:
+Registrant FAX:
+Registrant FAX Ext.:
+Registrant Email:renold.dave@advtravel.info
+Malware
+An analysis of the stolen files and logs allowed us to come up with a brief description
+of the initial <MALWARE>Advtravel</MALWARE> malware. In general, it only serves to respond to a C&C server.
+The attackers then manually downloaded other tools onto infected systems to extract
+victim credentials.
+13 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+After the initial dropper or download chain, the malware starts its
+data-stealing routine. It calls home to a C&C server and report each
+folder found on the infected system. The server then replies with a
+confirmation on whether or not the malware should send the folders’
+contents.
+The <MALWARE>Advtravel</MALWARE> and <MALWARE>Operation Arid Viper</MALWARE> malware had similar behaviors.
+This may or may not be a coincidence, as their binaries significantly
+differed. The <MALWARE>Advtravel</MALWARE> malware was coded in C# so the dropper needs
+to go through additional steps to build and update a .NET-running
+environment where it can be executed. This involves downloads and
+Microsoft™ software installations, which not only caused significant
+infection delays but also served as an additional point of failure to
+execute.
+The following are some sample HTTP requests seen in Operation
+<MALWARE>Advtravel</MALWARE>:
+• GET/sys/who.php?t=2/8/2015%205:30:59%20AM HTTP/1.1: Possible <MALWARE>Advtravel</MALWARE> malware
+First-time login. infection chain
+• GET/sys/genid.php?t=2/8/2015%205:31:00%20AM: Asks to
+generate a unique ID for a particular first-time client. The ID
+returned in this example was 2aMUu7TcPbUBsHVLNogB.vic,
+which will be used by the bot client throughout.
+• POST/sys/upload.php?dirname=//2aMUu7TcPbUBsHVLNogB.vic&x=old:
+Send directory name information.
+• GET/sys/data//2aMUu7TcPbUBsHVLNogB.vic/command.
+cmd?t=2/8/2015%205:31:02%20AM: Get a command from the server.
+In one particular example, the initial malware was a self-extracting .CAB file that
+eventually downloaded the main malware and patver.tmp, which contains the value,
+A012X. This value indicates the server folder where the stolen data should be
+uploaded to. This is essentially a campaign identifier. The malware then dropped
+a .JPG file showing the famous Dome of the Rock Church in <GEO>Jerusalem</GEO>. It also
+exhibited the following behaviors:
+• Installs itself to a default location such as C:\Users\[USER]\AppData\Roaming\
+AdobeAPP or C:\Documents and Settings\[USER]\Application Data\explr
+• Puts logs and support files in C:\Users\[USER]\AppData\Roaming\AdobeAPP\
+temp (Note that the .EXE file varies and appears to be downloaded on
+demand.)
+• Uses many of the support files previously described in another section, which
+are found in the \temp folder
+• Can send commands such as the following to bots:
+ get_scrshot: Get a screenshot.
+ get_workdata: Returns an infected system’s local time, OS, user domain
+14 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+name, username, and malware path.
+ explore_dir*[FULL PATH TO DIR]:
+Gets a directory listing.
+ run_file*[FILE TO RUN]: Executes a
+file.
+ get_file*[FILE TO GET]: Retrieves a
+victim’s file.
+ get_procslist: Gets a process or task
+list.
+ kill_prcs*[PID]: Kills a process.
+ get_driveslist: Lists all of an infected
+system’s mounted drives.
+ =FILE=: Allows attackers to upload
+new files to a victim’s system.
+ download*[URL]: Downloads a file
+from a URL onto an infected system.
+ del_path*[FILE]: Deletes a file or
+folder.
+• Communicates with the advtravel.info/
+apps/ directory to listen for commands
+and uploads stolen data to the /
+del directory. The log lists down an
+infected system’s current directory, runs
+a password stealer, retrieves stolen Log of the activities an <MALWARE>Advtravel</MALWARE> malware variant
+credentials, and takes screenshots. performs on infected systems
+Based on patlogs, at least four botnet
+administrators—khloda@dhs, belal@dhs,
+belal2@dhs, and admin@dhs—log in to the
+server and control the bots through the
+administration panel—a tool called DHDSM.
+Victims
+The <MALWARE>Advtravel</MALWARE> server has more than 500 infected systems. All of the stolen details
+found on it have been backed up for evidence. Most of the data have been analyzed
+to get an idea as to who have been victimized by the campaign. Some observations
+made include:
+• The majority of victims appeared to be Arabs from <GEO>Egypt</GEO>.
+• All of the infected systems appeared to be personal laptops, judging by the
+presence of a battery indicator in screenshots. This led us to believe that the
+campaign was not as sophisticated or as targeted as <CAMPAIGN>Operation Arid Viper</CAMPAIGN>.
+15 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+• The attackers appear to be keenly interested in images stored on victims’
+systems. This could be a sign that they are looking for incriminating or
+compromising images for blackmail purposes. As such, the attackers may be
+less-skilled hackers who are not after financial gain nor hacking for espionage
+purposes.
+• A lot of the screenshots unusually showed open <ORG>Facebook</ORG> profiles. The
+victims either spent a lot of time on <ORG>Facebook</ORG> every day or the malware took
+screenshots every time a victim accessed the site. This allowed the attackers
+to identify their victims. More details on this will be revealed after further
+investigation.
+fpupdate.info Server
+The fpupdate.info server’s main directory contains a /mobile/ folder.
+At the time of writing, the site no longer allowed public access to
+the server’s files although we were able to back them up back in
+September 2014.
+At present, all of the related .PHP files cannot access the server’s
+back-end database, which could mean it is down or unmaintained. An
+uploads folder had two subfolders that contained personal information
+stolen from victims’ mobile phones. Each subfolder had another two
+subfolders—/calllog and /sms. We were, however, unable to obtain a
+copy of the Android™ malware the attackers may have used to create fpupdate.info main directory
+the logs.
+VICTIMS
+The fpupdate.info server contained phone data stolen from two victims, Victim data stored on
+namely: fpupdate.info
+• LGE_IMEI: The device’s International Mobile Station Equipment Identity
+(IMEI) number revealed that it was an LG D821 Nexus 5 phone owned
+by someone from Israel. Call logs containing several Israel-based phone
+numbers, some of which had corresponding contact names, were found on
+the server. One particular contact called My Number belonged to someone
+from Palestine.
+• SAMSUNG_IMEI: This device’s IMEI number revealed that it was a <ORG>Samsung</ORG>
+P5100 Galaxy Tab 2 10.1 owned by someone from Israel. Logs indicating
+calls made to several Israel-based phone numbers were found, along with
+SMS logs. Most of the text messages were tweets by @shadipal2 and
+@Alaqsavoice_Brk, users who relayed real-time news about <GEO>Gaza</GEO>. The other
+text messages, meanwhile, revealed meetings in places in <GEO>Tunisia</GEO> such as
+<GEO>Gafsa</GEO> and <GEO>Sakiet Eddaier</GEO>.
+16 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+LINKSIS.INFO SERVER
+In addition to the two previously mentioned servers, linksis.info has also been found
+to have a very similar open directory layout to advtravel.info. It also used a lot of the
+same malware. We have not completely explored this server though a quick look
+clearly revealed ties to advtravel.info, including:
+• It is hosted on the same IP address—188.40.106.84—located in Hetzner,
+Germany.
+• Its DNS SOA record used the email address, mahmoud.hashem12@gmail.
+com.
+• It has an http://www.linksis.info/sys/del/belal/ folder, which is owned by one of
+the users of advtravel.info’s C&C control panels.
+• It contains the same log files—webbrowser.txt and so on—although these
+were encrypted.
+ATTRIBUTION
+The individuals identified in this section have some apparent connection with
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> or <CAMPAIGN>Advtravel</CAMPAIGN>. <ORG>Trend Micro</ORG> would, however, like to point out
+that they may or may not be involved with cybercrime. We simply intend to lay out
+verified facts that link them to the campaigns’ infrastructure and malware. Several
+other reasons such as having their email accounts stolen and used to register C&C
+servers, deliberate impersonation, and the like could also account for their links to the
+campaigns.
+<IDENTITY>Khalid Samra</IDENTITY>
+Some of the C&C server domain
+names were registered by a
+supposed <IDENTITY>Khalid Samra</IDENTITY> from
+Palestine. His social networking
+account email addresses were used
+to register several <CAMPAIGN>Operation Arid
+Viper</CAMPAIGN> C&C servers based on Whois
+registration data.
+An email address incorporating
+<IDENTITY>Samra</IDENTITY>’s name—khalid.samraa@
+gmail.com—was used to register the
+pstcmedia.com C&C server based
+<IDENTITY>Khalid Samra</IDENTITY>’s profile also mentions that he was based in
+on DNS SOA records. Further
+Palestine.
+OSINT investigation revealed ties to
+other similar email addresses—khalid.
+17 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+<IDENTITY>Samra</IDENTITY>’s two Facebook accounts with matching profiles and images
+Two Facebook pages <IDENTITY>Samra</IDENTITY> has ties to
+samraa@gmail.com, khalid.samraa@hotmail.com, khalid.samraa@wwb.ps, and
+khalid.samraa@coreions.com.
+To get a better idea as to what sort of person <IDENTITY>Samra</IDENTITY> is and to determine if he may
+have a motive for taking part in the campaigns, we took a look at his other social
+networking accounts. He apparently has two <ORG>Facebook</ORG> accounts—https://www.
+facebook.com/khaled.a.samraa and https://www.facebook.com/khalid.k.abusamra.
+The email address for the first account was used to register one of <CAMPAIGN>Operation Arid
+Viper</CAMPAIGN>’s C&C servers. The publicly visible profile pictures also suggest that he owned
+all three accounts. The accounts indicate that he lives in Gaza and that he has pro-
+Palestine and anti-Israeli political beliefs.
+18 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+What appears to be <IDENTITY>Samra</IDENTITY>’s second <ORG>Facebook</ORG> account also indicates
+that he is from Gaza. It also mentions where he worked, Coreions,
+like his <ORG>LinkedIn</ORG> profile. Unlike the first account though, this has more
+ties to several members of his family. Photographs posted on it also
+clearly show his presence in <GEO>Gaza</GEO> in 2012. A further Facebook search
+for the email address, khalid.samraa@gmail.com, also pointed to a
+group page called “GazaUnderFire2012” (https://www.facebook.com/
+GazaUnderFire2014), which <IDENTITY>Samra</IDENTITY> apparently set up back in 2012. This
+page then led to a newer group page called “Gaza Under Attack 2014”
+(https://www.facebook.com/gazaunderattack2014). Both of the pages
+provide updates on the ongoing Palestine-Israel conflict with a very
+strong pro-Palestine/-Hamas and anti-Israeli focus, just like the personal
+<IDENTITY>Samra</IDENTITY> Facebook accounts.
+Apart from the <ORG>Facebook</ORG> accounts, <IDENTITY>Samra</IDENTITY> had other social networking
+accounts such as in <ORG>Twitter</ORG> (https://twitter.com/KhalidSamraa), <ORG>Google</ORG>+
+(https://plus.google.com/113430785728528060894/ and https://plus.
+google.com/117379342774799926526/), and MySpace (http://myspace.
+com/225923317).
+On 4 November 2011, Coreions’ Whois record again changed. Although
+all of the major details remained the same, the email address was
+changed to khalid.samraa@gmail.com. On 13 January 2012, its entire
+registration details changed to the following:
+khalid abu samra ()
+<GEO>Gaza</GEO>- Al Rimal- Al Wihda Street, Opposite to Al-Amal
+institu
+Al-Nakheel commercial mall, 1st floor
+<GEO>Gaza</GEO>, <GEO>ISRAEL</GEO> 00972
+IL
+<IDENTITY>Ahmed Jmal</IDENTITY>
+The email address, ahmed.jmal1989@gmail.com, was used to register
+two of Operation <THREAT_ACTOR>Arid Viper</THREAT_ACTOR>’s C&C servers—mixedwork.com and
+plmedgroup.com. It also has ties to the <ORG>Facebook</ORG> account, https://www.
+facebook.com/ahmed.jmal.00. The <IDENTITY>Ahmed Jmal</IDENTITY> Facebook account
+indicates that he resides in <GEO>Marrakesh</GEO>, <GEO>Morocco</GEO>.
+<IDENTITY>Mahmoud Hashem</IDENTITY>
+The email address, mahmoud.hashem12@gmail.com, was used to
+register two Operation <THREAT_ACTOR>Arid Viper</THREAT_ACTOR> C&C servers—mediahitech.info and
+ahmedfaiez.info—and one of the <THREAT_ACTOR>Advtravel</THREAT_ACTOR> C&C domains—fpupdate.
+info. Ahmedfaiez.com and fpupdate.info also has ties to the email
+address, moh.s009@gmail.com. This fact shows a relationship between
+19 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+the two campaigns even if they
+used unrelated binaries. They did
+have some commonalities such
+as sharing a common network
+infrastructure.
+Moh.s009@gmail.com was also
+used to register six of the C&C
+servers—ahmedfaiez.info, fpupdate.
+info, ineltdriver.com, flushupdate.
+com, flushupate.com, and advtravel.
+info—related to the two campaigns.
+It was also found in DNS SOA
+records for linkedim.in, iwork-sys.
+com, nauss-lab.com, nice-mobiles.
+com, and abuhmaid.net.
+The site, linkedim.in, was
+particularly registered using the
+<IDENTITY>Ahmed Jmal</IDENTITY>’s email address was used to register two of
+following details:
+Operation Arid Viper’s C&C servers.
+Registrant Name:<IDENTITY>Mahmoud Hashem</IDENTITY>
+Registrant Organization:blogging
+hoster
+Registrant Street1:omar mokhtar
+Registrant City:<GEO>gaza</GEO>
+Registrant State/Province:<GEO>gaza</GEO> strip
+Registrant Postal Code:00972
+Registrant Country:<GEO>IL</GEO>
+Registrant Phone:+972546587385
+Registrant Email:blogging.host@live.com
+The registration details above ties the two email addresses—mahmoud.hashem12@
+gmail.com and moh.s009@gmail.com—together. We believe they belong to the same
+person though we have yet to find a real person behind the profiles.
+<THREAT_ACTOR>Dev_hima</THREAT_ACTOR>
+As previously mentioned, several advtravel.info infection logs can be clearly
+linked to <THREAT_ACTOR>Operation Advtravel</THREAT_ACTOR>’s malware developers or bot masters. It is also worth
+remembering that the malware used in <CAMPAIGN>Operations Advtravel</CAMPAIGN> and <CAMPAIGN>Operation Arid
+Viper</CAMPAIGN> distinctly differed from each other though they shared a common network
+infrastructure. The logs showed that the infection started from the same folder
+Visual Studio® drops a compiled file into and that screenshots showed other
+malware present on advtravel.info. This shows that advtravel.info is a development
+environment and could very likely be where the malware are programmed. The
+server’s username is <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>. A close look at other log files allowed us to find at
+least three other systems with the same user. Some of the samples gathered from
+the <ORG>Trend Micro</ORG> sample database listed down <THREAT_ACTOR>Dev_hima</THREAT_ACTOR> as an internal author as
+well.
+20 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+The bot logs from Dev_hima look
+like logs from test environments
+with different virtual machines that
+belonged to the original developer
+who performed some debugging
+and testing. This mistake went
+even further, as while testing the
+malware, it took several screenshots
+of <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>’s system, which gave
+us some insight into his operations.
+The CPanel display in a Windows 8
+environment showed how he went
+through victim logs. Other tabs open
+in the same browser display his
+Facebook profile page.
+The control panel is a Windows tool Screenshot of <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>’s system stored on advtravel.info
+called “DHSDM.” Its icon can also
+be seen as the rightmost program
+on the taskbar. This can be found
+on several of Dev_hima’s test virtual
+machines. It also showed that Dev_
+hima corresponded to the Admin
+user of the control panel. Other
+details recovered from logs revealed
+an IP address geolocated in Cairo,
+Egypt.
+Another clue to <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>’s relation
+to the <MALWARE>Advtravel</MALWARE> malware was a
+working downloader from December
+2014 that is related to advtravel.
+info. It downloaded a malware from
+a server that is then run on infected
+systems. The PE header data of
+this downloader again showed the Information on a malware variant published by <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>
+name, <THREAT_ACTOR>Dev_hima</THREAT_ACTOR> as application
+publisher. <MALWARE>Nveron</MALWARE> appears to be <THREAT_ACTOR>Dev_
+hima</THREAT_ACTOR>’s filename for the malware.
+A web search for developers with the nickname, <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>, turned up one profile that
+fit what we know so far very well. <THREAT_ACTOR>Dev_hima</THREAT_ACTOR> was not exactly hiding online. He actually
+had various online accounts—http://devhima.blogspot.com/p/blog-page.html, http://
+devhima.webs.com/about, youtube.com/user/ibrahhm2121/, facebook.com/devhima,
+twitter.com/dev_hima, linkedin.com/pub/ebrahim-elsharawy/69/324/7b5, scribd.com/
+devhima, soundcloud.com/ebrahim-elsharawy, and devhima.tumblr.com—that tie his
+real identity to his nickname.
+21 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+<THREAT_ACTOR>Dev_hima</THREAT_ACTOR> can also be tied to the
+Skype ID, ibrahhm2121, along
+with the email addresses, dev_
+hima@yahoo.com, devhima@
+hotmail.com, ibrahhm2121@
+gmail.com, ibrahhm212@gmail.
+com, and ibrahhm2121@yahoo.
+com. Of course, it is conceivable
+that a malicious hacker sought to
+appropriate <IDENTITY>El Sharawy</IDENTITY>’s identity
+or coincidentally chose the same Some of <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>’s social networking profiles
+nickname.
+A look at malicious activities tied to
+the nickname, <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>, revealed
+very interesting things. We found
+that <THREAT_ACTOR>Dev_hima</THREAT_ACTOR> was part of the
+“<THREAT_ACTOR>Gaza Hacker Team</THREAT_ACTOR>,” a group
+involved in multiple website hacking
+and defacement incidents against
+Israeli targets in the past. A few of
+the more than 2,000 defacement
+attacks the team carried out
+involved sites in Israel.
+Some of <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>’s hacker group
+profiles can also be found on gaza-
+hacker.org/cc/member-u_42271.
+html and arabteam2000-forum.com/
+index.php/user/272853-dev-hima/.
+His personal project page—http://
+devhima.webs.com/—showed <THREAT_ACTOR>Dev_hima</THREAT_ACTOR> also has ties to several email addresses and online
+several potentially malicious tools accounts
+that he has coded. <MALWARE>DevPcTwitter</MALWARE>, for
+instance, allows attackers to control a
+target system using a <ORG>Twitter</ORG> account. <MALWARE>DevSpy</MALWARE>, meanwhile, allows parents to monitor
+their children’s online communication and browsing habits for protection purposes. In
+reality though, <MALWARE>DevSpy</MALWARE> is simply a piece of spyware.
+<MALWARE>DevPcTwitter</MALWARE> (MD5: bfcb492d282960152a366b5760b87920d02c6e83) is publicly
+available for download on <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>’s site.
+The structure of the last four <MALWARE>DevPcTwitter</MALWARE> commands—getfile*[file_path]—is
+interesting. The commands had a similar though not identical syntax to the format
+<THREAT_ACTOR>Dev_hima</THREAT_ACTOR>’s bot used to communicate with advtravel.info.
+<THREAT_ACTOR>Dev_hima</THREAT_ACTOR> shared tutorial videos on YouTube on how to configure and use
+<MALWARE>DevPcTwitter</MALWARE>. These videos were linked to his personal page. His Twitter bot’s
+function is simple. It lets a user register a Twitter account and an email address in the
+22 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+List of website attacks that <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>’s hacker group was involved with
+<MALWARE>DevPcTwitter</MALWARE> program. The user
+can then start tweeting commands
+via the account registered, which the
+bot reads and executes. Commands
+such as GetScreenShot tells
+<MALWARE>DevPcTwitter</MALWARE> to take screenshots of
+a victim’s desktop that it then emails
+to the email address registered. The
+bot can also download and execute
+files using the Download$[URL]
+<MALWARE>DevPcTwitter</MALWARE>’s UI shows it was designed for Arabic-speaking
+command.
+users.
+<MALWARE>DevPcTwitter</MALWARE> is low-risk because it
+requires a lot of user interaction to set up and operate. Its bot does not have the
+functionality to stealthily run in the background as well.
+<MALWARE>Dev_hima</MALWARE> also developed the spying tool, <MALWARE>DevSpy</MALWARE>. Its installer (MD5:
+23 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+Tools available for public download on <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>’s website
+d325c541fa0f3080a25394fe3a586100910f5569)
+is also available for public download from http://
+devhima.webs.com/. Unlike <MALWARE>DevPcTwitter</MALWARE>, the
+<MALWARE>DevSpy</MALWARE> interface uses English, not Arabic. Its
+setup is also pretty self-explanatory. It takes
+desktop screenshots at user-specified intervals
+that it then stores in a folder. It can stealthily run
+in the background. In stealth mode though, it can
+be only be accessed by pressing a hotkey that
+requires password authentication. In the same
+mode, <MALWARE>DevSpy</MALWARE> can remove itself from a victim’s
+Windows Task Manager process list.
+<MALWARE>DevSpy</MALWARE> is medium- to high-risk because it is
+designed to spy on users in stealth mode. It is
+possible or even likely that the malware used to
+communicate with advtravel.info is a privately
+enhanced version of <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>’s
+tools.
+VIRUS_HIMA
+<THREAT_ACTOR>Dev_hima</THREAT_ACTOR> used the handles, hima, virusxhima
+and <THREAT_ACTOR>ViRuS_HiMa</THREAT_ACTOR>, with the email address,
+virusxhima@gmail.com, though there was not
+enough evidence to confirm that <THREAT_ACTOR>Dev_hima</THREAT_ACTOR> and
+<THREAT_ACTOR>ViRuS_HiMa</THREAT_ACTOR> are the same person.
+<THREAT_ACTOR>ViRuS_HiMa</THREAT_ACTOR> had ties to several high-profile
+hacking attacks, including:
+• The theft of 150,000 passwords from
+<ORG>Adobe</ORG> employees, customers, and
+partners such as the <ORG>U</ORG>.S. Military, <ORG>USAF</ORG>, <MALWARE>DevPcTwitter</MALWARE> supports an extensive array of
+<ORG>Google</ORG>, <ORG>NASA</ORG>, and DHL [5] executable commands.
+24 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+• The cross-site scripting
+(XSS) attack on 2shared.
+com [6]
+• More than 1,700 website
+defacement incidents
+• The Yahoo SQL attack
+claimed to have been by
+perpetrators from Egypt
+[7]
+Some emails with ties to <THREAT_ACTOR>ViRuS_
+HiMa</THREAT_ACTOR> include virusxhima@gmail. <MALWARE>DevSpy</MALWARE>’s UI and setup console
+com, egypt_government@hotmail.
+com, a.e@hotmail.com, and ana.
+msre@hotmail.com.
+<IDENTITY>Mohammed Khaled</IDENTITY>
+As previously mentioned, one advtravel.info file—Mkhaled.txt—had the
+link, https://www.facebook.com/messages/LODALODALODA. When
+clicked, a Facebook message was sent to a <IDENTITY>Mohamed Khaled</IDENTITY> profile
+page (https://www.facebook.com/LODALODALODA) as notification of
+new successful system infections. The profile indicates that <IDENTITY>Khaled</IDENTITY> lives
+in Cairo, Egypt.
+Interestingly, a <IDENTITY>Mohamed Khaled</IDENTITY> can be further connected to Dev_
+hima. On a page promoting Dev_hima’s DevPcTwitter tool, we saw one
+.TXT file snippet from http://
+comment from a <IDENTITY>Mohamed Khaled</IDENTITY> regarding the remote access tool
+www/hackerbox.net/upload.
+(RAT).
+txt showing a relationship
+between <THREAT_ACTOR>Dev_hima</THREAT_ACTOR> and
+<IDENTITY>Fathy Mostafa</IDENTITY> <THREAT_ACTOR>ViRuS_HiMa</THREAT_ACTOR>
+<IDENTITY>Fathy Mostafa</IDENTITY> is another individual with apparent connections to <CAMPAIGN>Operation Advtravel</CAMPAIGN>.
+In one of the advtravel.info logs, we saw a screenshot of the main <MALWARE>Advtravel</MALWARE> malware
+under development.
+The code showed testing URLs that used the same paths as the actual malware that
+accessed the advtravel.info domain. The username, fathy, can clearly be seen. Other
+logs from the same infection gave us some stolen account details, including:
+• http://members.000webhost.com/login.php was registered using
+ismaelalaa32@gmail.com and fathymostafa9@gmail.com
+• https://khamsat.com/register, https://www.freelancer.com/, and https://www.
+linkedin.com/uas/login used fathymostafa9@gmail.com
+Mostafa’s’s skills, according to work profile sites, include C# programming, which was
+coincidentally used to program the <MALWARE>Advtravel</MALWARE> malware.
+25 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+<IDENTITY>Mohammed Khaled</IDENTITY>’s Facebook profile and picture
+The email address, fathymostafa9@
+gmail.com, was also associated with
+the Facebook account, https://www.
+facebook.com/fathy.mostafa.1690.
+The profile indicates that <IDENTITY>Mostafa</IDENTITY>
+lives in <GEO>Egypt</GEO>, like many others
+tied to <THREAT_ACTOR>Operation Advtravel</THREAT_ACTOR>. He
+studied Electronic Engineering and
+is a member of several Facebook
+groups, including two that were <IDENTITY>Khaled</IDENTITY> commenting on <THREAT_ACTOR>Dev_hima</THREAT_ACTOR>’s RAT
+related to the <ORG>Muslim Brotherhood</ORG>.
+[8]
+Other Individuals
+In addition to the previously
+mentioned individuals, other
+nicknames associated with
+<THREAT_ACTOR>Operation Advtravel</THREAT_ACTOR> have been
+found as well. We saw three other
+account names—khodla, belal, and
+belal2—on the <MALWARE>Advtravel</MALWARE> control
+panel.
+The systems that belal owned had
+particular ties to <THREAT_ACTOR>Operation Advtravel</THREAT_ACTOR>
+due to their use of the word “Roo0T” Advtravel.info log showing the malware code while it was being
+or “Ro0t” in usernames. His systems developed
+all had the main malware control
+panel, along with games such as “Counter Strike Global Offensive.” He also had
+folders containing the <MALWARE>njrat7</MALWARE> malware—a popular RAT in Arabic countries, as it was
+26 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+locally developed and supported. <IDENTITY>Belal</IDENTITY>’s folders also contained a .TXT file named Israil mails.txt, which had
+2,572 email addresses, possibly for attack purposes.
+<IDENTITY>Mostafa</IDENTITY>’s Facebook profile
+<IDENTITY>Belal</IDENTITY> logged in to the Advtravel control panel
+27 | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+The South Korean Fake Banking App Scam Research Paper
+CONCLUSION
+The malware campaigns—<CAMPAIGN>Operation Arid Viper</CAMPAIGN> established the <ORG>Islamic Resistance Movement</ORG>,
+and <CAMPAIGN>Advtravel</CAMPAIGN>—discussed in detail in this paper are better known as “<ORG>Hamas</ORG>,” an infamous Palestinian
+separate but closely linked. <THREAT_ACTOR>Operation</THREAT_ACTOR> <THREAT_ACTOR>Arid Viper</THREAT_ACTOR> organization that has been controlling the <GEO>Gaza Strip</GEO>
+targets specific Israeli organizations, including some since around 2007.
+high-profile victims, using a network infrastructure
+Whoever the real culprits are, it is clear that they
+in <GEO>Germany</GEO> with several strong ties to <GEO>Gaza</GEO> in
+are part of the Arab world, evidence of a budding
+<GEO>Palestine</GEO>.
+generation of Arab hackers and malware creators
+<CAMPAIGN>Advtravel</CAMPAIGN>, meanwhile, has more connections— intent on taking down their chosen adversaries.
+possible culprits and victims alike—to <GEO>Egypt</GEO>. Some of the black hats—be they mercenaries or
+However, based on IP address logins, we again saw cybersoldiers—are actively targeting countries such
+connections to the <GEO>Gaza Strip</GEO>. as Israel due to political motivations. We have seen all
+of the ingredients of a cyberskirmish guerrilla war that
+While the two campaigns shared infrastructure,
+goes unnoticed by mainstream IT security media.
+their tactics could not be further apart. <CAMPAIGN>Operation
+Arid Viper</CAMPAIGN> is a sophisticated campaign targeting Beyond these specific campaigns, what we found
+key individuals in organizations in order to exfiltrate most interesting was that we had disparate groups of
+sensitive data. Its C&C servers were, in fact, closely Arab aggressors who used the same infrastructure
+locked down, providing very little hint that could aid to launch and monitor attacks. This can possibly
+our investigation. mean two things—the attacks were somehow
+linked, something that appears unlikely given their
+<CAMPAIGN>Advtravel</CAMPAIGN>, on the other hand, looks very much like the
+nature and motivation, or a supra-organization that
+work of less-skilled cybercriminals who appeared to
+provides means for Arab parties to commit acts of
+be motivated neither by financial gain nor conducting
+cyberviolence exists, which appears to be the more
+espionage. Instead, they look like a classic group of
+probable option.
+beginner hackers just starting their careers.
+If our theory holds, we will see a host of cyber attacks
+Yet it remains intriguing to note the close ties between
+with detrimental results stem from Arab countries
+<CAMPAIGN>Operations Arid Viper</CAMPAIGN> and <CAMPAIGN>Advtravel</CAMPAIGN>, apart from signs
+in the near future. Internet users will be stuck in the
+of Arabic heritage. We cannot know for sure if the
+middle of a battlefield they do not care much for.
+people behind the campaigns operate as separate
+groups or as individuals though we suspect they are We can only offer well-informed inferences on
+part of a larger organization. Several organizations attribution for now. Nevertheless, one thing is
+with ties to both <GEO>Gaza</GEO> and <GEO>Egypt</GEO>, for instance, very clear—whether the malware involved was
+the <ORG>Muslim Brotherhood</ORG>—a transnational Islamist sophisticated and stealthy or basic and created by
+organization founded in <GEO>Egypt</GEO> in 1928, exist. The beginners, they both had devastating effects on their
+brotherhood was legalized in <GEO>Egypt</GEO> in 2011 and won victims. <ORG>Trend Micro</ORG> will always continue to uncover
+the parliamentary elections before the army overthrew such threats in order to make the world safe for the
+it in 2013. In 1987, brotherhood-affiliated charities exchange of digital information.
+ii © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+REFERENCES
+[1] The Week Ltd. (1 August 2014). The Week. “Iron Dome: How <GEO>Israel</GEO>’s
+Missile Defence System Works.” Last accessed on 12 February 2015,
+http://www.theweek.co.uk/world-news/middle-east/59368/iron-dome-
+how-israels-missile-defence-system-works.
+[2] <ORG>BBC</ORG>. (20 December 2014). BBC. “Israel Launches Gaza Air Strike on
+‘Hamas Target.’” Last accessed on 12 February 2015, http://www.bbc.
+com/news/world-middle-east-30558922.
+[3] <IDENTITY>Pierluigi Paganini</IDENTITY>. (16 December 2012). The Hacker News. “Yahoo
+Data Leak by <THREAT_ACTOR>ViRuS_HiMa</THREAT_ACTOR>, Why Do We Need Proactive Security?”
+Last accessed on 12 February 2015, http://thehackernews.
+com/2012/12/yahoo-data-leak-by-virushima-why-do-we.html.
+[4] <IDENTITY>Pierlu</IDENTITY>igi <IDENTITY>Paganini</IDENTITY>. (15 March 2013). Security Affairs. “XSS Vulnerability
+in 2shared.com reported by <THREAT_ACTOR>ViRuS_HiMa</THREAT_ACTOR>.” Last accessed on 12
+February 2015, http://securityaffairs.co/wordpress/12889/hacking/xss-
+vulnerability-in-2shared-com-reported-by-virus_hima.html.
+[5] Guest. (15 December 2012). Pastebin. “Yahoo Data Leak by <THREAT_ACTOR>ViRuS_
+HiMa</THREAT_ACTOR>.” Last accessed on 12 February 2015, http://pastebin.com/
+Pxnszw7b.
+[6] Wikimedia Foundation Inc. (8 February 2015). Wikipedia. “<ORG>Muslim
+Brotherhood</ORG>.” Last accessed on 12 February 2015, http://en.wikipedia.
+org/wiki/Muslim_Brotherhood.
+iii | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+APPENDIX
+This section provides all of the SHA256 hashes found in relation to <CAMPAIGN>Operations Arid Viper</CAMPAIGN> and <CAMPAIGN>Advtravel</CAMPAIGN> and
+their corresponding <ORG>Trend Micro</ORG> detection names.
+SHA-256 Hashes <ORG>Trend Micro</ORG> Detections
+advtravel.info
+015fbc0b216d197136df8692b354bf2fc7bd6eb243e73283d861a4dbbb81a751 TROJ_STRPADT.A
+17f2eb260f0b6942f80453b30f1a13235f27b7ed80d4e5815fb58ff7322fc765 TROJ_STRPADT.A
+32e2b9cc92dfc1e77a85adb6a8b13c9b6264b7adb286260bd8bf6e47b6cde255 TROJ_STRPADT.A
+4a581d9636a4f00a880b07f6dca1a82a866cf5713c74e722cfa9f71e08c33643 TROJ_STRPADT.A
+69589b1691909fa091a901f7323515228594561bc18032f8ffde095993333ecc TROJ_STRPADT.A
+6cc4869f1991df5879d0c4fc002f996a56bf11624d79ea2d34b52ceb98516425 TROJ_STRPADT.A
+72be7e8903211e37bb3a4b04d7684d49ed8fb21ec3fdf6367e4eed2aa6fdc54c TROJ_STRPADT.A
+856580576be62a0b14a01e9973b2fcb0c344e680b70a3b08b4ea293f84b47a59 TROJ_STRPADT.A
+8c4867a434e0b279c3f7fc5baedb04753c41a79cc52da6e3148c110d82a588e8 TROJ_STRPADT.A
+ae38be6e54447ddf5a9f16748a749ab0c9c7524f7f4f9878e3b4940415970a19 TROJ_STRPADT.A
+ea94498aeeef4535ea1c876a0f7317d6049307c82f9396dc6b9e3542a6aa50a3 TROJ_STRPADT.A
+ahmedfaiez.info
+2a375d2a9c41af31554bafb4a712097cc016d5227cb1f07652f0ef3483d5be30 TROJ_STRPSPI.A
+55cee457c73aa87258a04562c9d04cd3c865608d5dd64366d9cd9bc2fe2f5dd9 TROJ_STRPSPI.A
+iv | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+SHA-256 Hashes <ORG>Trend Micro</ORG> Detections
+a4cebac7bf4e5faa537a6013e9ae19c683d7cdad9dd318fdd968a966dd3a3010 TROJ_STRPSPI.A
+cb3039dad0ebd63e40fbcdbb8a2a1cdf9f442b2870383f5d469765387d0c8ec0 TROJ_STRPSPI.A
+d4cb58f6167b72764a216d0ce6281d2251f02a696060eb425c9782283422a828 TROJ_STRPSPI.A
+flushupate.com
+91d3a9c6de14197fe3be7c2b86b88b58b1f731d3e82bb0b7b11d5c75fbbed9a5 TROJ_STRPSPI.B
+b6ca1211159e9fd790790e49db5eb1b7a11c09f746d3135ae7a67ce8f518a403 TROJ_STRPSPI.B
+e18f051ac27ed29f792db49e4333adca9b1762d485a9214b5af12ffe858ca3fc TROJ_STRPSPI.B
+flushupdate.com
+381bcf2b7fefcdade08bb6a02dc32ea535dbef9cb9a43220649916db8bcc39d8 TROJ_STRPSPI.C
+502953496a40661bb6336a693371d3dd29ad96feb5e9f91a5b5ca0ad3ffbf29f TROJ_STRPSPI.C
+52767ea5e20b8639433c087edf86ef91b0cb7fda46c71dcce625938a9f5d8a74 TROJ_STRPSPI.C
+4436c7024366356cd04724e1d6867786f2587a6f6295fc74b3af0c02a257adba TROJ_STRPSPI.D
+4619cec6310e16d30e05204b35c084aabafabdd3d3f87661774fec253a103d11 TROJ_STRPSPI.D
+8eeab6635982618bebc137cf6c4795aa10010685d9c7bb6ce66932215195eed7 TROJ_STRPSPI.C
+92cd7309723461918b9cd2988a26cd2199749e82636dc6628a46878db7e12db3 TROJ_STRPSPI.D
+940a3ed18c4f171c9a6bccc0ab0ee8075aad6da8023e0b0e8883ca56bdddb4c7 TROJ_STRPSPI.C
+a348aabfd8aeec855933509c4c0b2aee78408ada89d8b51ce16b2247659b22f7 TROJ_STRPSPI.C
+ae35a7a1b084d09bb913b450944dc6f3205650298e58d19e3e2ee4db93a109ea TROJ_STRPSPI.C
+b5ba8fbc4f5c9bbf01c9a0a533ecab0735bf8e5e63116fffc570392e6faa9d18 TROJ_STRPSPI.C
+b7666d4a0afe5f5b5de8faa541be31bbe34ea51c3b3a3fab77937f816ac6181e TROJ_STRPSPI.C
+v | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+SHA-256 Hashes <ORG>Trend Micro</ORG> Detections
+bbacf000880a46c7955a27f5dd960a6e253cd357f14f97f8472dd4fc3032f44d TROJ_STRPSPI.C
+bda7ea39f9105c25250f14e9e1fa3de0f51b91b04349974c7cadbbbe1c06ce2f TROJ_STRPSPI.C
+ineltdriver.com
+d2ccf6fa361ceaf8cebada53bb1f9458b016ad85b74a7dc1bf4ba18774d92645 TROJ_STRPSPI.C
+e7b59b841e127c6fe6e02dd98292bba49bd32350b57595e09a6adab8da78235b TROJ_STRPSPI.C
+e810c74aefd63ce4ea674a1a961075a4d86a10b802d365b6b2b98a724d9b86db TROJ_STRPSPI.D
+f467c72fa8adde6ddf27150122c117a17d1d664876c2f9d87e68e06257eb1904 TROJ_STRPSPI.C
+linksis.info
+58b48fd39ef718e5bd501f57e83b537668b13176ca682aee36402d18bd0c0733 TROJ_STRPADT.B
+59d880ae82ccc3c8207b745b1b3e55119a5b62af086a1639270b1ba5b7e1893a TROJ_STRPADT.B
+74d3093a51482a1eaa15e4fc8aa4b7d659d571db0570950272d7aa998aec6f49 TROJ_STRPADT.B
+829b90bcf24fdf7f0298edec701c3c45b820f297dd012ac22e27e4bd295ee5f2 TROJ_STRPADT.B
+9b6595980751537adf627e6107c08537de13e39752ed54c73e2b6af23e2a2769 TROJ_STRPADT.B
+d711dc3c75a60ca0cd2556c267e3c33cee5d677edcfe70fb88b334f08f81ece9 TROJ_STRPADT.B
+e850650e6982469529768988dfabadfdaa53b25abe1e0c0f0b3894b31a83b061 TROJ_STRPADT.B
+mediahitech.info
+db06c1914c82b52c9f2ee6ddffb13acde22d2227d626c41c35c163266b11d29c TROJ_STRPSPI.F
+mixedwork.com
+177d9e42c4e2dfc3641cdc1f92815600c861501f5c880f5ab9cb642feb9b94bd TROJ_STRPSPI.F
+390ef820779cd7461792f0aa4fc324cb06e1226e551a158cb87ca4db05358ef3 TROJ_STRPSPI.F
+vi | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<CAMPAIGN>Operation Arid Viper</CAMPAIGN> Research Paper
+SHA-256 Hashes <ORG>Trend Micro</ORG> Detections
+3fbdfcf1eae14daa7b2fa6b7d3fa7cf602cd6ff178483c9019e3bb0aa2bb902c TROJ_STRPSPI.F
+62b10dc88df96e2d3d9cf5521a8d8372d6228fc82587bdee7f0de3c1c1d5a8bd TROJ_STRPSPI.F
+6e8287bb8909baa65e5c00b853b4f66844e5cf3d7a5f8b707997c02395b93505 TROJ_STRPSPI.F
+8c66812d657027f537aa43f406182ba39e9baf3785f067ade003f96397b11ec0 TROJ_STRPSPI.F
+a1bf0e5277f6fc962be778f182971eb4911d9c97cf27526d9e5698d514cef3c0 TROJ_STRPSPI.F
+a6eac7a3607713fbeb3b50d227f3742ea23aa21c50eeff8987bbba10138527a9 TROJ_STRPSPI.F
+b33472608ce524c2750b70c496a696ad6653b8a6ea7b474445d94cd491d255cf TROJ_STRPSPI.F
+bcc1a294bc63c3fa873f364bab0a7aa368d85726346106422013c270d55fec3c TROJ_STRPSPI.F
+bd9ab35587fdb450242b7a9ee0298c04dbd2fb254065fa004cda1ad42ac5f338 TROJ_STRPSPI.E
+e29647c7719696bf9d4d5aa8c8f10152b5b63b6d25969db90d9634273c0353f8 TROJ_STRPSPI.F
+pstcmedia.com
+05eb2ecfc731ce222ebe82f6b3428fc5aa4179f7be5f328c5447317950e2d0e7 TROJ_STRPSPI.G
+0d22606d24911c2128651ba0421c7c5bf7cd3eedef871c460b02b42b2417c457 TROJ_STRPSPI.G
+11768a3a63458963d1d31be5c94d716b8e4f75dc1593080c2988b22cb6facaa8 TROJ_STRPSPI.G
+21b9b34d4a21ee538e7908727aca5d367f8d400db920187f51be2921a696421f TROJ_STRPSPI.G
+2bd901a246f0b0b90ba891ee37c2ee4f7bd30d36d307b151998769fcc23fd1cb TROJ_STRPSPI.G
+33fc87cc53eb867dc89e34fe7a46d33d90cab02f84299531d2e677a507ed308c TROJ_STRPSPI.G
+62f9839190e2fe50439894c667b3cbe29d64c3808cc471745e3d33b61370a340 TROJ_STRPSPI.G
+694c01c9ade6258596cfafa6247da71712b2c3273bfc25ad26cb47302b8bbf4d TROJ_STRPSPI.G
+74f22eced680ca26b767b4b07ba26b98536a385249d751586915b15b56509e0d TROJ_STRPSPI.G
+vii | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+Operation Arid Viper Research Paper
+SHA-256 Hashes <ORG>Trend Micro</ORG> Detections
+81cc84f29a4c444724cbbfab83185866ecebc68c9c0a37f9623a4954456c4dd1 TROJ_STRPSPI.G
+a185dca4bd3b08bdafa80d53eec7ba792fb94b83785210049ba85477ce7c8cda TROJ_STRPSPI.G
+a36e2b88b2440aff13bf0473a19e4cd7b7d19e8bc96bb2fd10b991c33e18be7c TROJ_STRPSPI.G
+aab2cf709d095d949f662c40e9f889a8f3efa130102fc571f56a84205fdc67cb TROJ_STRPSPI.G
+b009a87d8de4fae3395a06b2676c483a80b10ca12c5bbc093aa71ea504a77dc7 TROJ_STRPSPI.G
+bb3eefa723221e2aa27c4f56f61418319ccda41b70e9e4b0375bf3bb131e974b TROJ_STRPSPI.G
+d09a773dab9a20e6b39176e9cf76ac6863fe388d69367407c317c71652c84b9e TROJ_STRPSPI.G
+dad8cf7474c71db1512e637db780f4650d30b040903d7a76840a1c099b9b8650 TROJ_STRPSPI.G
+e91216df556bee622e4eab8551fe534cda8f2f1056b8d8442f088a4035815dfe TROJ_STRPSPI.G
+plmedgroup.com
+09be9911eedb9b01d8f544252fb0c74f2dadcf850f33a0b947eac740de8c2427 TROJ_STRPSPI.H
+viii | Page © 2015 <ORG>Trend Micro</ORG> Incorporated
+
+<ORG>Trend Micro</ORG> Incorporated, a global leader in security software, strives to make the
+world safe for exchanging digital information. Our innovative solutions for consumers,
+businesses and governments provide layered content security to protect information
+on mobile devices, endpoints, gateways, servers and the cloud. All of our solutions
+are powered by cloud-based global threat intelligence, the Trend Micro™ Smart
+Protection Network™, and are supported by over 1,200 threat experts around the
+225 E. John Carpenter Freeway
+globe. For more information, visit www.trendmicro.com.
+Suite 1500
+©2015 by <ORG>Trend Micro</ORG>, Incorporated. All rights reserved. <ORG>Trend Micro</ORG> and the <GEO>Irving</GEO>, <GEO>Texas</GEO>
+<ORG>Trend Micro</ORG> t-ball logo are trademarks or registered trademarks of <ORG>Trend Micro</ORG>, 75062 <GEO>U.S.A.</GEO>
+Incorporated. All other product or company names may be trademarks or registered
+trademarks of their owners. Phone: +1.817.569,8900

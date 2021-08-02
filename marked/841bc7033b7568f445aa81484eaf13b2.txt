@@ -1,0 +1,1379 @@
+THREAT
+REPORTQ3 2020
+WeLiveSecurity.com
+@<ORG>ESET</ORG>research
+<ORG>ESET</ORG> GitHub
+
+Contents Foreword
+Welcome to the Q3 2020 issue of the <ORG>ESET</ORG> Threat Report!
+3 FEATURED STORY
+As the world braces for a pandemic-ridden winter, COVID-19 appears to be losing steam at
+least in the cybercrime arena. With coronavirus-related lures played out, crooks seem to
+5 NEWS FROM THE LAB have gone “back to basics” in Q3 2020. An area where the effects of the pandemic persist,
+however, is remote work with its many security challenges.
+9 APT GROUP ACTIVITY
+This is especially true for attacks targeting Remote Desktop Protocol (RDP), which grew
+throughout all H1. In Q3, RDP attack attempts climbed by a further 37% in terms of unique
+13 STATISTICS & TRENDS clients targeted — likely a result of the growing number of poorly secured systems connected
+to the internet during the pandemic, and possibly other criminals taking inspiration from
+14 Top 10 malware detections ransomware gangs in targeting RDP.
+15 Downloaders The ransomware scene, closely tracked by <ORG>ESET</ORG> specialists, saw a first this quarter — an
+attack investigated as a homicide after the death of a patient at a ransomware-struck
+17 Banking malware hospital. Another surprising twist was the revival of cryptominers, which had been declining
+for seven consecutive quarters. There was a lot more happening in Q3: <MALWARE>Emotet</MALWARE> returning
+18 Ransomware to the scene, Android banking malware surging, new waves of emails impersonating major
+<INDUSTRY>delivery</INDUSTRY> and <INDUSTRY>logistics</INDUSTRY> companies….
+20 Cryptominers
+This quarter’s research findings were equally as rich, with <ORG>ESET</ORG> researchers: uncovering
+21 Spyware & backdoors more Wi‑Fi chips vulnerable to KrØØk-like bugs, exposing Mac malware bundled with a
+cryptocurrency trading application, discovering CDRThief targeting Linux VoIP softswitches,
+22 Exploits and delving into <MALWARE>KryptoCibule</MALWARE>, a triple threat in regard to cryptocurrencies.
+23 Mac threats Besides offering recaps of these findings, this report also brings exclusive, previously
+unpublished <ORG>ESET</ORG> research updates, with a special focus on APT group operations — see the
+24 Android threats News From the Lab and APT Group Activity sections for updates on <THREAT_ACTOR>TA410</THREAT_ACTOR>, <THREAT_ACTOR>Sednit</THREAT_ACTOR>, <THREAT_ACTOR>Gamaredon</THREAT_ACTOR>
+and more.
+25 Web threats
+<ORG>ESET</ORG> also continued to contribute to the MITRE ATT&CK knowledge base, with four submissions
+26 Email threats accepted in Q3. Other contributions of our teams include publishing a testing script for
+Kr00k and a set of tools named Stadeo that facilitate the analysis of the <MALWARE>Stantinko</MALWARE> malware.
+28 IoT security
+This quarter was bustling with virtual events, with <ORG>ESET</ORG> researchers sharing their knowledge
+at both <ORG>Black Hat USA and Asia</ORG>, <ORG>CARO</ORG>, <ORG>Virus Bulletin</ORG>, <ORG>DEF CON</ORG>, <ORG>Ekoparty</ORG>, and many others. For
+29 <ORG>ESET</ORG> RESEARCH CONTRIBUTIONS the upcoming months, we are excited to invite you to ESET’s talks and workshops at <ORG>Botconf</ORG>,
+AVAR and CODE BLUE.
+Happy reading, stay safe — and stay healthy!
+<IDENTITY>Roman Kovác</IDENTITY>, Chief Research Officer
+ESET THREAT REPORT Q3 2020 | 2
+
+<ORG>ESET</ORG> researchers reveal that bugs similar to KrØØk affect more chip
+brands than previously thought.
+Our discovery of the KrØØk vulnerability that had previously been established in
+had a huge impact as the number of the 4-way handshake. This undesirable
+affected devices was well over a billion state occurs on vulnerable <ORG>Broadcom</ORG>
+including devices by <ORG>Apple</ORG>, <ORG>Samsung</ORG>, and Cypress chips following a Wi-Fi
+<ORG>Amazon</ORG>, and others that use the vulner- disassociation.
+able chipsets. And we recently uncovered
+that similar bugs affect even more chip Exploiting KrØØk allows adversaries to
+brands than previously thought. intercept and decrypt (potentially sen-
+sitive) data of interest and, when com-
+FEATURED
+pared to other techniques commonly used
+From KrØØk to finding against Wi-Fi, exploiting KrØØk has a sig-
+related vulnerabilities nificant advantage: the attackers do not
+need to be authenticated and associated
+KrØØk [1] (formally CVE-2019-15126) is to the WLAN. In other words, they don’t
+a vulnerability in <ORG>Broadcom</ORG> and <ORG>Cypress</ORG> need to know the Wi-Fi password.
+Wi-Fi chips [2] that allows unauthorized
+decryption of some WPA2-encrypted We worked with the affected vendors
+STORY
+traffic. Specifically, the bug has led to (as well as <ORG>ICASI</ORG> [3]) through a coor-
+wireless network data being encrypted dinated disclosure process before we
+with a pairwise session key that is all first publicly disclosed the flaw at the
+zeros instead of the proper session key RSA Conference in February 2020 [4].
+* * * * * * * *
+* * * * * * * *
+Beyond KrØØk: Even more Wi‑Fi chips
+vulnerable to eavesdropping
+<IDENTITY>Miloš Cermák</IDENTITY> and <IDENTITY>Robert Lipovský</IDENTITY> Overview of KrØØk — following a disassociation, data is transmitted encrypted
+with an all zero session key
+ESET THREAT REPORT Q3 2020 | 3
+
+The ensuing publicity brought the issue to the attention <ORG>MediaTek</ORG> and <ORG>Microsoft Azure</ORG> Sphere According to <ORG>MediaTek</ORG>, software patches fixing the issue
+of many more chipset and device manufacturers, some of were released during March and April 2020. The fix for
+which discovered they also had vulnerable products — and We also observed the manifestation of a similar vulner- MT3620 was included in Azure Sphere OS version 20.07,
+have since deployed patches. We are maintaining a list of ability (i.e. lack of encryption) on some Wi-Fi chips by released in July 2020.
+related vendor advisories on this site [5]. <ORG>MediaTek</ORG>.
+Conclusion
+While we did not observe CVE-2019-15126 in other Wi-Fi One of the affected devices is the ASUS RT-AC52U router.
+chips than <ORG>Broadcom</ORG> and <ORG>Cypress</ORG>, we did find that simi- Another, the <ORG>Microsoft Azure</ORG> Sphere development kit, Our findings of KrØØk as well as its abovementioned
+lar vulnerabilities affected chips by other vendors. These which we looked into as part of our Azure Sphere Security siblings highlight that we should not solely rely on a
+findings were first presented at <ORG>Black Hat USA</ORG> 2020 [6] Research Challenge partnership [7]. <ORG>Azure Sphere</ORG> uses Me- single protective mechanism, such as WPA2. Instead, it’s
+and we’re briefly outlining them below. diaTek’s MT3620 microcontroller and targets a wide range prudent to extend the same level of caution to WPA2-pro-
+of IoT applications, including smart home, commercial, tected networks as we would on public, open Wi-Fi: make
+sure you’re using encryption via SSL/TLS and a VPN.
+<ORG>Qualcomm</ORG> — CVE-2020-3702 industrial and many other domains.
+WeLiveSecurity blogpost [8]
+One of the chips we looked at, aside from those from
+<ORG>Broadcom</ORG> and <ORG>Cypress</ORG>, was by <ORG>Qualcomm</ORG>. The vulnerabili-
+ty we discovered (which was assigned CVE-2020-3702) was
+also triggerable by a disassociation and led to undesirable
+disclosure of data by transmitting unencrypted data in
+the place of encrypted data frames — much like with KrØØk.
+The main difference is, however, that instead of being
+encrypted with an all-zero session key, the data is not
+encrypted at all.
+The screenshot shows a Wireshark log of a frame captured
+after a disassociation was invoked on a Wi-Fi router fit-
+ted with a <ORG>Qualcomm</ORG> chip. Notice that the Protected flag
+within the Frame Control Field is set to TRUE and the
+frame appears to have CCMP parameters — both indicators
+of an encrypted data frame. But the data was transmitted
+unencrypted.
+The devices we tested and found to have been vulnerable
+are the D-Link DCH-G020 Smart Home Hub and the Turris
+Omnia wireless router. Of course, any other unpatched de-
+vices using the vulnerable <ORG>Qualcomm</ORG> chipsets will also be
+vulnerable.
+Following our disclosure, <ORG>Qualcomm</ORG> was very cooperative
+and in July released a fix to the proprietary driver used in
+their officially supported products.
+Wireshark log of a frame captured after a disassociation on a Wi-Fi router fitted with a vulnerable <ORG>Qualcomm</ORG> chip
+ESET THREAT REPORT Q3 2020 | 4
+
+UEFI malware
+<MALWARE>EFIlock</MALWARE> malware prevents computer from booting, asks
+for ransom
+<ORG>ESET</ORG> Research identified multiple malicious EFI bootloader samples. The malware,
+detected by <ORG>ESET</ORG> products as EFI/<MALWARE>EFIlock</MALWARE>, displays a ransom message and prevents the
+computer from booting. It can compromise computers that have the UEFI Secure Boot
+feature disabled.
+A dropper replaces the default EFI bootloader “bootx64.efi” and deletes Microsoft EFI
+modules on the EFI system partition in order to boot a malicious one. The replaced
+NEWS FROM
+bootloader just displays a ransom message and executes an infinite loop. Despite
+what the ransom message claims, <MALWARE>EFIlock</MALWARE> does not encrypt affected computers.
+<ORG>Twitter</ORG> thread [9]
+<THREAT_ACTOR>Evilnum</THREAT_ACTOR> group
+THE LAB
+More evil: A deep look at <MALWARE>Evilnum</MALWARE> and its toolset
+<ORG>ESET</ORG> Research analyzed the operations of <THREAT_ACTOR>Evilnum</THREAT_ACTOR>, the cybercriminal group behind the
+<MALWARE>Evilnum</MALWARE> malware, used in attacks against financial technology companies. While the
+malware has been in the wild since at least 2018, the group’s activities have remained
+largely under the radar.
+The research reveals that the group’s toolset and infrastructure have evolved,
+consisting of a mix of custom, homemade malware combined with tools purchased from
+<THREAT_ACTOR>Golden Chickens</THREAT_ACTOR>, a Malware-as-a-Service (MaaS) provider whose infamous customers
+include <THREAT_ACTOR>FIN6</THREAT_ACTOR> and <THREAT_ACTOR>Cobalt Group</THREAT_ACTOR>.
+According to <ORG>ESET</ORG> telemetry, <THREAT_ACTOR>Evilnum</THREAT_ACTOR>’s targets are <INDUSTRY>financial technology</INDUSTRY> companies;
+for example, <INDUSTRY>providing platforms</INDUSTRY> and tools for <INDUSTRY>online trading</INDUSTRY>. The main goal of the
+<THREAT_ACTOR>Evilnum</THREAT_ACTOR> group is to spy on its targets and obtain financial information from both the
+targeted companies and their customers.
+Targets are approached with spearphishing emails that contain a link to a ZIP file
+hosted on Google Drive. That archive contains several shortcut files that extract and
+execute a malicious component, while displaying a decoy document.
+Latest findings from <ORG>ESET</ORG> Research WeLiveSecurity blogpost [10]
+Labs across the world
+ESET THREAT REPORT Q3 2020 | 5
+
+Mac threats Cryptocurrency malware
+Mac cryptocurrency trading application rebranded, <MALWARE>KryptoCibule</MALWARE>: The multitasking multicurrency
+bundled with malware cryptostealer
+<ORG>ESET</ORG> Research discovered websites distributing trojanized cryptocurrency trading <ORG>ESET</ORG> Research discovered a previously undocumented malware family that spreads
+applications for Mac computers. These are legitimate apps wrapped with <MALWARE>GMERA</MALWARE> malware, through malicious torrents and that uses multiple tricks to squeeze as many crypto-
+whose operators used them to steal sensitive victim information. coins as possible out of its victims. The threat, which we named <MALWARE>KryptoCibule</MALWARE> (derived
+from the Czech and Slovak words for “crypto” and “onion”), primarily targets users in
+In this new <MALWARE>GMERA</MALWARE> campaign, the legitimate Kattana trading application was extensively the <GEO>Czech Republic</GEO> and <GEO>Slovakia</GEO> according to <ORG>ESET</ORG> telemetry.
+rebranded — including setting up copycat websites — and the malware was bundled into
+its installer. We saw four names used for the trojanized app: <MALWARE>Cointrazer</MALWARE>, <MALWARE>Cupatrade</MALWARE>, This malware is a triple threat in regard to cryptocurrencies: It uses the victim’s
+<MALWARE>Licatrade</MALWARE> and <MALWARE>Trezarus</MALWARE>. resources to mine coins, tries to hijack transactions by replacing wallet addresses in
+the clipboard, and exfiltrates cryptocurrency-related files, all while deploying multiple
+In addition to the analysis of the malware code, we also set up honeypots to try to
+techniques to avoid detection. <MALWARE>KryptoCibule</MALWARE> makes extensive use of the Tor network and
+reveal the cybercriminals’ motivations. The activity witnessed confirmed that the
+the BitTorrent protocol in its communication infrastructure.
+attackers have been collecting browser information, such as cookies and browsing
+history, cryptocurrency wallets and screen captures. WeLiveSecurity blogpost [13]
+WeLiveSecurity blogpost [11]
+Linux threats
+Banking malware
+Who is calling? <MALWARE>CDRThief</MALWARE> targets Linux VoIP softswitches
+<MALWARE>Mekotio</MALWARE>: These aren’t the security updates you’re looking <ORG>ESET</ORG> Research discovered an interesting piece of malware, named <MALWARE>CDRThief</MALWARE>, that targets
+for… Linux-based Voice over IP (VoIP) softswitches.
+<ORG>ESET</ORG> researchers dissected <MALWARE>Mekotio</MALWARE>, a banking trojan targeting Spanish- and We noticed this malware in one of our sample sharing feeds, and as entirely new Linux
+Portuguese-speaking countries. <MALWARE>Mekotio</MALWARE> has several typical backdoor capabilities, malware is a rarity, it caught our attention. What was even more interesting was that it
+including taking screenshots, restarting affected machines, restricting access to quickly became apparent that this malware targeted a specific Linux VoIP platform.
+legitimate banking websites and, in some variants, even stealing bitcoins and
+exfiltrating credentials stored by the Google Chrome browser. The primary goal of the malware is to exfiltrate various private data from a
+compromised softswitch, including call detail records (CDRs). CDRs contain metadata
+<MALWARE>Mekotio</MALWARE> has been active since at least 2015 and, as with other banking trojans we have about VoIP calls such as caller and callee IP addresses, starting time of the call, call
+investigated, shares common characteristics for this type of malware, such as being duration, calling fee, etc. To steal this metadata, the malware queries internal MySQL
+written in Delphi, using fake pop-up windows and containing backdoor functionality. To databases used by the softswitch. Thus, attackers demonstrate a good understanding of
+look less suspicious, <MALWARE>Mekotio</MALWARE> tries to impersonate a security update using a specific the internal architecture of the targeted platform.
+message box.
+How attackers use stolen information is an as yet unsolved mystery. The call data
+WeLiveSecurity blogpost [12] records could be used for cyberespionage or for VoIP fraud.
+WeLiveSecurity blogpost [14]
+ESET THREAT REPORT Q3 2020 | 6
+
+mentioned a new malicious MAXScript called ALC3 that is built to steal 3ds Max models
+Malicious 3ds MAXScripts Threat Report exclusive and propagates to other MAXScript files once saved.
+Numerous 3ds Max users affected by two campaigns This malicious script first collects various information about its host such as:
+leveraging malicious MAXScripts
+• Number of cores
+PhysXPluginStl • Amount of RAM
+In mid-August 2020, Bitdefender [15] reported on a campaign where the first stage was • Disk drive models, sizes and serial numbers
+a malicious 3ds Max encrypted script (MSE) file called “PhysXPluginStl.mse” containing a • Ethernet network interface MAC addresses and assigned IP addresses
+malicious DLL. We had a look into it and tweeted [16] our findings. • Version of 3ds Max used
+This info along with the current 3ds Max model is then sent by email to the
+Autodesk 3ds Max is popular, professional 3D modeling and animation software. An MSE script rrr888_3000@126[.]com email address with sss777_2000@126[.]com as sender using the
+is a 3ds MAXScript (MS) that is encrypted using a proprietary encryption algorithm. Two ver- System.Net.Mail .NET API and the smtp.126[.]com SMTP server. This means the attackers
+sions of the algorithm are supported, namely version:1 and version:2. The version:1 algorithm not only have access to the victim’s machine information but also to their 3ds Max
+has the advantage of being supported across all versions of 3ds Max and this is the one that models, potentially stealing valuable intellectual property.
+was chosen by the attackers, allowing them to maximize the number of potential victims. The malware also updates itself from http ://www.maxscript[.]cc/update/upscript.mse
+and the updated script is saved under the 3ds Max startup folder so that it is executed
+Once decrypted, “PhysXPluginStl.mse” contains a base64-encoded .NET DLL that is loaded every time 3ds Max is launched.
+using 3ds Max .NET bindings.
+Recently, we noticed that the maxscript[.]cc domain was no longer under the control of
+the attackers, so we sinkholed it. Since no backup C&C mechanism is implemented in the
+malware, this prevents the attackers from updating their malware. However, the virus
+continues to spread and the data theft continues.
+Thanks to this sinkholed domain, we found out that tens of thousands of computers
+running 3ds Max were compromised by this script, with more than 90% of the victims
+located in China.
+Content of the decrypted malicious MAXScript
+Indicators of Compromise (IoCs) [21]
+By looking at our telemetry we found hundreds of victims, predominantly located in <GEO>Japan</GEO> <GEO>South Korea</GEO> Other <GEO>China</GEO> <GEO>Hong Kong</GEO> <GEO>USA</GEO> Other
+<GEO>South Korea</GEO> and <GEO>Japan</GEO>. The earliest sighting of this threat goes back to February 2020.
+Several of these victims were video game companies, which is not surprising considering
+the nature of 3ds Max software.
+49%
+Coincidently, we also observed that some of the video game industry victims had also 1%
+been targeted previously by the <THREAT_ACTOR>Winnti</THREAT_ACTOR> Group (see our research from October 2019 [17]
+0.6%
+and May 2020 [18]). However, further analysis did not reveal any tool, code or infra- 96%
+structure overlap between the <THREAT_ACTOR>Winnti</THREAT_ACTOR> Group and this campaign; we do not think they are 3%
+related. 6%
+45%
+<MALWARE>ALC3</MALWARE>
+This particular campaign, relying on the use of malicious MSE files, is not the only one
+we observed. Last March, a blogpost [19] and a comment on the Autodesk App Store [20] Geographic distribution of malicious MAXScript Geographic distribution of malicious
+<MALWARE>PhysXPluginStl</MALWARE> victims MAXScript ALC3 victims
+ESET THREAT REPORT Q3 2020 | 7
+
+due to the threat actors’ lack of fluency in Italian. Furthermore, the email template is
+Latin American banking trojans Threat Report exclusive identical to one of those used in Spanish campaigns. Compared to <GEO>Spain</GEO>, these campaigns
+<ORG>ESET</ORG> has been monitoring Latin American banking trojans for over three were very small, so we believe these scammers are currently testing the territory. Is it
+years now and these malware families never stop their evolution. In Q3 possible Italy will be their next major target?
+2020, <ORG>ESET</ORG> researchers observed some significant changes compared to Q2.
+<GEO>LATAM</GEO> banking trojans: Eurotrip continues
+<MALWARE>Grandoreiro</MALWARE> [22], <MALWARE>Mekotio</MALWARE> [12] and <MALWARE>Mispadu</MALWARE> [23] have been the most active Latin American
+banking trojans lately. Since the end of 2019, these three banking trojans expanded
+beyond Latin American borders — to <GEO>Spain</GEO> and <GEO>Portugal</GEO>. Due to the language similarities,
+that seemed like a logical step. Unexpectedly, based on <ORG>ESET</ORG>’s telemetry from Q3, they
+also significantly decreased their activity in their homeland — <GEO>Brazil</GEO>.
+Compared to Q2, campaigns in Spain doubled while those in Brazil were reduced
+enormously. That does not mean Latin America is no longer a target — the region is still
+attacked by other Latin American banking trojans, mainly <MALWARE>Casbaneiro</MALWARE> [24] and <MALWARE>Vadokrist</MALWARE>.
+<GEO>Spain</GEO> <GEO>Mexico</GEO> <GEO>Brazil</GEO> <GEO>Chile</GEO> Other <GEO>EU</GEO> <GEO>LATAM</GEO>
+100% 100%
+90% 90%
+80% Spam email template used by <MALWARE>Mekotio</MALWARE> in <GEO>Spain</GEO>
+80%
+70% 70%
+60% 60%
+50% 50% It is not surprising that Latin American banking trojans began targeting <GEO>Spain</GEO>
+40% 40% and <GEO>Portugal</GEO> — the language similarities make it easier for the operators to
+30% 30% be successful. However, we were surprised by the significantly decreased
+20% 20% activity in <GEO>Brazil</GEO> and by the sudden appearance in <GEO>Italy</GEO>.
+10% 10%
+<IDENTITY>Juraj Hornák</IDENTITY>, <ORG>ESET</ORG> Malware Analyst
+0% 0%
+Q1 Q2 Q3 Q4 Q1 Q2 Q3 Q1 Q2 Q3 Q4 Q1 Q2 Q3
+2019 2019 2019 2019 2020 2020 2020 2019 2019 2019 2019 2020 2020 2020
+Finally, <THREAT_ACTOR>Mekotio</THREAT_ACTOR> became the first Latin American banking trojan to appear in a 64-bit
+variant of its binaries. Even though this is a standard approach with malware nowadays,
+Countries and regions targeted by <MALWARE>Grandoreiro</MALWARE>, <MALWARE>Mekotio</MALWARE> and <MALWARE>Mispadu</MALWARE> combined it has not been used by these malware families before. It only shows their continuous
+efforts of improvement.
+This increasing activity in <GEO>Europe</GEO> leads us to a second observation: several spam For more information on this topic, <ORG>ESET</ORG> has recently published a white paper [26]
+campaigns targeting Italy [25] in the last few weeks of Q3. This is surprising; it is the detailing how authors of Latin American banking trojans cooperate closely.
+first time that operators of these malware families utilized a language foreign to <GEO>Latin
+America</GEO>. These emails are poorly written and some even contain parts in Spanish, likely Indicators of Compromise (IoCs) [21]
+<ORG>ESET</ORG> THREAT REPORT Q3 2020 | 8
+
+Android threats
+Welcome Chat as a secure messaging app? Nothing could
+be further from the truth
+<ORG>ESET</ORG> researchers discovered a new operation within a long-running cyberespionage
+campaign in the Middle East, apparently with links to the threat actor group known as
+<MALWARE>Gaza Hackers</MALWARE>, or <MALWARE>Molerats</MALWARE>.
+Instrumental in the operation is an Android app, Welcome Chat, which serves as
+spyware while also delivering the promised chat functionality. The malicious website
+APT GROUP
+promoting and distributing the app claims to offer a secure chat platform that is
+available on the Google Play store.
+Both claims are false: Welcome Chat is an espionage tool, and was never available on
+the official Android app store. On top of that, its operators left the data harvested
+from their victims freely available on the internet.
+On top of its core espionage functionality — monitoring the chat communications
+of its users — the Welcome Chat app can perform the following malicious actions:
+ACTIVITY
+exfiltrating sent and received SMS messages, call log history, contact list, user
+photos, recorded phone calls, the GPS location of the device, and device info.
+WeLiveSecurity blogpost [27]
+<THREAT_ACTOR>APT‑C</THREAT_ACTOR>‑23 group evolves its Android spyware
+<ORG>ESET</ORG> Research uncovered a previously unreported version of Android spyware used by
+<THREAT_ACTOR>APT-C-23</THREAT_ACTOR>, a threat group also known as <MALWARE>Two-tailed Scorpion</MALWARE> and mainly targeting the
+<GEO>Middle East</GEO>. <ORG>ESET</ORG> products detect the malware as Android/<MALWARE>SpyC23</MALWARE>.A.
+Compared to previously documented versions of the threat group’s mobile spyware,
+Android/<MALWARE>SpyC23</MALWARE>.A has extended spying functionality, including reading notifications
+from messaging apps, WhatsApp call recording and screen recording, and new stealth
+features, such as dismissing notifications from built-in Android security apps.
+One of the ways the spyware is distributed is via a fake Android app store,
+impersonating well-known messaging apps, such as Threema and Telegram, as a lure.
+Highlights from <ORG>ESET</ORG> investigations After the malware is initialized, victims are requested to manually install the
+legitimate app, which is stored in the malware’s resources. While the legitimate app
+is being installed, the malware hides its presence on the affected device. Thus, the
+into Advanced Persistent Threat victims end up with a functioning app they intended to download and spyware silently
+running in the background.
+groups and their campaigns WeLiveSecurity blogpost [28]
+<ORG>ESET</ORG> THREAT REPORT Q3 2020 | 9
+
+As some of the key names in the configuration suggest, <MALWARE>NewPass</MALWARE> implements two network
+<MALWARE>NewPass</MALWARE> Threat Report exclusive protocols: one that uses HTTP and a more complex one that uses image files uploaded to
+the Imgur web service.
+<MALWARE>NewPass</MALWARE>: A tale of two attributions
+Using the official Imgur API, <MALWARE>NewPass</MALWARE> downloads or uploads pictures to the service. It
+In June 2020, a previously undocumented piece of malware was uploaded to implements steganography in order to extract information, such as commands, from the
+VirusTotal from <GEO>Cyprus</GEO>. In the following weeks, it was attributed to <THREAT_ACTOR>Turla</THREAT_ACTOR> downloaded pictures, and embed exfiltrated data in pictures that are uploaded to Imgur
+and dubbed <MALWARE>NewPass</MALWARE> by another security company, <ORG>Telsy</ORG>. <ORG>ESET</ORG> researchers for later retrieval by the malware operators. In order to blend into normal Imgur activity,
+disagree with the attribution claims and consider <MALWARE>NewPass</MALWARE> to be currently the malware implements a sentence generator that is used to fill the description section
+unattributed. on Imgur.
+We actually became aware of this backdoor in March 2019 while investigating an incident The second network protocol, based on HTTP, shows interesting similarities with known
+related to the <THREAT_ACTOR>Dukes</THREAT_ACTOR> (also known as <THREAT_ACTOR>APT29</THREAT_ACTOR>). This incident, documented in <ORG>ESET</ORG>’s Operation <THREAT_ACTOR>Dukes</THREAT_ACTOR> TTPs:
+Ghost white paper [29] from October 2019, happened in the <ORG>Ministry of Foreign Affairs</ORG> of a
+<ORG>European Union</ORG> country. During this investigation, several samples of <MALWARE>Crutch</MALWARE>, a backdoor • The servers are controlled by the attackers and the homepage redirects to the website
+that is mimicked by the malicious domain (e.g. ugtimes[.]com for the C&C server
+operated by <THREAT_ACTOR>Turla</THREAT_ACTOR>, were also found on the very same computers.
+utdtimes[.]com). This is similar to <MALWARE>PolyglotDuke</MALWARE> and <MALWARE>FatDuke</MALWARE> TTPs.
+The same Cypriot submitter who uploaded <MALWARE>NewPass</MALWARE> to VT in June 2020 also had uploaded • In the HTTP reply from the server, the data for the backdoor is between two delimiters.
+samples of the <MALWARE>Turla Carbon</MALWARE> backdoor to VirusTotal in May 2020. We believe that the It’s similar to the network protocol of <MALWARE>PolyglotDuke</MALWARE>.
+current public attribution of <MALWARE>NewPass</MALWARE> to <THREAT_ACTOR>Turla</THREAT_ACTOR> is mostly based on this pivot. Finally, the backdoor implements a wide range of commands allowing its operators full
+control of the victim’s machine.
+<MALWARE>NewPass</MALWARE> technical characteristics
+<MALWARE>NewPass</MALWARE> is a complex backdoor written in C++. We did not notice any code similarity with We did not find strong similarities with any <MALWARE>Turla</MALWARE> malware families. The curious
+known <THREAT_ACTOR>Dukes</THREAT_ACTOR> or <THREAT_ACTOR>Turla</THREAT_ACTOR> malware families. similarities in the network infrastructure, although interesting, are not enough to
+attribute <MALWARE>NewPass</MALWARE> to the <MALWARE>Dukes</MALWARE>. Hence, we currently consider this malware family to
+On disk, there is a loader and an encrypted virtual file system that contains the configu- be unattributed.
+ration in JSON format and the backdoor DLL.
+Indicators of Compromise (IoCs) [21]
+<MALWARE>Zebrocy</MALWARE> (<MALWARE>Sednit</MALWARE>) Threat Report exclusive
+The <THREAT_ACTOR>Sednit</THREAT_ACTOR> group — aka <THREAT_ACTOR>APT28</THREAT_ACTOR>, <THREAT_ACTOR>Fancy Bear</THREAT_ACTOR>, <THREAT_ACTOR>Sofacy</THREAT_ACTOR>, and <THREAT_ACTOR>STRONTIUM</THREAT_ACTOR> — has
+been operating since at least 2004, and is believed to be behind major,
+high-profile attacks. It has a diversified set of malware tools in its arsenal,
+including <MALWARE>Zebrocy</MALWARE>. <MALWARE>Zebrocy</MALWARE>’s targets include embassies, <ORG>Ministries of Foreign
+Affairs</ORG>, and diplomats, primarily in <GEO>Central Asia</GEO>, <GEO>Europe</GEO> and the <GEO>Middle East</GEO>.
+<MALWARE>Zebrocy</MALWARE> Nim downloaders still used in Q3 2020
+In the previous quarterly report, we described a minor resurgence in <MALWARE>Zebrocy</MALWARE> deployments
+after a period of inactivity. In Q3, the group maintained the low level of activity,
+deploying a few new campaigns, according to our telemetry.
+<ORG>ESET</ORG> THREAT REPORT Q3 2020 | 10
+
+In August, a sample that was part of a campaign using the NATO AVT-355 Research Workshop Affairs and diplomatic organizations in the last months. It also shows that they no longer
+event as bait was spotted on VirusTotal (filename: AVT_355_Call_for_Participation). <MALWARE>Zebro</MALWARE>- rely only on spearphishing email but also likely exploit unpatched applications running on
+cy’s operator took inspiration from this event [30] to lure their victims and distribute their targets’ internet-facing servers.
+one of their downloaders written in Nim. This language is not new for the group; the last
+campaign involving the Nim downloader was at the end of 2019 and we mentioned it here
+[31]. This campaign is similar to their usual modus operandi, a phishing email with an <THREAT_ACTOR>Gamaredon</THREAT_ACTOR> Group Threat Report exclusive
+archive attached. Luring the victim to expect a benign document, the attackers provide <THREAT_ACTOR>Gamaredon</THREAT_ACTOR> is a threat group that has been active since at least 2013. It
+an executable with a PDF icon, but which is actually a malicious downloader leading to a has been responsible for a number of attacks, mostly against Ukrainian
+potential backdoor as the final stage.
+institutions.
+Indicators of Compromise (IoCs) [21]
+<THREAT_ACTOR>Gamaredon</THREAT_ACTOR> — flooding the zone with trojans
+<THREAT_ACTOR>TA410</THREAT_ACTOR> Threat Report exclusive The <THREAT_ACTOR>Gamaredon</THREAT_ACTOR> group was highly active during Q3 2020, continuing its relentless targeting
+<THREAT_ACTOR>TA410</THREAT_ACTOR> is a state-sponsored group that has been targeting the <GEO>US</GEO> utilities of governmental organizations in <GEO>Ukraine</GEO>. Since <ORG>ESET</ORG>’s <THREAT_ACTOR>Gamaredon</THREAT_ACTOR> blogpost published in Q2
+sector since 2019 and was first reported by Proofpoint [32] in August 2019. 2020 [36], the group has updated its malware arsenal. In this Threat Report update, we de-
+Its main TTPs include the sending of spearphishing emails with documents scribe the latest efforts made by this group to turn legitimate documents, archives and
+executables found in compromised networks into trojan horses.
+containing malicious macros and the use of the custom backdoors <MALWARE>LookBack</MALWARE>
+and <MALWARE>FlowCloud</MALWARE> [33]. As introduced in the Q2 2020 blogpost, the office macro injection module and the Outlook
+VBA module were designed to help lateral movement within an organization, by compro-
+<THREAT_ACTOR>TA410</THREAT_ACTOR> expands its activities mising legitimate resources. The first automatically injects malicious macros or remote
+template references into documents accessible from the compromised system. The second
+In July 2020, we witnessed suspicious activity in a diplomatic organization in the Middle replaces the default Outlook VBA project with one that automatically builds and sends
+East and were able to attribute it to <THREAT_ACTOR>TA410</THREAT_ACTOR>. This targeting appears very different from malicious emails to selected targets.
+what was reported before and might show a shift in the group’s objectives.
+The <THREAT_ACTOR>Gamaredon</THREAT_ACTOR> group remained creative and has added three modules to its arsenal, all
+The attackers likely exploited an internet-facing server that was running an outdated and further facilitating lateral movement. The first of these is distributed as an SFX archive
+vulnerable version of Microsoft SharePoint. It allowed them to drop malware and take con- containing BAT and VBS files, one of <THREAT_ACTOR>Gamaredon</THREAT_ACTOR>’s favorite tandems. This module creates a
+trol of the machine. On this machine, the operators deployed various tools and malware: scheduled task that will run every nine minutes, looking for removable or network drives.
+When it succeeds, it places a LNK file in the drive’s root directory with a hardcoded name,
+• A new variant of the <MALWARE>LookBack</MALWARE> backdoor (also known as <MALWARE>SodomNormal</MALWARE>), configured to
+such as “FILES.lnk”, in the hope that someone will open it. These LNK files call “mshta.exe”
+communicate directly with a hardcoded IP address
+to download and execute a remote file.
+• WMIExec [34], a tool used for lateral movement
+• Several variants of HTran [35] (also known as HUC Packet Transmitter), a tool used to
+proxy network traffic between a compromised machine and the attacker’s server
+• A currently undocumented backdoor, stored encrypted in the Windows registry, that
+tries to blend into the network traffic by using a forged HTTP “Host” header value,
+onedrive.live.com, while connecting to the attacker’s server
+The activity continued in August 2020 with the targeting of an embassy of a country
+in <GEO>West Africa</GEO>. While the compromise vector is currently unknown, we found a variant
+essentially identical to the <MALWARE>LookBack</MALWARE> backdoor mentioned previously.
+These two cases show a shift in <THREAT_ACTOR>TA410</THREAT_ACTOR> activities with a focus on Ministries of Foreign VBScript responsible for creating the LNK files
+ESET THREAT REPORT Q3 2020 | 11
+
+The second module is similar to the earlier macro injection module, but with a twist. malware on Windows servers and important workstations, and its PHP malware on internal
+Using both BAT and VBS scripts, it injects malicious macros into existing documents, web servers.
+and it also replaces the Microsoft Word templates “Normal.dotm” and “NormalEmail.dotm”
+with one containing a malicious VBA project with autorun code to attach a reference to a We detected a <MALWARE>GreyEnergy</MALWARE> sample deployed, as usual, as a Windows service DLL, with the
+remote template to the active document. As the “Normal.dotm” template opens whenever following configuration:
+you start Word, this means that Word will try to download this remote template whenever
+opening a document.
+VBA project code responsible for adding a remote template to the active document
+The third module is an SFX archive containing scripts to scan compromised systems (local
+and mapped drives) for archives and executables with specific filenames, and modify them.
+Examples of executable names it specifically looks for are: *install*, *setup*, *driv*,
+*usb*, *word*, *office*, *win*, and *rar*.
+This module uses 7z to trojanize archives and executables. For the archives, it simply
+adds a malicious VBS downloader, hoping that the victim will run it manually. For the
+executables, it creates a valid 7z SFX archive with the same name and containing both the
+original executable and a malicious VBS downloader. The configuration file embedded in the
+newly created SFX archive ensures that both are unpacked and run when the SFX is executed.
+While these new <THREAT_ACTOR>Gamaredon</THREAT_ACTOR> group tools are not sophisticated, they clearly demonstrate
+that this group’s operators are able to come up with creative solutions to further move
+laterally into their target networks and create all kinds of headaches for the defenders.
+Indicators of Compromise (IoCs) [21]
+Extracted <MALWARE>GreyEnergy</MALWARE> configuration (Campaign ID redacted)
+<THREAT_ACTOR>GreyEnergy</THREAT_ACTOR> group Threat Report exclusive As you can see, the A1 value, which represents the <MALWARE>GreyEnergy</MALWARE> version, is 420 (previous
+The <THREAT_ACTOR>GreyEnergy</THREAT_ACTOR> group, active since 2015, was identified as a successor samples detected in 2018 were at version 336). This suggests that the malware authors
+are still developing and improving the <MALWARE>GreyEnergy</MALWARE> backdoor. The meaning of the remaining
+of the <THREAT_ACTOR>BlackEnergy</THREAT_ACTOR> <THREAT_ACTOR>APT</THREAT_ACTOR> group — along with the <THREAT_ACTOR>TeleBots</THREAT_ACTOR> group — by <ORG>ESET</ORG> in configuration items is described [38] in our white paper on <THREAT_ACTOR>GreyEnergy</THREAT_ACTOR>.
+2018 [37]. The <THREAT_ACTOR>GreyEnergy</THREAT_ACTOR> group is mostly interested in industrial networks
+belonging to various critical infrastructure organizations. In December 2016, This sample has the following C&C URL:
+the group deployed a data-wiping worm that <ORG>ESET</ORG> researchers believe to have https ://185.153.196[.]94/UpdateServices/CF
+been a predecessor of <MALWARE>NotPetya</MALWARE>.
+Indicators of Compromise (IoCs) [21]
+<MALWARE>GreyEnergy</MALWARE> malware still being developed in 2020
+In 2020, we detected <MALWARE>GreyEnergy</MALWARE> activity in the energy sector in Western Asia. The group
+hasn’t changed its TTPs significantly, with the attackers still deploying the <MALWARE>GreyEnergy</MALWARE>
+ESET THREAT REPORT Q3 2020 | 12
+
+0.0% 6.4%
+STATISTICS
+& TRENDS Rate of malware detections in Q3 2020
+VBA/TrojanDownloader.Agent trojan 19.3%
+LNK/Agent trojan 8.1%
+Win/Exploit.CVE-2017-11882 trojan 5.4%
+HTML/Fraud trojan 4.1%
+DOC/TrojanDownloader.Agent trojan 3.0%
+DOC/Fraud trojan 2.6%
+HTML/Phishing.Agent trojan 2.1%
+JS/Agent trojan 1.8%
+Win/HackTool.Equation trojan 1.6%
+The threat landscape in Q3 2020 PDF/Fraud trojan 1.6%
+as seen by <ORG>ESET</ORG> telemetry Top 10 malware detections in Q3 2020 (% of malware detections)
+ESET THREAT REPORT Q3 2020 | 13
+
+Top 10 malware detections
+VBA/TrojanDownloader.Agent trojan Q2 2020: 2 ↑ Q3 2020: 1 embedded Packager (and other) objects, or even serve as decoy documents to distract the
+recipient while malware is downloaded in the background.
+This detection typically covers maliciously crafted Microsoft Office files that try to
+manipulate potential victims into enabling the execution of malicious macros. Upon
+execution, the enclosed malicious macro typically downloads and executes additional DOC/Fraud trojan Q2 2020: 14 ↑ Q3 2020: 6
+malware. The malicious documents are usually sent as email attachments, disguised as DOC/Fraud detections mainly cover Microsoft Word documents with various types of
+important information relevant to the recipient. fraudulent content, distributed via email. The purpose of this threat is to profit from
+the victim’s involvement — for example, by persuading victims to disclose online account
+LNK/Agent trojan Q2 2020: 1 ↓ Q3 2020: 2 credentials or sensitive data. Recipients might be tricked into believing that they have
+won a lottery prize or been offered a very favorable loan. The documents often contain
+LNK/Agent is a detection name for malware utilizing Windows LNK shortcut files to execute links to websites where victims are asked to fill in personal information.
+other files on the system. Shortcut files have been gaining popularity among attackers,
+as they are typically considered benign and less likely to raise suspicion. LNK/Agent files
+don’t contain any payload and are usually parts of other, more complex malware. They are HTML/Phishing.Agent trojan Q2 2020: 6 ↓ Q3 2020: 7
+often used to achieve persistence of the main malicious files on the system or as a part HTML/Phishing.Agent is a detection name for malicious HTML code often used in a phishing
+of the compromise vector. email’s attachment. When such an attachment is opened, a phishing site is opened in the
+web browser, posing as an official <INDUSTRY>banking</INDUSTRY>, <INDUSTRY>payment</INDUSTRY> service or <INDUSTRY>social networking</INDUSTRY> website.
+Win/Exploit.CVE-2017-11882 trojan Q2 2020: 3 ↔ Q2 2020: 3 The website requests credentials or other sensitive information, which is then sent to
+the attacker.
+This detection name stands for specially crafted documents exploiting the CVE-2017-
+11882 [39] vulnerability found in the Microsoft Equation Editor, a component of Microsoft
+Office. The exploit is publicly available and usually used as the first stage of compromise. JS/Agent trojan Q2 2020: 7 ↓ Q3 2020: 8
+When the user opens the malicious document, the exploit is triggered and its shellcode This detection name covers various malicious JavaScript files. These are often obfuscated
+executed. Additional malware is then downloaded onto the computer to perform arbitrary to avoid static detections. They are typically placed onto compromised but otherwise
+malicious actions. legitimate websites, with the aim of achieving drive-by compromise of visitors.
+HTML/Fraud trojan Q2 2020: 5 ↑ Q3 2020: 4 Win/HackTool.Equation trojan Q2 2020: 8 ↓ Q3 2020: 9
+HTML/Fraud detections cover various types of fraudulent, HTML-based content, distributed The detection name Win32/HackTool.Equation covers tools attributed to the United States
+with the aim of gaining money or other profit from the victim’s involvement. This includes <ORG>National Security Agency</ORG> (<ORG>NSA</ORG>) and made public by the hacking group <THREAT_ACTOR>Shadow Brokers</THREAT_ACTOR>. Soon
+scam websites, as well as HMTL-based emails and email attachments. In such an email, after the leak, these tools became widely used by cybercriminals. The detection also in-
+recipients may be tricked into believing they have won a lottery prize and are then cludes malware derived from these leaked tools or threats using the same techniques.
+requested to provide personal details. Another common case is the so-called advance fee
+scam [40], such as the notorious Nigerian Prince Scam aka “419 scam”. PDF/Fraud trojan Q2 2020: 16 ↑ Q3 2020: 10
+PDF/Fraud detections represent PDF files with various types of fraudulent content,
+DOC/TrojanDownloader.Agent trojan Q2 2020: 4 ↓ Q3 2020: 5 distributed via email. Similar to DOC/Fraud, the aim of this threat is to profit from the
+This classification represents malicious Microsoft Word documents that download further victim’s involvement, for example by persuading victims to disclose their credentials or
+malware from the internet. The documents are often disguised as invoices, forms, legal sensitive data. Recipients might be tricked into believing that they have won a lottery
+documents, or other seemingly important information. They may rely on malicious macros, prize or been offered a favorable loan. The documents often contain links to websites
+where victims are asked to fill in personal information.
+ESET THREAT REPORT Q3 2020 | 14
+
+Downloaders
+Emotet-powered VBA detections dominate the downloader scene, pushing the category out of lethargy.
+After two consecutive quarters of decline, downloaders came back strong in Q3, with ↑28pp VBA
+almost 55% growth in quantity.
+DOC
+One minor contributor was a <CAMPAIGN>Nemucod</CAMPAIGN> campaign observed over the first two weeks of
+Q3 that was focused mostly on unique clients in <GEO>Poland</GEO>, <GEO>Japan</GEO> and the <GEO>Czech Republic</GEO>.
+However, the actual attack attempts reported by these clients suggest that the main 64%
+↓11pp JS
+10% Win
+target of the campaign was <GEO>Japan</GEO> where the per-client detection rate was close to four
+times higher than in <GEO>Poland</GEO> and twice as high as in the <GEO>Czech Republic</GEO>. VBS
+The biggest contributor to downloader growth was VBA/TrojanDownloader.Agent. Its
+7%
+↓6pp PS
+detections already dominated the downloader types ranking in Q2, when they comprised 6% MSIL
+more than a third of all downloader detections (36%). But Q3 brought a massive 60% jump
+5%
+in detected VBA files which means that almost two thirds of the detection pie goes to 2% HTML
+this detection type (64%). 4%
+Other
+<MALWARE>Download</MALWARE>ers <MALWARE>VBA/</MALWARE><MALWARE>TrojanDownloader.Agent</MALWARE> <MALWARE>JS/</MALWARE><MALWARE>TrojanDownloader.Nemucod</MALWARE>
+Proportion of downloader detections per detection type in Q3 2020
+Other detection types in the rankings mostly held their positions, albeit with a notably
+lower share. The proportion of DOC detections declined from 21% in Q2 to less than 10% in
+Q3. A similar pattern was observed in the case of JS detections, which went down from 13%
+(Q2) to 7% (Q3), followed by Win detections, which decreased from 11% to less than 6% QoQ.
+Finally, VBS downloaders went down from 8% to less than 5%.
+The main driver behind the massive increase of VBA detections was <MALWARE>Emotet</MALWARE> and its
+renewed activity in Q3. This notorious malware strain went quiet early in the year, only to
+return in the last days of July after a five-month break. The connection between <MALWARE>Emote</MALWARE>t
+and VBA detections is clearly visible in their detection trends, where both follow an al-
+most identical trajectory.
+1-Apr-2020
+Q2
+1-May-2020 1-Jun-2020 1-Jul-2020
+Q3
+1-Aug-2020 1-Sep-2020
+<MALWARE>Emote</MALWARE>t’s streak of inactivity wasn’t the first one in the years since it began operation.
+In 2019 its operators went AWOL mid-year only to start their systems anew in Septem-
+ber, just in time for the pre-Christmas shopping season. This year’s hiatus took a little
+longer, beginning in February and returning to activity by the end of July. As <MALWARE>Emote</MALWARE>t was
+shuttered for the first six months of the pandemic, it is hardly surprising that its initial
+Downloader detection trend in Q2 2020-Q3 2020, seven-day moving average
+wave [41] of spam against US organizations in August used a COVID-19-themed message.
+ESET THREAT REPORT Q3 2020 | 15
+
+VBA downloaders <MALWARE>Emotet</MALWARE> <MALWARE>Emotet</MALWARE> operators have also been seen using a new type of template for their attachments
+named <MALWARE>Red Dawn</MALWARE> [43]. These were typically compromised Word documents with a black
+Office 365 label on top, claiming that they were created on an iOS device and manipulat-
+ing victims into enabling malicious macros. On August 25th, Emotet upgraded this template
+to a red Office 365 label with the Microsoft logo and abandoned the iOS tactic.
+Q2 Q3
+1-Apr-2020 1-May-2020 1-Jun-2020 1-Jul-2020 1-Aug-2020 1-Sep-2020
+VBA downloader and <MALWARE>Emotet</MALWARE> detection trends in Q2 2020-Q3 2020, seven-day moving average
+While Q3 saw the world still striving towards a vaccine for the deadly coronavirus,
+researchers at <ORG>Binary Defense</ORG> [42] disclosed information about a “vaccine” they developed
+against <MALWARE>Emotet</MALWARE>. Experts exploited a buffer overflow found in malware’s installation pro-
+cess and created a utility that crashed it, thus preventing a compromise. This utility was
+silently distributed via <ORG>CERT</ORG>s and the infosec community for 182 days until it was ren-
+dered ineffective by <MALWARE>Emotet</MALWARE> operators, who located and fixed the flaw and resumed their
+malicious operation in July 2020.
+<MALWARE>Emotet</MALWARE>’s new “<MALWARE>Red Dawn</MALWARE>” attachment template (Image source: BleepingComputer.com [44])
+What was interesting to observe, after <MALWARE>Emotet</MALWARE>’s return, was the increased
+frequency of updates in the code of the downloader. Before the February—July Another recently observed [45] template sported a Windows 10 Mobile logo, which is quite
+break, operators updated the binary once or twice a month. After the pause, the disadvantageous for the attackers as this operating system was EOLed by <ORG>Microsoft</ORG> in
+number of changes has doubled and has also become more regular — detected January 2020 and thus may raise suspicion even if received by less-skilled users.
+circa once a week.
+<IDENTITY>Zoltán Rusnák</IDENTITY>, <ORG>ESET</ORG> Malware Analyst
+ESET THREAT REPORT Q3 2020 | 16
+
+Banking malware
+<MALWARE>Qbot</MALWARE> replaced <MALWARE>TrickB</MALWARE>ot as the go-to payload of <MALWARE>Emotet</MALWARE> as the volume of banking malware continued to shrink.
+<MALWARE>Banking</MALWARE> malware has been slowly losing steam since early in Q2 and continued the <MALWARE>JS/Spy.Banker</MALWARE> trojan 59.1%
+downward trend in Q3 also. The overall number of detections of <MALWARE>banking</MALWARE> malware has
+declined by circa 16% without any notable peaks or significant drops. <MALWARE>Win/Spy.Zbot</MALWARE> trojan 5.6%
+The top 10 has been reshuffled in Q3, yet the most dominant family remains <MALWARE>JS/Spy.Banker</MALWARE> MSIL/ClipBanker trojan 5.5%
+— a detection that covers an array of malicious scripts designed to steal victims’ credit
+<MALWARE>Win/Spy</MALWARE>.<MALWARE>Danabot</MALWARE> trojan 5.2%
+card details and other personal information. Its lead has been only slightly reduced from
+63% in Q2 to 59% in Q3. The most vivid newcomer in the top ranks was the <MALWARE>Qbot</MALWARE> family, <MALWARE>Win/Spy.</MALWARE><MALWARE>Ursnif</MALWARE> trojan 2.9%
+which grew by 108% in Q3. This increase is probably related to <MALWARE>Qbot</MALWARE> becoming one of the
+<MALWARE>Win/TrickBot</MALWARE> trojan 2.5%
+frequently used payloads of the <MALWARE>Emotet</MALWARE> downloader.
+<MALWARE>Win/Qbot</MALWARE> backdoor 2.5%
+<ORG>ESET</ORG> telemetry confirmed this “rivalry”. Up until the end of Q2, <MALWARE>TrickBot</MALWARE> kept steady
+detection rates with occasional quieter streaks as well as drops and spikes in detections. <MALWARE>Win/ClipBanker</MALWARE> trojan 2.1%
+However, after <MALWARE>Emotet</MALWARE>’s July restart [46], its numbers started to head south only to be
+<MALWARE>Win/Tinba</MALWARE> trojan 2.1%
+surpassed by <MALWARE>Qbot</MALWARE> mid-August.
+<MALWARE>Win/Spy.Banker</MALWARE> trojan 1.9%
+<MALWARE>TrickBot</MALWARE> closed Q3 with a 20% drop in overall detection volume — yet, due to the overall
+drop of the category — managed to move up from eighth to sixth position in the top 10
+ranking, with <MALWARE>Qbot</MALWARE> seventh, right on its tail. Top 10 banking malware families in Q3 2020 (% of banking malware detections)
+<MALWARE>TrickBot</MALWARE> Qbot
+1-Apr-2020 1-May-2020
+Q2 Q3
+1-Jun-2020 1-Jul-2020 1-Aug-2020 1-Sep-2020 1-Apr-2020 1-May-2020
+Q2 Q3
+1-Jun-2020 1-Jul-2020 1-Aug-2020 1-Sep-2020
+Banking malware detection trend in Q2 2020-Q3 2020, seven-day moving average <MALWARE>TrickBot</MALWARE> and <MALWARE>Qbot</MALWARE> detection trends in Q2 2020-Q3 2020, seven-day moving average
+ESET THREAT REPORT Q3 2020 | 17
+
+Ransomware
+Ransomware incident is directly connected to a fatality as new players try to join the crowded scene of “doxing” gangs.
+<ORG>ESE</ORG>T telemetry shows an almost 20% decline in ransomware activity in Q3. This includes <MALWARE>Win/Filecoder.WannaCryptor</MALWARE> trojan 52.0%
+mostly families that are mass-spread via email campaigns and only a very limited number
+of targeted attacks misusing poorly configured RDP. The most vivid case spread via email <MALWARE>Win/Filecoder.Crysis</MALWARE> trojan 6.5%
+was documented in France distributing <MALWARE>Trojan.MSIL/Filecoder.ABC</MALWARE>. Based on publicly avail- Win/Filecoder.Phobos trojan 4.7%
+able [47] information, the attack has been named <MALWARE>JobCrypter</MALWARE>; it utilized an executable
+“succeeded.exe” and was disguised as a job application or an applicant CV. <MALWARE>Win/Filecoder.Sodinokibi</MALWARE> trojan 4.4%
+As for the top 10 families detected by <ORG>ESET</ORG> telemetry, <MALWARE>Win/Filecoder</MALWARE>.WannaCryptor — with <MALWARE>Win/Filecoder.Cerber</MALWARE> trojan 3.1%
+its worm characteristics — led the category with more than 52% of detections. As in past <MALWARE>Win/Filecoder.GandCrab</MALWARE> trojan 3.0%
+quarters, these detections — as well as those of <MALWARE>Win/Filecoder.</MALWARE><MALWARE>GandCrab</MALWARE> — were tied to
+known hashes that kept spreading in unpatched networks in less developed markets. <MALWARE>Win/Filecoder.CryptoWall</MALWARE> trojan 2.7%
+The <MALWARE>Win/Filecoder.Crysis</MALWARE> family ranked second with 6.6%, followed by <MALWARE>Win/Filecoder.Phobos</MALWARE> <MALWARE>Win/Filecoder.Locky</MALWARE> trojan 2.6%
+with 4.7% of detections. <MALWARE>Win/Filecoder.Avaddon</MALWARE> joined the ranks of the most notorious
+<MALWARE>Win/Filecoder.CTBLocker</MALWARE> trojan 1.5%
+families in Q3, particularly due to a <CAMPAIGN>Nemucod</CAMPAIGN> campaign [48] in <GEO>Japan</GEO> in the past quarter.
+Public reports also show that Q3 brought a “level-up” in <MALWARE>Avaddon</MALWARE>’s game as the gang <MALWARE>Win/Filecoder.Avaddon</MALWARE> trojan 1.4%
+started doxing victims, publishing their stolen data on a newly launched leak site.
+Top 10 ransomware families in Q3 2020 (% of ransomware detections)
+The <THREAT_ACTOR>Maze</THREAT_ACTOR> gang, which pioneered the doxing tactic, ranked twelfth in Q3. If combined with
+detections of other affiliates in its “cartel”, <MALWARE>LockBit</MALWARE> and <MALWARE>RagnarLocker</MALWARE>, the family moves
+up the ranks to ninth position.
+An increasing depth of cooperation between the cartel members has been demonstrated
+by <MALWARE>Maze</MALWARE> borrowing [49] <MALWARE>RagnarLocker</MALWARE>’s stealthy approach and encrypting data of a victim
+within a virtual machine. The main difference was that <MALWARE>Maze</MALWARE> used a much larger Windows 7
+virtual machine instead of <MALWARE>RagnarLockers</MALWARE>’s typical Windows XP.
+In Q3, the <MALWARE>Maze</MALWARE> cartel also saw a new member — <MALWARE>SunCrypt</MALWARE> — joining its group. <ORG>ESET</ORG>
+telemetry detects this family as <MALWARE>PowerShell/Kryptik.AX</MALWARE> trojan and <MALWARE>Win32/Filecoder.ODM.
+Its</MALWARE> operators have added a new technique to the mix, DDoSing the websites of victims to
+Q2 Q3
+force them to resume negotiations.
+The <MALWARE>Sodinokibi</MALWARE>/<MALWARE>REvil</MALWARE> gang used Q3 to recruit affiliates [50]. To demonstrate profitability
+of their ransomware as a service scheme, operators deposited close to a million dollars in
+1-Apr-2020 1-May-2020 1-Jun-2020 1-Jul-2020 1-Aug-2020 1-Sep-2020 bitcoin to their account — these funds are visible to other members of this underground
+forum and can be used to trade illicit services or stolen data.
+Ransomware detection trend in Q2 2020-Q3 2020, seven-day moving average
+ESET THREAT REPORT Q3 2020 | 18
+
+A closer look at the four vulnerabilities named in the blog — CVE-2019-19781,
+CVE-2019-11510, CVE-2012-0158, CVE-2018-8453 — shows that vulnerabilities from 2012 and
+2018 have been exploited only on a very limited number of occasions.
+CVE-2019-11510 (left axis) CVE-2012-0158 (right axis) CVE-2018-8453 (right axis)
+1400 45
+1200 40
+35
+1000
+30
+800 25
+600 20
+15
+400
+10
+<MALWARE>SunCrypt</MALWARE> operators added a new tactic to their extortion arsenal — DDoS of the victim’s website 200 5
+0 0
+7-Apr-2020 7-May-2020 7-Jun-2020 7-Jul-2020 7-Aug-2020 7-Sep-2020
+The observed drop in mass-spread ransomware attacks can be attributed to
+increased success of targeted attacks combined with other tactics such as Trends of unique clients reporting attack attempts on vulnerabilities known to be abused by high-profile
+doxing or DDoS of victims’ websites. <MALWARE>Sodinokibi</MALWARE>’s deposit of 99BTC to a Russian- ransomware families in Q2 2020-Q3 2020, seven-day moving average
+speaking dark web forum shows the financial attractiveness of this model.
+<IDENTITY>Igor Kabina</IDENTITY>, <ORG>ESET</ORG> Senior Detection Engineer CVE-2019-19781 affects Citrix appliances and as these proprietary devices do not run
+off-the-shelf security products, exploit attempts against this vulnerability will be
+un- or under-documented. The only one of the four flaws that <ORG>ESET</ORG> telemetry detected
+Other high-profile players looking for their place in the already crowded ransomware as “more prominent” among cybercriminals was the Pulse Secure Connect vulnerability,
+scene included: CVE-2019-11510. Hundreds of unique clients daily reported exploitation attempts against
+this vulnerability.
+• <MALWARE>Conti</MALWARE>. This family reportedly replaces <MALWARE>Ryuk</MALWARE>, a well-known ransomware family often seen
+as the final payload following the <MALWARE>Emotet</MALWARE> and <MALWARE>TrickBot</MALWARE> compromise chain. <MALWARE>Conti</MALWARE> uses its However, all four flaws including CVE-2019-11510 can be considered minor vectors when
+own leak site to publish sensitive stolen information. compared to the volume of brute-force attacks against RDP or detection numbers seen for
+• <MALWARE>OldGremlin</MALWARE> group (using <MALWARE>TinyCryptor</MALWARE> ransomware). This cybercriminal group has been <THREAT_ACTOR>EternalBlue</THREAT_ACTOR> and <THREAT_ACTOR>BlueKeep</THREAT_ACTOR>.
+described by <ORG>Group-IB</ORG> [51] and was identified as the perpetrator behind several
+Still, an attack [53] exploiting the patched Citrix vulnerability (CVE-2019-19781) has
+ransomware attacks against companies in <GEO>Russia</GEO> and former Soviet countries.
+been identified in a ransomware attack that has been directly connected to a fatality.
+Q3 also brought further proof of technical proficiency of high-profile ransomware actors. Due to encrypted systems in <ORG>University Hospital Düsseldorf</ORG> (<ORG>UKD</ORG>) in <GEO>Germany</GEO>, a patient
+As described in this <ORG>SenseCy</ORG> blogpost [52], operators behind <MALWARE>CLOP</MALWARE>, <MALWARE>DoppelPaymer</MALWARE>, <MALWARE>Maze</MALWARE> in life-threatening condition had to be redirected to another facility, ultimately caus-
+cartel, <MALWARE>Nephilim</MALWARE>, and <MALWARE>Sodinokibi</MALWARE> were seen exploiting recently published vulnerabilities in ing her death. After law enforcement agents — investigating this case as a homicide [54]
+remote access appliances by <ORG>Citrix</ORG> and products by <ORG>Pulse Secure</ORG>. In some of these cases, — explained that a hospital had been hit, the gang provided decryption keys. Q3 also wit-
+incidents occurred even before the manufacturers had a chance to release patches for nessed one of the largest ransomware attacks [55] yet when <MALWARE>Ryuk</MALWARE> encrypted computer
+their software/hardware. systems at hundreds of US-based locations of <ORG>Universal Health Services</ORG> (<ORG>UHS</ORG>).
+ESET THREAT REPORT Q3 2020 | 19
+
+Cryptominers
+The long-term decline in cryptominer activity leveled off in Q3 2020 as the price of bitcoin soared.
+Following a long-term overall decline, cryptominer detections appear to have stabilized When considering cryptominers distributed as trojans vs. in PUAs, or those in apps vs. in
+in Q3 2020, with the quarter itself exhibiting a slight upwards trend. While both Q2 and Q1 the browser, the landscape remained virtually unchanged in Q3, with only a minor increase
+saw a decline in total detections of at least 20% compared to the previous quarter, this in browser miners — also the result of the increase in <MALWARE>JS/CoinMiner</MALWARE> PUA occurrences.
+was only 7% in Q3.
+<ORG>ESET</ORG> researchers also uncovered an interesting piece of cryptocurrency-targeting
+The detection levels were steady in July and August and went up slightly in September, malware in September 2020, which they named <MALWARE>KryptoCibule</MALWARE> [57]. This malware is notable
+rising almost to peak Q2 values. The average number of detections in September was for its multifaceted tactics: it uses the victim’s resources to mine coins, tries to
+11% higher than the Q3 average and 2% higher than the Q2 average. According to <ORG>ESET</ORG> hijack transactions by replacing wallet addresses in the clipboard, and exfiltrates
+telemetry, the increase is linked to a variant of the <MALWARE>JS/CoinMiner</MALWARE> PUA that emerged in cryptocurrency-related files.
+mid-August.
+As for the overall stabilization of detections in Q3, this might be connected to develop- A growing bitcoin price means that mining becomes more profitable, which also
+ments in bitcoin’s price in the past few months — the price started rising steeply at the attracts cybercriminals. However, despite the slight uptick in miner detections
+end of July 2020, in August reaching its highest values since 2017. This turn of events is observed this quarter, it is unlikely this type of threat will make a major
+thought to have been driven [56] by the growth of cryptocurrencies in emerging markets comeback this year.
+and — curiously — the coronavirus pandemic.
+Jirí Kropác, Head of Threat Detection Labs, <ORG>ESET</ORG>
+Cryptominer detections BTC/USD exchange rate (right axis)
+$12,000 Trojan PUA Desktop In-browser
+Q1 average $11,000
+$10,000 79%
+$9,000
+44%
+Q2 average $8,000
+Q3 average $7,000 56%
+1-Apr-2020 1-May-2020
+Q2 Q3
+1-Jun-2020 1-Jul-2020 1-Aug-2020 1-Sep-2020
+$6,000
+$5,000
+21%
+Cryptominer detection trend in Q2 2020-Q3 2020, seven-day moving average Trojan:PUA and in-browser:desktop ratio of cryptominer detections in Q3 2020
+ESET THREAT REPORT Q3 2020 | 20
+
+Spyware & backdoors
+Common password stealer <MALWARE>Fareit</MALWARE> was on the rise in Q3 2020, its distribution driven <MALWARE>Win/HoudRat</MALWARE> trojan 19.05%
+by large-scale malspam campaigns. <MALWARE>Win/PSW.Fareit</MALWARE> trojan 10.9%
+<MALWARE>Win/</MALWARE><MALWARE>Spy.Socelars</MALWARE> trojan 5.0%
+Spyware and backdoor detections were on a slight downward trend in Q3 2020, declining by
+7% and 3% respectively, compared to Q2. <MALWARE>Houdrat</MALWARE> remained in first place, its prevalence <MALWARE>MSIL/Bladabindi</MALWARE> trojan 3.1%
+driven by its invasive spreading mechanism, and poor cyberhygiene in developing markets, <MALWARE>Win/PSW.OnLineGames</MALWARE>… 3.0%
+much like in Q2 [58]. Elsewhere on the list, however, there was movement in the rankings,
+<MALWARE>Win/Spy</MALWARE>.KeyLogger trojan 1.1%
+with <MALWARE>Win/Spy.Socelars</MALWARE> seeing the largest growth, its detections more than doubling since
+the previous quarter. This spyware steals passwords stored in browsers and goes after pay- <MALWARE>Win/Spy.RTM</MALWARE> trojan 1.1%
+ment data from the compromised accounts. <MALWARE>Win/Spy.Weecnaw</MALWARE> trojan 0.7%
+Another spyware family seeing a significant uptick in Q3 was <MALWARE>Win/PSW.</MALWARE><MALWARE>Fareit</MALWARE>, a widespread <MALWARE>MSIL/Spy.Keylogger</MALWARE> trojan 0.5%
+password-stealing trojan also known as <MALWARE>Pony</MALWARE>. <MALWARE>Fareit</MALWARE> is popular among cybercriminals due <MALWARE>MSIL/Bladabindi</MALWARE> worm 0.5%
+to its source code being leaked online, enabling them to employ it in their malicious cam-
+paigns. Once present on a system, <MALWARE>Fareit</MALWARE> steals login information from various browsers Top 10 spyware families in Q3 2020 (% of spyware detections)
+and other credential-storing apps, and then sends the stolen data to a remote server.
+According to <ORG>ESET</ORG> telemetry, <MALWARE>Fareit</MALWARE> is distributed primarily via malspam — 92% of <MALWARE>Fareit</MALWARE> <MALWARE>Win/Vools</MALWARE> backdoor 14.2%
+detections in Q3 were found in email attachments. Most of these attachments were
+<MALWARE>PHP/WebShell</MALWARE> backdoor 11.5%
+executables, disguised as documents related to shipping and parcel delivery updates.
+<MALWARE>Win/Tofsee</MALWARE> backdoor 10.2%
+<MALWARE>Win/VB</MALWARE> backdoor 9.8%
+Backdoors Spyware
+<MALWARE>Win/RanumBot</MALWARE> backdoor 8.3%
+<MALWARE>Java/Adwind</MALWARE> backdoor 4.9%
+<MALWARE>MSIL/NanoCore</MALWARE> backdoor 3.6%
+<MALWARE>Win/Glupteba</MALWARE> backdoor 3.2%
+<MALWARE>Win/Equation.DoublePulsar</MALWARE> backdoor 3.0%
+<MALWARE>ASP/Webshell</MALWARE> backdoor 2.4%
+Top 10 backdoor families in Q3 2020 (% of backdoor detections)
+1-Apr-2020 1-May-2020
+Q2 Q3
+1-Jun-2020 1-Jul-2020 1-Aug-2020 1-Sep-2020
+The rising prevalence of threats such as <MALWARE>Fareit</MALWARE> shows that passwords are a
+lucrative target for cybercriminals, as they can be used in a variety of attacks
+and easily monetized in underground markets. Our telemetry shows that spam —
+however overused the lures — is the go-to distribution vector for these threats.
+<IDENTITY>Jirí Kropác</IDENTITY>, Head of Threat Detection Labs, <ORG>ESET</ORG>
+Spyware and backdoor detection trends in Q2 2020-Q3 2020, seven-day moving average
+ESET THREAT REPORT Q3 2020 | 21
+
+Exploits
+Unique clients reporting brute-force RDP attack attempts grew by 37% quarter-over-quarter, while total attack attempts increased by 140%, followed by a
+short-lived drop at the end of the quarter.
+As the number of people infected by the coronavirus reached new heights in Q3, companies
+continued to rely heavily on remote access. This is probably one of the reasons why Ransomware gangs showed other underground players that compromising RDP
+Remote Desktop Protocol (RDP) remains a prime target for cybercriminals in Q3, which was and stealing victims’ sensitive data can be a very profitable attack technique.
+documented by a 37% QoQ growth of unique clients reporting a brute-force attack attempt This, combined with the growing number of poorly secured systems being
+against their RDP connection. connected to the internet during the pandemic, has fueled the extreme increase
+in brute-force attack attempts against RDP as seen in <ORG>ESET</ORG> telemetry data.
+The overall quantity of attack attempts saw extreme growth, adding 140% detections over
+the previous quarter. <ORG>ESET</ORG> telemetry documented a sharp — yet short-lived — drop at the <IDENTITY>Jirí Kropác</IDENTITY>, Head of Threat Detection Labs, <ORG>ESET</ORG>
+end of September, where the number of “guesses” fell by almost 40%.
+As this limited decline was observed in multiple regions, it is possible that one of the
+following scenarios might have been at play: <MALWARE>EternalBlue</MALWARE> detections saw an uptick in Q3, closing this quarter with a 26% increase in
+unique clients being targeted per day. The number of <MALWARE>EternalBlue</MALWARE> attack attempts fol-
+• Unpublished takedown of malicious infrastructure (a botnet or some part of one). lowed a very similar trajectory, closing Q3 with an additional 23%.
+• Unpublished arrest of a major group or some of its members.
+This contrasted with the 11% drop seen for unique clients who reported attempts to
+• Outage, maintenance or other technical issues in the attacker’s infrastructure.
+misuse the BlueKeep vulnerability and 13% drop in the total number of attack attempts
+• Another, more viable, cheaper or easily exploitable attack vector became available,
+against this flaw.
+leading one of the groups to refocus for a short period of time.
+RDP connection attempts (left axis) <MALWARE>EternalBlue</MALWARE> attack attempts on unique clients (left axis)
+RDP connection attempts on unique clients (right axis) BlueKeep attack attempts on unique clients (right axis)
+160 160 3
+Thousands Thousands Thousands
+Millions
+12
+140 140
+3
+120 120 10
+2
+100 100 8
+80 80 2
+6
+60 60
+1
+Q2 Q3 Q2 Q3
+4
+40 40
+2 1
+20 20
+0 0 0 0
+1-Apr-2020 1-May-2020 1-Jun-2020 1-Jul-2020 1-Aug-2020 1-Sep-2020 1-Apr-2020 1-May-2020 1-Jun-2020 1-Jul-2020 1-Aug-2020 1-Sep-2020
+Trends of RDP connection attempts in Q2 2020-Q3 2020, seven-day moving average Trends of <MALWARE>EternalBlue</MALWARE> and BlueKeep attack attempts in Q2 2020-Q3 2020, seven-day moving average
+ESET THREAT REPORT Q3 2020 | 22
+
+Mac threats
+Mac threats continued to decline throughout Q3 with front-runners losing more than a fifth of their Q2 detection numbers.
+Mac threats followed the same path as in Q2 seeing a further gradual decline throughout
+Q3. The number of detections decreased by 21% in a quarter-over-quarter comparison. <MALWARE>OSX/Mackeeper</MALWARE> PUA 26.60%
+The largest variability was notable in the case of potentially unwanted applications
+OSX/Keygen PUsA 15.60%
+(PUAs), with occasional small ups and downs, yet no significant spikes. For all the other
+categories such as adware, trojans and Potentially Unsafe Applications (PUsAs), detected OSX/GT32SupportGeeks PUA 8.00%
+quantities decreased steadily in Q3.
+<MALWARE>OSX/Bundlore</MALWARE> adware 6.20%
+The most frequent threat detected on the Mac platform remained <MALWARE>Mackeeper</MALWARE> with 26.6%,
+<MALWARE>OSX/Pirrit</MALWARE> adware 5.50%
+which was only slightly less than its former 27.6% in Q2. However, the absolute quantity of
+detections followed the trajectory of the whole category and headed south by 29%. <MALWARE>OSX/MaxOfferDeal</MALWARE> adware 4.10%
+ESET telemetry shows an almost identical trend for the second-ranked <MALWARE>OSX/Keygen</MALWARE> PUsA, <MALWARE>OSX/InstallCore</MALWARE> adware 2.70%
+used for software piracy, which lost 24% in the absolute number of detections. Due to
+<MALWARE>OSX/TrojanDownloader.Adload</MALWARE> trojan 2.60%
+falling numbers in the whole category, its percentage decline was minimal — ending at
+15.2% in Q3 against 15.6% in Q2. <MALWARE>OSX/Genieo</MALWARE> adware 2.40%
+The top 10 families remained almost identical, with no changes in the five highest ranks. <MALWARE>OSX/VSearch</MALWARE> adware 2.20%
+All PUA Adware PUsA Trojan Other Top 10 Mac threat detections in Q3 2020 (% of Mac threat detections)
+The only new player in the leading ten was <MALWARE>OSX/MaxOfferDeal</MALWARE> adware, which landed in
+the sixth position, with 4.1%, pushing out the Q2 tenth-place <MALWARE>OSX/Riskware.Meterpreter</MALWARE>
+application.
+In Q3, <ORG>ESET</ORG> research discovered websites distributing trojanized and rebranded versions
+of otherwise legitimate cryptocurrency trading applications for macOS. The apps were
+wrapped with <MALWARE>GMERA</MALWARE> malware, whose operators were after victims’ information, such as
+browser cookies, cryptocurrency wallets, and screengrabs. <ORG>ESET</ORG> found four malicious apps
+being used this way, named <MALWARE>Cointrazer</MALWARE>, <MALWARE>Cupatrade</MALWARE>, <MALWARE>Licatrade</MALWARE> and <MALWARE>Trezarus</MALWARE>. For additional
+technical info, read our blogpost [59].
+1-Apr-2020 1-May-2020
+Q2 Q3
+1-Jun-2020 1-Jul-2020 1-Aug-2020 1-Sep-2020
+Even if the numbers for PUAs on Mac are quite high compared to trojans and
+backdoors, our investigation of the latest <MALWARE>GMERA</MALWARE> malware showed that some
+perpetrators are still actively authoring and distributing malware on Macs.
+<IDENTITY>Marc-Étienne Léveillé</IDENTITY>, <ORG>ESET</ORG> Malware Researcher
+Mac threat detection trend in Q2 2020-Q3 2020, seven-day moving average
+ESET THREAT REPORT Q3 2020 | 23
+
+Android threats
+While ad-displaying apps continued to dominate the Android threat scene, banking malware detections saw an upswing in Q3 2020.
+After a peak in May 2020, Android detections declined in June, rose in July and kept a
+relatively steady level throughout August and September. In terms of overall volume of
+detections, Q3 saw a 19% decline in comparison with the previous quarter.
+The increase in July was connected to growth of the Hidden Apps threat category, which
+has dominated the Android threat landscape for three consecutive quarters. This category
+covers detections of deceptive apps that hide their icons after installation and flood the
+affected device with full-screen ads. They are commonly disguised as attractive games
+and various useful utilities.
+<MALWARE>Android/HiddenApp</MALWARE> detections have doubled compared to Q2, and tripled their share in the
+top 10 ranking. The <MALWARE>Android/Hiddad</MALWARE> family rose from second place to first, although its
+total detections actually All decreased by 12%.
+<MALWARE>HiddenApps</MALWARE>
+Another category of Android malware that grew in Q3 is banking malware, with its
+SMS Trojans
+detections more than quadrupling compared to Q2.
+Adware
+<MALWARE>Stalkerware</MALWARE> 1-Apr-2020 1-May-2020 1-Jun-2020 1-Jul-2020 1-Aug-2020 1-Sep-2020
+All HiddenApps
+Clickers SMS Trojans Adware Stalkerware Clickers Other
+Banking malware, Cryptominers, Ransomware, Spyware Android banking malware detection trend in Q2 2020-Q3 2020, seven-day moving average
+This was the result of a surge in detections of an <MALWARE>Android/TrojanDropper.Agent</MALWARE> variant
+carrying the <MALWARE>Cerberus</MALWARE> banking malware, detected as <MALWARE>Android/Spy.Cerberus</MALWARE>.
+<MALWARE>Cerberus</MALWARE> is a notorious mobile banking trojan that surfaced [60] in June 2019 and was
+highly active until July 2020, when the gang behind the malware split up and put the mal-
+ware up for auction [61]. Not even a month later, on August 11, the <MALWARE>Cerberus</MALWARE> source code
+was released for free [62] on an underground forum, allowing anyone to use the malware
+for their own profit — thus boosting the number of detected attack attempts.
+1-Jan-2020 1-Feb-2020 1-Mar-2020 1-Apr-2020 1-May-2020 1-Jun-2020
+1-Apr-2020
+1-Jan-2020
+1-May-2020
+Q2 Q3
+1-Feb-2020 1-Mar-2020
+1-Jun-2020
+1-Apr-2020
+1-Jul-2020
+1-May-2020
+1-Aug-2020
+1-Jun-2020
+1-Sep-2020
+Although banking malware makes up only a tiny fraction of Android threats, its
+growth is worrisome, as without adequate protection, it can do serious harm.
+A major source code release such as that of <MALWARE>Cerberus</MALWARE> allows more bad guys to
+easily distribute custom payloads — that’s what we also saw in the past with
+other banking malware families, such as <MALWARE>BankBot</MALWARE>, <MALWARE>Anubis</MALWARE> and <MALWARE>Exobot</MALWARE>.
+Detection trends of selected Android threat categories in Q2 2020-Q3 2020, seven-day moving average <IDENTITY>Lukáš Štefanko</IDENTITY>, <ORG>ESET</ORG> Malware Researcher
+ESET THREAT REPORT Q3 2020 | 24
+
+Web threats
+Web threat blocks were down in Q3 2020, as a result of two large players disappearing from the malicious domain scene.
+nexi
+In the third quarter of 2020, <ORG>ESET</ORG> telemetry recorded a 16% overall decline in the key web
+threats we track, a continuation of the downward trend observed in Q2. This decline in- facebook volksbank
+cluded the categories Scam, Malware, and Phishing; Malware Object was the only category office binance
+that grew both in terms of overall blocks and unique URLs blocked. itauinstagram blockchain
+Malware-serving websites saw the largest quarter-over-quarter decrease — 28%. This bitpanda
+hotmail
+development is connected to the demise of two domains that were at the head of the
+Malware category throughout all of H1: adobviewe[.]club and fingahvf[.]top. The former Top 10 brands and domain names targeted with homoglyph attacks in Q3 2020
+number one, adobviewe[.]club, is part of an adware scheme, displaying pop-ups promoting
+further threats. Detections of this domain were declining gradually during Q2, dropped at In the area of homoglyph attacks1, we observed a decline in overall domain detections, but
+the end of April and were virtually non-existent in Q3. saw some newcomers in terms of impersonated brands and domain names — in fact, the top
+two “homoglyphed” domains only surfaced in Q3.
+The fingahvf[.]top domain, which redirects visitors’ browsers to websites distributing
+further threats, saw a sharp fall: at the end of May 2020, daily blocks dropped from hun- The number one domain, nẹxi[.]com (note the dot below “e”), impersonates <MALWARE>Nexi</MALWARE>, a popular
+dreds of thousands to tens of thousands, and declined further throughout Q3. digital payment service in Italy. The second most blocked domain (bankline.ỉtau[.]com —
+note the hooked rather than dotted “i”) poses as the website of the <ORG>Brazilian bank</ORG> <ORG>Itaú</ORG>.
+These declines may be due to the campaigns ending or being moved to different domains The detections of these domains were exclusively from Italy and Brazil, respectively.
+and servers. The domains with the largest numbers of blocks in Q3 are listed below.
+All Scam Malware Phishing Malware Object
+14 Malware Scam Phishing
+Millions 12 1 s.viiotp[.]com ofhappinyer[.]com d18mpbo349nky5.cloudfront[.]net
+2 nbf9b5aurl[.]com maranhesduve[.]club propu[.]sh
+10
+3 runmewivel[.]com glotorrents[.]pw mrproddisup[.]com
+8 4 ofgogoatan[.]com goviklerone[.]com exchangepresumeethel[.]com
+6 5 dpiwrxl3dmzt3.cloudfront[.]net wwclickads[.]club missingarchery[.]com
+6 hardyload[.]com p4.maranhesduve[.]club diplomaticlastingpert[.]com
+Q2 Q3
+4
+7 brandsafe.adlooxtracking[.]com go1news[.]biz stressfulpyjamas[.]com
+2 8 cozytech[.]biz dgafgadsgkjg[.]top update.updtbrwsr[.]com
+0 9 biggames[.]club static.sunnycoast[.]xyz update.updtapi[.]com
+1-Apr-2020 1-May-2020 1-Jun-2020 1-Jul-2020 1-Aug-2020 1-Sep-2020
+10 opentracker[.]xyz masture[.]mobi update.brwsrapi[.]com
+Trends of blocked web threats in Q2 2020-Q3 2020, seven-day moving average Top 10 blocked Malware, Scam and Phishing domains in Q3 2020
+(total blocks rather than unique device counts)
+1
+Web attacks relying on replacing characters in domains with ones that look similar (or even visually identical), but that are different to computers. ESET THREAT REPORT Q3 2020 | 25
+
+Email threats
+Detections of malicious emails continued to grow in Q3 2020, with delivery and logistics companies heavily misused as lures.
+Total malicious email detections per quarter were up 9% compared to Q2 — maintaining the
+growth rate observed between Q1 and Q2. Following peaks in July and August, the activity Win/Exploit.CVE-2017-11882 trojan 25.36%
+declined steeply in September.
+HTML/Fraud trojan 19.74%
+The most prevalent threat detected in emails remains Win/Exploit.CVE-2017-11882 —
+malicious documents exploiting a vulnerability in Microsoft Office to download additional <MALWARE>DOC/Fraud</MALWARE> trojan 12.01%
+malware onto the computer. The next most common were <MALWARE>HTML/Fraud</MALWARE> and <MALWARE>DOC/Fraud</MALWARE>, with <MALWARE>HTML/Phishing</MALWARE> trojan 11.28%
+the latter almost doubling in detections since Q2. Both these detection names cover scam
+emails sent with the aim of extracting personal information from the recipients. <MALWARE>PDF/Fraud</MALWARE> trojan 7.24%
+Although HTML-based phishing emails and attachments, detected as <MALWARE>HTML/Phishing</MALWARE> trojan, <MALWARE>JS/Danger.ScriptAttachment</MALWARE> trojan 3.79%
+didn’t make it into the top three, their total number of detections rose by almost 40% <MALWARE>Win/PSW.Fareit</MALWARE> trojan 1.87%
+compared to Q2. DHL remained the most heavily impersonated brand in these malicious
+emails, followed by the <ORG>South African bank Absa</ORG> and <INDUSTRY>logistics</INDUSTRY> giant <ORG>Maersk</ORG>. <MALWARE>JS/Danger.DoubleExtension</MALWARE> trojan 1.78%
+Phishing emails using DHL as a lure, which skyrocketed in Q2, saw a further, albeit much PDF/Phishing trojan 1.76%
+smaller, increase this quarter (50%). A more dramatic growth was observed for emails <MALWARE>JS/TrojanDownloader.Nemucod</MALWARE> trojan 1.36%
+impersonating <ORG>Maersk</ORG>, the incidence of which increased almost tenfold.
+Top 10 threats detected in emails in Q3 2020
+A variant of this threat was detected in several large-scale
+campaigns in Q3, with the peak reached in the second half of
+September. Detections of these emails, which try to extract
+recipients’ passwords for <ORG>Maersk</ORG> online services, were most
+prevalent in <GEO>Spain</GEO>, <GEO>Poland</GEO> and <GEO>Italy</GEO>.
+<ORG>Microsoft</ORG>
+1-Apr-2020 1-May-2020
+Q2 Q3
+1-Jun-2020 1-Jul-2020 1-Aug-2020 1-Sep-2020
+<ORG>Adobe
+Standard Bank</ORG>
+<ORG>PayPalDHL</ORG>
+<ORG>Google</ORG>
+<ORG>Maersk</ORG>
+<ORG>Absa</ORG>
+<ORG>Amazon
+LinkedIn</ORG>
+Malicious email detection trend in Q2 2020-Q3 2020, seven-day moving average Top 10 phishing email lures in Q3 2020 Malicious email impersonating <ORG>Maersk</ORG>
+ESET THREAT REPORT Q3 2020 | 26
+
+Windows executables
+74% Script files
+Office documents
+Compressed archives
+PDF documents
+11% Java files
+Batch files
+5% Shortcuts
+4% Android executables
+2%2%2%
+Top malicious email attachment types2 in Q3 2020
+More than 70% of the malicious attachments identified in Q3 2020 were executables,
+followed by script files and Office documents. Compared to Q2, executables strengthened
+their first-place position with an increase of 18 percentage points; Office files decreased Spam email using COVID-19 financial assistance as a lure
+by 13 points.
+Executable attachments were frequently disguised using so-called double file extensions
+to trick recipients into opening them, taking advantage of the fact that file extensions
+for known file types are hidden by default on Windows. PDF was by far the most heavily
+used guise in Q3; attackers also commonly attempted to disguise malicious executables as
+Microsoft Excel and Word files, images and archives.
+As for detections of spam — unsolicited emails of any kind, not necessarily carrying
+malware — these kept a steady level in Q3, with multiple small peaks. The overall volume of
+spam detected was up by 4% compared to the previous quarter.
+In Q3, we observed spammers still frequently misusing the coronavirus pandemic for their
+own profit. One of the most commonly recurring themes in unsolicited emails was financial
+support related to the pandemic, as seen in the screenshot on the upper right. Exploiting
+the financial struggles faced by many in the crisis, and impersonating legitimate organi-
+Q2 Q3
+zations, crooks try to manipulate victims into giving up sensitive information.
+When interpreting <ORG>ESET</ORG> data on spam, one should take into account that our visibility into
+spam traffic is limited, as emails may be filtered at the internet email service provider,
+or elsewhere, before reaching ESET’s antispam solution on client machines. 1-Apr-2020 1-May-2020 1-Jun-2020 1-Jul-2020 1-Aug-2020 1-Sep-2020
+Spam detection trend in Q2 2020-Q3 2020, seven-day moving average
+2
+The statistic is based on a selection of well-known extensions. <ORG>ESET</ORG> THREAT REPORT Q3 2020 | 27
+
+IoT security
+Old vulnerabilities in top 10 see a slight decline, “admin” still king among weak usernames and passwords.
+Q2 Q3
+With over 100,000 tested routers, <ORG>ESET</ORG> has continued to monitor security developments in
+the IoT sphere throughout Q3. As in the previous quarters, thousands of routers remain 17.7%
+CVE-2012-5687 unauthorized access
+vulnerable to using default passwords to enter the administration interface, with only 16.3%
+minor changes in the ranking. 13.8%
+CVE-2014-8361 command injection
+11.0%
+The most often detected weak password — seen on over 4600 devices — remained “admin”,
+followed by 500 devices using password “root”, over 200 using “1234” and tens using 7.0%
+CVE-2014-9583 command injection
+“12345”. These are probably default passwords and are most often accompanied by 7.5%
+predefined usernames such as “admin”, “root”, “guest”, “1234” and “support”. 6.6%
+CVE-2014-1225 cross-site scripting
+7.2%
+3.5%
+<ORG>ESET</ORG> detections suggest that many people run outdated routers with years-old CVE-2015-7248 unauthorized access
+4.9%
+vulnerabilities. What makes this matter worse is the fact that two out of the 4.5%
+top three flaws are command injections, which are especially dangerous and CVE-2015-0554 unauthorized access
+4.0%
+are key to the building of IoT botnets.
+4.4%
+<IDENTITY>Milan Fránik</IDENTITY>, <ORG>ESET</ORG> Malware Researcher CVE-2014-2962 unauthorized access
+3.9%
+2.6%
+CVE-2013-5947 unauthorized access
+3.6%
+The top 10 vulnerabilities saw only minor changes in ranking, and the list of the most 4.1%
+often found CVEs saw no changes at all. While the oldest flaw, CVE-2012-5687, still led CVE-2014-4019 unauthorized access
+3.2%
+the rankings in Q3, the proportion of devices that were found to suffer from it declined
+2.7%
+slightly from 17.7% to 16.3%. Similarly, the routers reported as vulnerable to the command CVE-2015-7254 unauthorized access
+3.0%
+injection described in CVE-2014-8361 dropped from 13.8% in Q2 to 11% in Q3.
+The most notable increase was documented in the case of CVE-2015-7248, which saw 1.4% Top 10 vulnerabilities detected by ESET’s router vulnerability scanner module in Q2 and Q3
+more detections than in the previous quarter, moving this vulnerability up from eighth to (% of vulnerability detections)
+fifth position.
+In July, latest firmware images for D-Link’s routers saw their encryption protection
+Q3 also marked another big find by <ORG>ESET</ORG> Smart Home Research — an extended version of stripped away [63] by researchers who retrieved the decryption keys from the older ver-
+Kr00k — a vulnerability that affected encryption in many popular devices with <ORG>Broadcom</ORG> sions of the same firmware images. Only weeks after this blunder, the company disclosed
+and <ORG>Cypress</ORG> Wi-Fi chips. Our research confirmed that there are encryption issues also in five severe vulnerabilities [64] — CVE-2020-15894, CVE-2020-15895, CVE-2020-15893, CVE-
+chips by other vendors, namely <ORG>Qualcomm</ORG> and <ORG>MediaTek</ORG>. For more details read the featured 2020-15896, CVE-2020-15892 — some of which affect devices that are past their end of life
+story in this report. and will thus not be patched by the vendor.
+<ORG>ESET</ORG> THREAT REPORT Q3 2020 | 28
+
+Upcoming presentations
+CODE BLUE 2020
+KrØØk: Serious vulnerability affected encryption of a billion+ Wi-Fi devices
+For those who didn’t have a chance to see this talk at any of the previous virtual
+events, <ORG>ESET</ORG> malware researcher <IDENTITY>Robert Lipovský</IDENTITY> will disclose the details of the
+security flaw KrØØk at CODE BLUE 2020. His talk will offer information about the
+original research that found the vulnerability in <ORG>Broadcom</ORG> and <ORG>Cypress</ORG> Wi-Fi chips,
+and will also add findings from the follow-up research.
+ESET RESEARCH <ORG>Botconf</ORG>
+The <THREAT_ACTOR>Winnti Group</THREAT_ACTOR>: An analysis of their latest activities
+At this year’s online edition of <ORG>Botconf</ORG>, <ORG>ESET</ORG> malware researcher <IDENTITY>Mathieu Tartare</IDENTITY>
+will provide an overview of the latest activities of the <THREAT_ACTOR>Winnti Group</THREAT_ACTOR>, responsible for
+high-profile supply-chain attacks against the video game and software industries,
+CONTRIBUTIONS
+as well as the <INDUSTRY>healthcare</INDUSTRY> and <INDUSTRY>education</INDUSTRY> sector. The presentation will show that not
+only is the <THREAT_ACTOR>Winnti Group</THREAT_ACTOR> still actively using and maintaining its flagship backdoor
+<MALWARE>ShadowPad</MALWARE> along with the <MALWARE>Winnti</MALWARE> malware family, but also that they extended their
+arsenal with new tools and some new and undocumented implants.
+<THREAT_ACTOR>Turla</THREAT_ACTOR> operations from a front row seat
+In his <ORG>Botconf</ORG> presentation, <ORG>ESET</ORG> malware researcher <IDENTITY>Matthieu Faou</IDENTITY> will share fresh
+information about the TTPs of <THREAT_ACTOR>Turla</THREAT_ACTOR>, an advanced threat group tracked by <ORG>ESET</ORG> for
+several years. These actors are mainly interested in high-profile targets such as
+government bodies and defense companies. The presentation will describe the main
+attacks publicly attributed to the group and explore the attackers’ motives. The
+technical part of the talk will showcase <THREAT_ACTOR>Turla</THREAT_ACTOR>’s implementation of the three classic
+steps of an APT campaign: compromise, lateral movement, and long-term persistence.
+AVAR 2020 Virtual
+CDRThief: Malware that targets Linux VoIP softswitches
+In a virtual talk at the AVAR conference, <ORG>ESET</ORG> malware researcher <IDENTITY>Anton Cherepanov</IDENTITY>
+Latest engagements and achievements will introduce his recent discovery of <MALWARE>CDRThief</MALWARE>, malware targeting Linux-based Voice
+over IP (VoIP) softswitches. <MALWARE>CDRThief</MALWARE> is particularly interesting, as its main purpose
+of <ORG>ESET</ORG> Research experts is to exfiltrate call detail records (CDRs), which contain VoIP metadata of performed
+ESET THREAT REPORT Q3 2020 | 29
+
+calls, from compromised VoIP softswitches, such as time, duration, calling fee, etc. This <MALWARE>Stantinko</MALWARE> deobfuscation arsenal [65]
+talk will provide a detailed technical description of the <MALWARE>CDRThief</MALWARE> malware and discuss
+possible goals of the malware operators. <ORG>ESET</ORG> malware analyst <IDENTITY>Vladislav Hrcka</IDENTITY> held a virtual session at <ORG>Black Hat</ORG> USA where he
+dissected the obfuscation toolkit used by the <MALWARE>Stantinko</MALWARE> malware family. He focused mainly
+More evil: A deep look at <MALWARE>Evilnum</MALWARE> and its toolset on the enhancements of the control-flow flattening and the string obfuscation techniques
+used by the operators of the malware family and showed how these otherwise common
+This presentation by <ORG>ESET</ORG> researcher <IDENTITY>Matias Nicolas Porolli</IDENTITY> will focus on <MALWARE>Evilnum</MALWARE>, a approaches became unique.
+cybercrime group that has been operating for at least two years, targeting financial
+technology companies. The presentation will describe the infrastructure used for <MALWARE>Evilnum</MALWARE>
+operations, analyze the malware developed and used by the group, and describe the group’s Virus Bulletin 2020 localhost Conference
+attack chain. The talk will also explore — based on ESET telemetry data — the victimology, XDSpy: Stealing government secrets since 2011 [66]
+which shows that <MALWARE>Evilnum</MALWARE> has very specific targeting.
+In his paper presented at VB2020, <ORG>ESET</ORG> malware researcher <IDENTITY>Matthieu Faou</IDENTITY> described
+the discovery of the <THREAT_ACTOR>XDSpy</THREAT_ACTOR> cyberespionage operation against several <INDUSTRY>governments</INDUSTRY> in
+Delivered presentations <GEO>Eastern Europe</GEO>, the <GEO>Balkans</GEO> and <GEO>Russia</GEO> that went undetected for close to 10 years. Its
+goal appears to have been diplomatic and military documents, but also information of
+<INDUSTRY>private companies</INDUSTRY> and <INDUSTRY>academic institutions</INDUSTRY>, suggesting the actor is also responsible for
+economic espionage.
+Flattening the curve of cyber-risks [67]
+<ORG>ESET</ORG> senior research fellow <IDENTITY>Righard Zwienenberg</IDENTITY> participated in the Threat Intelligence
+panel at the virtual VB2020 localhost conference. The panel discussed the often-over-
+looked requirements for learning how to minimize risks to corporate networks, shedding
+light on dos and don’ts for corporations to flatten the cyber-risk curve, minimize impact
+on their networks and provide them with the necessary resilience.
+<MALWARE>Ramsay</MALWARE>: A cyberespionage toolkit tailored for air-gapped networks [68]
+In his presentation at VB2020, <ORG>ESET</ORG> malware researcher <IDENTITY>Ignacio Sanmillan</IDENTITY> covered the
+technical aspects of <MALWARE>Ramsay</MALWARE>, a cyberespionage toolkit discovered in March 2020 that was
+specifically designed to steal documents and operate within air-gapped networks. His talk
+documented <MALWARE>Ramsay</MALWARE>’s core capabilities as well as artifact and code overlaps discovered
+between this toolkit and the <THREAT_ACTOR>DarkHotel</THREAT_ACTOR> <THREAT_ACTOR>APT</THREAT_ACTOR>.
+InvisiMole: First-class persistence through second-class exploits [69]
+<ORG>Black Hat USA</ORG> <ORG>Black Hat Asia</ORG>
+KrØØk: Serious vulnerability affected encryption of billion+ Wi-Fi devices [6] <ORG>ESET</ORG> malware researcher <IDENTITY>Zuzana Hromcová</IDENTITY> talked at <ORG>VB2020</ORG> about the findings of an
+extensive investigation into the latest operation of InvisiMole — a threat actor previously
+At this year’s virtual editions of <ORG>Black Hat USA</ORG> and <ORG>Black Hat Asia</ORG>, <ORG>ESET</ORG> malware known for its part in highly targeted cyberespionage operations in <GEO>Eastern Europe</GEO>. Her
+researcher <IDENTITY>Robert Lipovský</IDENTITY> and <ORG>ESET</ORG> detection engineer <IDENTITY>Štefan Svorencík</IDENTITY> disclosed presentation updated the VB audience on the current <THREAT_ACTOR>InvisiMole</THREAT_ACTOR> toolset and filled the
+details of the KrØØk security flaw. Their briefing offered technical details as well as previous gaps on the delivery, persistence and lateral movement techniques used by this
+new information found since the initial publication of the vulnerability. actor as well as its cooperation with the <THREAT_ACTOR>Gamaredon</THREAT_ACTOR> group.
+ESET THREAT REPORT Q3 2020 | 30
+
+AVAR CYBER CONCLAVE Ekoparty Online CONFidence Infoshare
+Android COVID-19 threats [71] [72]
+<ORG>ESET</ORG> malware researcher <IDENTITY>Lukáš Štefanko</IDENTITY> presented an overview of various Android threats
+that preyed upon COVID-19 fears at several virtual events, namely AVAR CYBER CONCLAVE
+2020, Ekoparty 2020, CONFidence 2020, and Infoshare 2020. The threats he described were
+mostly distributed in the first half of 2020 and impersonated coronavirus trackers, gov-
+ernment apps and symptom identifiers. His talk also included demonstrations of <INDUSTRY>banking</INDUSTRY>
+malware distributed in Italy and recently discovered Android ransomware, both of which
+tried to exploit people’s fears during the pandemic.
+MITRE ATT&CK contributions
+<ORG>ESET</ORG> researchers regularly contribute to <ORG>MITRE ATT&CK</ORG>® [73] — a globally-accessible knowl-
+edge base of adversary tactics and techniques. Q3 2020 saw several <ORG>ESET</ORG> contributions
+accepted to the ATT&CK knowledge base:
+• 1 new sub-technique in the Enterprise matrix
+• 1 extension of an existing sub-technique in the Enterprise matrix
+• 1 new contribution to the Software category
+• 1 extension within the Software category
+Virus Bulletin 2020 localhost Conference CARO 2020 • 1 extension within the Groups category
+<GEO>LATAM</GEO> financial cybercrime: Competitors in crime sharing TTPs [70]
+With the next ATT&CK update, these contributions will be listed among the Enterprise
+At this year’s CARO 2020 and VB2020 virtual conferences, <ORG>ESET</ORG> malware analyst <IDENTITY>Jakub</IDENTITY> techniques [74] and in the Software [75] and Groups [76] categories.
+<IDENTITY>Soucek</IDENTITY>, and <ORG>ESET</ORG> detection engineer <IDENTITY>Martin Jirkal</IDENTITY> took a deep dive into the current Latin
+The first <ORG>ESET</ORG>-contributed entry to Software covers <MALWARE>PipeMon</MALWARE>, a multistage modular
+American banking trojan scene. The talk focused on the suspected close coordination of
+backdoor used by the <THREAT_ACTOR>Winnti Group</THREAT_ACTOR>, first reported by <ORG>ESET</ORG> [18] in May 2020. The backdoor
+the families and on their expansion from <GEO>Latin America</GEO> to <GEO>Spain</GEO> and <GEO>Portugal</GEO>.
+was used by the <THREAT_ACTOR>Winnti Group</THREAT_ACTOR> against several video gaming companies based in <GEO>South Korea</GEO>
+and <GEO>Taiwan</GEO>.
+DEF CON 28 SAFE MODE <MALWARE>PipeMon</MALWARE>’s persistence method built the basis for another contribution: a new
+Exploring vulnerabilities in Smart Sex Toys, the exciting side of IoT research sub-technique of the Boot or Logon Autostart Execution (T1547) [77] technique, named
+Print Processors. <ORG>ESET</ORG> researchers discovered that the <THREAT_ACTOR>Winnti Group</THREAT_ACTOR> has used the “Print
+At the virtual DEF CON 28 SAFE MODE conference, <ORG>ESET</ORG> <GEO>Latin America</GEO> security researchers Processors” registry key to enable its <MALWARE>PipeMon</MALWARE> backdoor to persist. Adversaries can use
+<IDENTITY>Denise Giusto Bilic</IDENTITY> and <IDENTITY>Cecilia Pastorino</IDENTITY> talked about security of Android applications this technique to load malicious code at startup that will persist on system reboot and
+that control the most purchased models of sexual pleasure IoT devices. Their presentation execute as SYSTEM.
+described security flaws found in these appliances derived both from the implementation
+of the application and from the design of the devices, affecting the storage and process- The ATT&CK Software category will also be extended with new information about InvisiMole
+ing of private information. (S0260) [78], modular spyware used in targeted cyberespionage operations in <GEO>Ukraine</GEO> and
+<GEO>Russia</GEO>. <ORG>ESET</ORG> researchers first reported on [79] <MALWARE>InvisiMole</MALWARE> in 2018; two years later, they
+published [80] a deep-dive analysis of the group’s toolset and TTPs. The entry update
+ESET THREAT REPORT Q3 2020 | 31
+
+based on this new research maps more than 40 additional techniques to <MALWARE>InvisiMole</MALWARE>. This <ORG>ESET</ORG> researchers recognized by <ORG>Microsoft</ORG> for KrØØk
+research prompted another contribution to the Enterprise matrix: a modification of the
+Signed Binary Proxy Execution: Control Panel (T1218.002) [81] sub-technique, based on <ORG>ESET</ORG> researchers <IDENTITY>Miloš Cermák</IDENTITY> and <IDENTITY>Martin Kalužn</IDENTITY>ík were acknowledged [85] by the
+behavior observed while analyzing InvisiMole. <ORG>Microsoft Security Response Center</ORG> for their contribution to the patching of the KrØØk
+vulnerability.
+The last contribution accepted in Q3 2020 updates the ATT&CK entry for the <THREAT_ACTOR>Gamaredon
+Group</THREAT_ACTOR> (G0047) [82], a threat group active since at least 2013 and targeting Ukrainian
+institutions. In their recent research [36] into the <THREAT_ACTOR>Gamaredon Group</THREAT_ACTOR>, <ORG>ESET</ORG> researchers Stadeo: A set of scripts released on GitHub to facilitate
+mapped the group’s activities to a number of additional techniques, previously not the analysis of <MALWARE>Stantinko</MALWARE>
+included in the group’s entry.
+<ORG>ESET</ORG> researchers released Stadeo — a set of scripts that can help fellow threat
+researchers and reverse engineers to deobfuscate the code of <MALWARE>Stantinko</MALWARE> [86] and other
+MITRE ATT&CK evaluations malware. <MALWARE>Stantinko</MALWARE> is a botnet performing click fraud, ad injection, social network fraud,
+password stealing attacks and cryptomining [87]. Stadeo was demonstrated for the first
+<ORG>ESET</ORG> is participating in ATT&CK® Evaluations [83] conducted by <ORG>MITRE ENGENUITY™</ORG> in
+time at <ORG>Black Hat USA</ORG> 2020 and subsequently published for free use [88].
+November 2020. For this evaluation, 65 ATT&CK techniques across 11 ATT&CK tactics are
+used. This includes 12 ATT&CK techniques across 7 ATT&CK tactics that are in scope for the The scripts, written in Python, deal with <MALWARE>Stantinko</MALWARE>’s unique control-flow-flattening (CFF)
+Linux portion of the <MALWARE>Carbanak</MALWARE> evaluation. and string obfuscation techniques described in our March 2020 blogpost [89]. Additionally,
+they can be utilized for other purposes: for example, we’ve already extended our approach
+There are some new features that have been introduced in this round, which emulates
+to support deobfuscating the CFF featured in <MALWARE>Emotet</MALWARE> — a trojan that steals banking cre-
+attacks by the <MALWARE>Carbanak</MALWARE> and <THREAT_ACTOR>FIN7</THREAT_ACTOR> <THREAT_ACTOR>APT</THREAT_ACTOR> groups. An especially important one is the possibility
+dentials and that downloads additional payloads such as ransomware.
+to evaluate capabilities not only in Detection, but also in the Protection category. <ORG>ESET</ORG> is
+one of the 18 vendors (of 30 total) who signed up for these extended evaluations. Another Our deobfuscation methods use IDA [90], which is a standard tool in the industry, and
+new addition worth mentioning is the side-by-side vendor comparison of evaluated capa- Miasm [91], an open source framework, providing us with various data-flow analyses, a sym-
+bilities, which will make it easier to highlight the differences between two selected solu- bolic execution engine, a dynamic symbolic execution engine and the means to reassemble
+tions. This round will also mark the first time Linux endpoint sensors have been included, modified functions.
+with the majority of the emulation round still focused on Windows platforms.
+Other contributions
+KrØØk testing script released on GitHub
+With more than five months passed since our public disclosure of the KrØØk vulnerability
+[1] — and several proofs-of-concept published by independent researchers — <ORG>ESET</ORG> decided
+to release the script [84] its researchers have been using to test whether devices are
+vulnerable to KrØØk. We have also included tests for the newer variants described here.
+This script can be used by researchers or device manufacturers to verify that specific
+devices have been patched and are no longer vulnerable.
+ESET THREAT REPORT Q3 2020 | 32
+
+Credits About the data in this report
+The threat statistics and trends presented in this report are based on global telemetry
+Team Contributors data from <ORG>ESET</ORG>. Unless explicitly stated otherwise, the data includes threats regardless
+of the targeted platform and includes only unique daily detections per device.
+<IDENTITY>Peter Stancík</IDENTITY>, Team Lead <IDENTITY>Anton Cherepanov</IDENTITY>
+<IDENTITY>Klára Kobáková</IDENTITY>, Managing Editor <IDENTITY>Igor Kabina</IDENTITY> This data was processed with the honest intention to mitigate all known biases, in an
+<IDENTITY>Ján Šugarek</IDENTITY> effort to maximize the value of the information provided on the most significant in-
+<IDENTITY>Jakub Soucek</IDENTITY> the-wild threats.
+<IDENTITY>Aryeh Goretsky</IDENTITY>
+<IDENTITY>Jean-Ian Boutin</IDENTITY>
+<IDENTITY>Bruce P. Burrell</IDENTITY> Further, the data excludes detections of potentially unwanted applications [92],
+<IDENTITY>Jirí Kropác</IDENTITY> potentially unsafe applications [93] and adware, except where noted in the more detailed,
+<IDENTITY>Nick FitzGerald</IDENTITY>
+<IDENTITY>Juraj Hornák</IDENTITY> platform-specific sections and in the Cryptominers section.
+<IDENTITY>Ondrej Kubovic</IDENTITY> <IDENTITY>Juraj Jánošík</IDENTITY>
+<IDENTITY>Ladislav Janko</IDENTITY> Most of the charts in this report show detection trends rather than provide absolute
+numbers. This is because the data can be prone to various misinterpretations, especially
+Foreword <IDENTITY>Lukáš Štefanko</IDENTITY>
+when directly compared to other telemetry data. However, absolute values or orders of
+<IDENTITY>Marc-Étienne Léveillé</IDENTITY>
+<IDENTITY>Roman Kovác</IDENTITY>, Chief Research Officer magnitude are provided where deemed beneficial.
+<IDENTITY>Martin Cerven</IDENTITY>
+<IDENTITY>Martin Lackovic</IDENTITY>
+<IDENTITY>Mathieu</IDENTITY> <IDENTITY>Tartare</IDENTITY>
+<IDENTITY>Matthieu</IDENTITY> <IDENTITY>Faou</IDENTITY>
+<IDENTITY>Milan Fránik</IDENTITY>
+<IDENTITY>Miloš Cermák</IDENTITY>
+<IDENTITY>Miroslav Legén</IDENTITY>
+<IDENTITY>Patrik Sucanský</IDENTITY>
+<IDENTITY>Robert Lipovský</IDENTITY>
+<IDENTITY>Thomas Dupuy</IDENTITY>
+<IDENTITY>Vladimír Šimcák</IDENTITY>
+<IDENTITY>Zoltán Rusnák</IDENTITY>
+<IDENTITY>Zuzana Legáthová</IDENTITY>
+ESET THREAT REPORT Q3 2020 | 33
+
+References
+[1] https://www.welivesecurity.com/2020/02/26/krook-serious-vulnerability-affected-encryption- [26] https://www.welivesecurity.com/wp-content/uploads/2020/09/ESET_LATAM_financial_cybercrime.
+billion-wifi-devices/ pdf
+[2] https://www.welivesecurity.com/wp-content/uploads/2020/02/ESET_Kr00k.pdf [27] https://www.welivesecurity.com/2020/07/14/welcome-chat-secure-messaging-app-nothing-
+[3] https://www.icasi.org/ further-truth/
+[4] https://www.rsaconference.com/industry-topics/presentation/kr00k-how-kracking-amazon-echo- [28] https://www.welivesecurity.com/2020/09/30/aptc23-group-evolves-its-android-spyware/
+exposed-a-billion-vulnerable-wifi-devices [29] https://www.welivesecurity.com/wp-content/uploads/2019/10/ESET_Operation_Ghost_Dukes.pdf
+[5] https://www.eset.com/int/kr00k/ [30] https://events.sto.nato.int/index.php/upcoming-events/event-list/event/26-cfp/315-call-for-
+[6] https://www.blackhat.com/us-20/briefings/schedule/index.html#krk-serious-vulnerability- participation-avt-355-research-workshop-rws-on-intelligent-solutions-for-improved-mission-
+affected-encryption-of-billion-wi-fi-devices-20414 readiness-of-military-uxvs
+[7] https://msrc-blog.microsoft.com/2020/05/05/azure-sphere-security-research-challenge/ [31] https://www.welivesecurity.com/2019/09/24/no-summer-vacations-zebrocy/
+[8] https://www.welivesecurity.com/2020/08/06/beyond-kr00k-even-more-wifi-chips-vulnerable- [32] https://www.proofpoint.com/us/threat-insight/post/lookback-malware-targets-united-states-
+eavesdropping/ utilities-sector-phishing-attacks
+[9] https://twitter.com/ESETresearch/status/1275770256389222400 [33] https://www.proofpoint.com/us/blog/threat-insight/ta410-group-behind-lookback-attacks-
+against-us-utilities-sector-returns-new
+[10] https://www.welivesecurity.com/2020/07/09/more-evil-deep-look-evilnum-toolset/
+[34] https://github.com/Twi1ight/AD-Pentest-Script/blob/master/wmiexec.vbs
+[11] https://www.welivesecurity.com/2020/07/16/mac-cryptocurrency-trading-application-rebranded-
+bundled-malware/ [35] https://cyber.gc.ca/en/guidance/c2-obfuscation-tools-htran
+[12] https://www.welivesecurity.com/2020/08/13/mekotio-these-arent-the-security-updates-youre- [36] https://www.welivesecurity.com/2020/06/11/gamaredon-group-grows-its-game/
+looking-for/ [37] https://www.welivesecurity.com/2018/10/17/greyenergy-updated-arsenal-dangerous-threat-
+[13] https://www.welivesecurity.com/2020/09/02/kryptocibule-multitasking-multicurrency- actors/
+cryptostealer/ [38] https://www.welivesecurity.com/wp-content/uploads/2018/10/ESET_<MALWARE>GreyEnergy</MALWARE>.pdf#page=12
+[14] https://www.welivesecurity.com/2020/09/10/who-callin-cdrthief-linux-voip-softswitches/ [39] https://nvd.nist.gov/vuln/detail/CVE-2017-11882
+[15] https://www.bitdefender.com/files/News/CaseStudies/study/365/Bitdefender-PR-Whitepaper- [40] https://en.wikipedia.org/wiki/Advance-fee_scam
+APTHackers-creat4740-en-EN-GenericUse.pdf [41] https://www.bleepingcomputer.com/news/security/emotet-malware-strikes-us-businesses-with-
+[16] https://twitter.com/ESETresearch/status/1301801156042256384 covid-19-spam/
+[17] https://welivesecurity.com/2019/10/14/connecting-dots-exposing-arsenal-methods-winnti/ [42] https://www.binarydefense.com/emocrash-exploiting-a-vulnerability-in-emotet-malware-for-
+[18] https://welivesecurity.com/2020/05/21/no-game-over-winnti-group/ defense/
+[19] https://3dground.net/article/attention-alc-and-crp-viruses-in-3ds-max- [43] https://twitter.com/pollo290987/status/1312186676739932160?s=20
+[20] https://apps.autodesk.com/3DSMAX/it/Detail/Index?id=7342616782204846316 [44] https://www.bleepingcomputer.com/news/security/emotet-malwares-new-red-dawn-attachment-
+is-just-as-dangerous/
+[21] https://github.com/eset/malware-ioc/tree/master/quarterly_reports/2020_Q3
+[45] https://twitter.com/Cryptolaemus1/status/1300662754030825472?s=20
+[22] https://www.welivesecurity.com/2020/04/28/grandoreiro-how-engorged-can-exe-get/
+[46] https://twitter.com/ESETresearch/status/1288533242438651906?s=20
+[23] https://www.welivesecurity.com/2019/11/19/mispadu-advertisement-discounted-unhappy-meal/
+[47] https://www.virustotal.com/gui/
+[24] https://www.welivesecurity.com/2019/10/03/casbaneiro-trojan-dangerous-cooking/
+file/15c3cfbad0e3b0afe327e53605c463775ef2ae1d5c21b23928a2aa34b7e36719/detection
+[25] https://csirt.gov.it/contenuti/nuova-campagna-malspam-distribuisce-malware-mekotio-
+[48] https://twitter.com/ESETresearch/status/1270339046645141507?s=20
+sfruttando-il-dominio-mef-gov-it-al01-200904-csirt-ita
+ESET THREAT REPORT Q3 2020 | 34
+
+[49] https://www.bleepingcomputer.com/news/security/maze-ransomware-now-encrypts-via-virtual- [71] https://confidence-conference.org/lecture.html#id=62676
+machines-to-evade-detection/ [72] https://infoshare.pl/speakers/#speaker1445
+[50] https://www.bleepingcomputer.com/news/security/revil-ransomware-deposits-1-million-in- [73] https://attack.mitre.org/
+hacker-recruitment-drive/
+[74] https://attack.mitre.org/techniques/enterprise/
+[51] https://www.group-ib.com/blog/oldgremlin
+[75] https://attack.mitre.org/software/
+[52] https://blog.sensecy.com/2020/08/20/global-ransomware-attacks-in-2020-the-top-4-
+[76] https://attack.mitre.org/groups/
+vulnerabilities/
+[77] https://attack.mitre.org/techniques/T1547/
+[53] https://www.bleepingcomputer.com/news/security/ransomware-attack-at-german-hospital-leads-
+to-death-of-patient/ [78] https://attack.mitre.org/software/S0260/
+[54] https://www.bbc.com/news/technology-54204356 [79] https://www.welivesecurity.com/2018/06/07/invisimole-equipped-spyware-undercover/
+[55] https://www.bleepingcomputer.com/news/security/uhs-hospitals-hit-by-reported-country-wide- [80] https://www.welivesecurity.com/wp-content/uploads/2020/06/ESET_InvisiMole.pdf
+ryuk-ransomware-attack/ [81] https://attack.mitre.org/techniques/T1218/002/
+[56] https://www.forbes.com/sites/billybambrough/2020/08/25/bitcoin-in-the-early-stages-of-a-bull- [82] https://attack.mitre.org/groups/G0047/
+market-crypto-wallet-data-reveals/#3fc49965510d [83] https://attackevals.mitre-engenuity.org/carbanak-fin7/
+[57] https://www.welivesecurity.com/2020/09/02/kryptocibule-multitasking-multicurrency- [84] https://github.com/eset/malware-research/tree/master/kr00k
+cryptostealer/
+[85] https://portal.msrc.microsoft.com/en-us/security-guidance/researcher-acknowledgments-online-
+[58] https://www.welivesecurity.com/wp-content/uploads/2020/07/ESET_Threat_Report_Q22020. services
+pdf#page=21
+[86] https://www.welivesecurity.com/2017/07/20/stantinko-massive-adware-campaign-operating-
+[59] https://www.welivesecurity.com/2020/07/16/mac-cryptocurrency-trading-application-rebranded- covertly-since-2012/
+bundled-malware/
+[87] https://www.welivesecurity.com/2019/11/26/stantinko-botnet-adds-cryptomining-criminal-
+[60] https://www.forbes.com/sites/zakdoffman/2019/08/16/dangerous-new-android-trojan-hides-from- activities/
+malware-researchers-and-taunts-them-on-twitter/#272515c6d9c9
+[88] https://github.com/eset/stadeo
+[61] https://www.zdnet.com/article/cerberus-banking-trojan-team-breaks-up-source-code-goes-to-
+[89] https://www.welivesecurity.com/2020/03/19/stantinko-new-cryptominer-unique-obfuscation-
+auction/
+techniques/
+[62] https://twitter.com/LukasStefanko/status/1293078550766129152
+[90] https://www.hex-rays.com/products/ida/
+[63] https://www.bleepingcomputer.com/news/security/d-link-blunder-firmware-encryption-key-
+[91] https://github.com/cea-sec/miasm
+exposed-in-unencrypted-image/
+[92] https://help.eset.com/glossary/en-US/unwanted_application.html
+[64] https://www.bleepingcomputer.com/news/security/5-severe-d-link-router-vulnerabilities-
+disclosed-patch-now/ [93] https://help.eset.com/glossary/en-US/unsafe_application.html
+[65] https://www.blackhat.com/us-20/arsenal/schedule/#stantinko-deobfuscation-arsenal-21025
+[66] https://vblocalhost.com/presentations/xdspy-stealing-government-secrets-since-2011/
+[67] https://vblocalhost.com/presentations/panel-flattening-the-curve-of-cyber-risks/
+[68] https://vblocalhost.com/presentations/ramsay-a-cyber-espionage-toolkit-tailored-for-air-
+gapped-networks/
+[69] https://vblocalhost.com/presentations/invisimole-first-class-persistence-through-second-
+class-exploits/
+[70] https://vblocalhost.com/presentations/latam-financial-cybercrime-competitors-in-crime-
+sharing-ttps/
+ESET THREAT REPORT Q3 2020 | 35
+
+About <ORG>ESET</ORG>
+For more than 30 years, <ORG>ESET</ORG>® has been
+developing industry-leading IT security
+software and services for businesses
+and consumers worldwide. With solutions
+ranging from endpoint and mobile
+security to encryption and two-factor
+authentication, <ORG>ESET</ORG>’s high-performing,
+easy-to-use products give consumers and
+businesses the peace of mind to enjoy the
+full potential of their technology. ESET
+unobtrusively protects and monitors 24/7,
+updating defenses in real time to keep
+users safe and businesses running without
+interruption. Evolving threats require an
+evolving IT security company. Backed by
+R&D centers worldwide, <ORG>ESET</ORG> is the first IT
+security company to earn 100 Virus Bulletin
+VB100 awards, identifying every single “in-
+the-wild” malware without interruption
+since 2003. For more information, visit www.
+eset.com or follow us on <ORG>LinkedIn</ORG>, <ORG>Facebook</ORG>,
+and <ORG>Twitter</ORG>.
+WeLiveSecurity.com
+@<ORG>ESET</ORG>research
+<ORG>ESET</ORG> GitHub

@@ -1,0 +1,224 @@
+5/13/2019 APT trends report Q1 2019 | Securelist
+APT trends report Q1 2019
+securelist.com/apt-trends-report-q1-2019/90643
+By <ORG>GReAT</ORG>
+For just under two years, the <ORG>Global Research and Analysis Team</ORG> (<ORG>GReAT</ORG>) at
+<ORG>Kaspersky Lab</ORG> has been publishing quarterly summaries of advanced persistent threat
+(APT) activity. The summaries are based on our threat intelligence research and provide
+a representative snapshot of what we have published and discussed in greater detail in
+our private APT reports. They aim to highlight the signiﬁcant events and ﬁndings that we
+feel people should be aware of.
+This is our latest installment, focusing on activities that we observed during Q1 2019.
+Readers who would like to learn more about our intelligence reports or request more
+information on a speciﬁc report are encouraged to contact ‘intelreports@kaspersky.com’.
+The most remarkable ﬁnding
+Targeting supply-chains has proved very successful for attackers in recent years –
+<MALWARE>ShadowPad</MALWARE>, <MALWARE>CCleaner</MALWARE> and <MALWARE>ExPetr</MALWARE> are good examples. In our threat predictions for
+2019, we ﬂagged this as a likely continuing attack vector; and we didn’t have to wait very
+long to see this prediction come true. In January, we discovered a sophisticated supply-
+chain attack involving the ASUS Live Update Utility, the mechanism used to deliver
+BIOS, UEFI and software updates to ASUS laptops and desktops. The attackers behind
+“<THREAT_ACTOR>Operation ShadowHammer</THREAT_ACTOR>” added a backdoor to the utility and then distributed it to
+users through ofﬁcial channels. The goal of the attack was to target with precision an
+unknown pool of users, identiﬁed by their network adapter MAC addresses. The
+attackers were found to have hardcoded a list of MAC addresses into the Trojanized
+samples, representing the true targets of this massive operation. We were able to extract
+over 600 unique MAC addresses from more than 200 samples discovered in this attack,
+although it’s possible that other samples exist that target different MAC addresses.
+Russian-speaking activity
+Russian-speaking groups were not especially active during the ﬁrst part of the year, with
+no noteworthy technical or operational changes. However, they continued their non-stop
+activity in terms of spreading, with a special interest in political activity.
+This was apparent in an attack focused on the <GEO>Ukraine</GEO> elections. The attack surfaced
+after we discovered a malicious Word document targeting a German political advisory
+organization. This organization, according to its website, “advises political decision-
+makers on international politics and foreign and security policy”. Our technical analysis of
+the attack suggests that the <THREAT_ACTOR>Sofacy</THREAT_ACTOR> or <THREAT_ACTOR>Hades</THREAT_ACTOR> groups are behind it, though we’re unable
+to say for sure which of these groups is responsible.
+https://securelist.com/apt-trends-report-q1-2019/90643/ 1/6
+
+5/13/2019 APT trends report Q1 2019 | Securelist
+Such political interests are not new. Recently, a court in <GEO>Virginia</GEO> gave <ORG>Microsoft</ORG> control of
+a group of websites that were intended to look like login sites for a <GEO>Washington</GEO> think
+tank, but are believed to be part of the infrastructure of a “Russian group suspected in
+the DNC hack”.
+Additionally, <ORG>Microsoft</ORG> revealed that a “Russian nation-state hacking group” targeted
+political organizations engaged in the 2019 European Parliament elections scheduled for
+the end of May.
+On the technical side, since mid-January we have been tracking an active <THREAT_ACTOR>Turla</THREAT_ACTOR>
+campaign targeting government bodies in <GEO>Turkmenistan</GEO> and <GEO>Tajikistan</GEO>. This time the
+actor delivered its known <MALWARE>KopiLuwak</MALWARE> JavaScript using new .NET malware, called
+“<MALWARE>Topinambour</MALWARE>” (aka <MALWARE>Sunchoke</MALWARE>) by its developers. The <MALWARE>Topinambour</MALWARE> dropper is delivered
+along with legitimate software and consists of a tiny .NET shell that waits for Windows
+shell commands from operators. Interestingly, in this campaign the attackers used
+different artefacts implemented in JavaScript, .NET and PowerShell – all of them with
+similar functionality.
+We also published details on how <MALWARE>Zebrocy</MALWARE> has added the “Go” language to its arsenal –
+the ﬁrst time that we have observed a well-known APT threat actor deploy malware with
+this compiled, open source language. <MALWARE>Zebrocy</MALWARE> continues to target government-related
+organizations in <GEO>Central Asia</GEO>, both in-country and in remote locations, as well as a new
+diplomatic target in the <GEO>Middle East</GEO>.
+Finally, during February 2019 we observed a highly targeted attack in <GEO>Crimea</GEO> using a
+previously unknown malware. The spy program was spread by email and masqueraded
+as the VPN-client of a well-known Russian security company that, among other things,
+provides solutions to protect networks. At this point we can’t relate this activity to any
+known actor.
+Chinese-speaking activity
+Recent APT trend summaries included analyses of new Chinese-speaking threat actors
+as well as the resurgence of old activity sets. This has continued into 2019.
+In the early months of 2019, Chinese-speaking actors were the most active, with a
+traditional interest in targeting different countries in <GEO>South East Asia</GEO>. A recent indictment
+of two Chinese nationals by the <ORG>US Department of Justice</ORG> on charges of computer
+hacking, conspiracy to commit wire fraud and aggravated identity theft, alleged that they
+were members of the <THREAT_ACTOR>APT10</THREAT_ACTOR> group, carrying out illegal activity on behalf of the <ORG>Chinese
+Ministry of State Security</ORG>.
+Similarly, <THREAT_ACTOR>CactusPete</THREAT_ACTOR> (aka <THREAT_ACTOR>LoneRanger</THREAT_ACTOR>, <THREAT_ACTOR>Karma Panda</THREAT_ACTOR>, and <THREAT_ACTOR>Tonto Team</THREAT_ACTOR>), is reported to
+have targeted South Korean, Japanese, US, and Taiwanese organizations in the 2012 –
+2014 timeframe. The actor has quite likely relied on much the same codebase and
+implant variants for the past six years. However these have broadened substantially
+since 2018. The group spear-phishes its targets, deploys Word and <MALWARE>Equation</MALWARE> Editor
+exploits and an appropriated/repackaged <THREAT_ACTOR>DarkHotel</THREAT_ACTOR> VBScript zero-day, delivers modiﬁed
+and compiled unique <MALWARE>Mimikatz</MALWARE> variants, GSEC and WCE credential stealers, a
+https://securelist.com/apt-trends-report-q1-2019/90643/ 2/6
+
+5/13/2019 APT trends report Q1 2019 | Securelist
+keylogger, various Escalation of Privilege exploits, various older utilities and an updated
+set of backdoors, and what appear to be new variants of custom downloader and
+backdoor modules.
+We have been monitoring a campaign targeting <ORG>Vietnamese government</ORG> and diplomatic
+entities abroad since at least April 2018. We attribute the campaign, which we call
+“<CAMPAIGN>SpoiledLegacy</CAMPAIGN>”, to the <THREAT_ACTOR>LuckyMouse</THREAT_ACTOR> <THREAT_ACTOR>APT group</THREAT_ACTOR> (aka <THREAT_ACTOR>EmissaryPanda</THREAT_ACTOR> and <THREAT_ACTOR>APT27</THREAT_ACTOR>). The
+operators use penetration testing frameworks such as <MALWARE>Cobalt Strike</MALWARE> and <MALWARE>Metasploit</MALWARE>.
+While we believe that they exploit network services vulnerabilities as their main initial
+infection vector, we have also seen spear-phishing messages containing decoy
+documents. We believe that, as in a previous <THREAT_ACTOR>LuckyMouse</THREAT_ACTOR> campaign internal database
+servers are among the targets. For the last stage of their attack they use different in-
+memory 32- and 64-bit Trojans injected into system process memory. It is worth
+highlighting that all the tools in the infection chain dynamically obfuscate Win32 API calls
+using leaked HackingTeam code.
+<ORG>FireEye</ORG> deﬁned <THREAT_ACTOR>APT40</THREAT_ACTOR> as the Chinese state-sponsored threat actor previously reported
+as <MALWARE>TEMP.Periscope</MALWARE>, <THREAT_ACTOR>Leviathan</THREAT_ACTOR> and <MALWARE>TEMP.Jumper</MALWARE>. According to <ORG>FireEye</ORG>, the group has
+conducted operations in support of China’s naval modernisation effort since at least
+2013, speciﬁcally targeting <INDUSTRY>engineering</INDUSTRY>, <INDUSTRY>transportation</INDUSTRY> and <INDUSTRY>defence</INDUSTRY> industries, especially
+where these sectors overlap with <INDUSTRY>maritime technologies</INDUSTRY>. Recently, <ORG>FireEye</ORG> also
+observed speciﬁc targeting of countries strategically important to the “Belt and Road”
+Initiative, including <GEO>Cambodia</GEO>, <GEO>Belgium</GEO>, <GEO>Germany</GEO>, <GEO>Hong Kong</GEO>, the <GEO>Philippines</GEO>, <GEO>Malaysia</GEO>,
+<GEO>Norway</GEO>, <GEO>Saudi Arabia</GEO>, <GEO>Switzerland</GEO>, the <GEO>United States</GEO> and the <GEO>United Kingdom</GEO>.
+Interestingly, the use of newer <MALWARE>ANEL</MALWARE> versions by <THREAT_ACTOR>APT10</THREAT_ACTOR>, targeting <GEO>Japan</GEO>, allowed us to
+ﬁnd similarities between this malware and <MALWARE>Emdivi</MALWARE>, malware previously used by
+<THREAT_ACTOR>BlueTermite</THREAT_ACTOR>. This suggests a potential connection between both actors.
+<GEO>South East Asia</GEO> and <GEO>Korean peninsula</GEO>
+Once again, this seems to be the most active region of the world in terms of APT activity.
+In January, we identiﬁed new activity by the <THREAT_ACTOR>Transparent Tribe APT group</THREAT_ACTOR> (aka
+<THREAT_ACTOR>PROJECTM</THREAT_ACTOR> and <THREAT_ACTOR>MYTHIC LEOPARD</THREAT_ACTOR>), a threat actor with interests aligned with <GEO>Pakistan</GEO>
+that has shown a persistent focus on Indian military targets.
+In February, we identiﬁed a campaign targeting military organizations, this time in <GEO>India</GEO>.
+We are currently unable to attribute this campaign to any known threat actor. The
+attackers rely on watering-holes and spear-phishing to infect their victims. Speciﬁcally,
+they were able to compromise a website belonging to a think tank related to warfare
+studies, using it to host a malicious document that distributed a variant of the <MALWARE>Netwire</MALWARE>
+<MALWARE>RAT</MALWARE>. We also found evidence of a compromised welfare club for military personnel
+distributing the same malware during the same time period.
+<THREAT_ACTOR>OceanLotus</THREAT_ACTOR> was another actor active during this period, using a new downloader called
+<MALWARE>KerrDown</MALWARE>, as reported by <ORG>Palo Alto</ORG>. The actor was discovered at the beginning of the
+year using freshly-compiled samples in a new wave of attacks. <ORG>ESET</ORG> recently uncovered
+a new addition to this actor’s toolset targeting Mac OS.
+https://securelist.com/apt-trends-report-q1-2019/90643/ 3/6
+
+5/13/2019 APT trends report Q1 2019 | Securelist
+In mid-2018, our report on “Operation <MALWARE>AppleJeus</MALWARE>” highlighted the focus of the <THREAT_ACTOR>Lazarus</THREAT_ACTOR>
+threat actor on cryptocurrency exchanges. In this operation, the group used a fake
+company with a backdoored product aimed at cryptocurrency businesses. One of the
+key ﬁndings was the group’s new ability to target Mac OS. Since then, <THREAT_ACTOR>Lazarus</THREAT_ACTOR> has
+expanded its operations for this platform. Further tracking of the group’s activities has
+enabled us to discover a new operation, active since at least November 2018, which
+utilizes PowerShell to control Windows systems and Mac OS malware to target <ORG>Apple</ORG>
+customers. <THREAT_ACTOR>Lazarus</THREAT_ACTOR> isn’t the only APT group targeting cryptocurrency exchanges. The
+<MALWARE>Kimsuky</MALWARE> group has also extended its activities to include individuals and companies in
+this sector, mainly in South Korea.
+Finally, at the start of the year, the South Asian <THREAT_ACTOR>Bitter</THREAT_ACTOR> group used a new simple
+downloader (called <MALWARE>ArtraDownloader</MALWARE> by <ORG>Palo Alto</ORG>) that delivers the <MALWARE>BitterRat Trojan</MALWARE> to
+target organizations in <GEO>Saudi Arabia</GEO> and <GEO>Pakistan</GEO>.
+<GEO>Middle East</GEO>
+Surprisingly, during the ﬁrst months of the year activity in the <GEO>Middle East</GEO> has,
+apparently, been less intense than in the past. Even so, it was the target of several
+groups already discussed, such as <THREAT_ACTOR>Chafer</THREAT_ACTOR> and <THREAT_ACTOR>Bitter</THREAT_ACTOR>.
+We also observed some activity from <THREAT_ACTOR>Gaza Team</THREAT_ACTOR> and <THREAT_ACTOR>MuddyWater</THREAT_ACTOR>. Still, this can be
+considered part of their continued targeting of the region, showing nothing new in terms
+of operational or technical improvements.
+Other interesting discoveries
+Late in 2018 we observed a new version of the <MALWARE>FinSpy</MALWARE> iOS implant in the wild. This is
+part of <MALWARE>FinSpy</MALWARE> Mobile, a product provided by the surveillance solutions developer,
+<ORG>Gamma Group</ORG>. <MALWARE>FinSpy</MALWARE> for iOS implements extensive spyware features that allow
+someone to track almost everything on infected devices, including keypresses,
+messages and calls. A big limitation is that the current version can only be installed on
+jailbroken devices. We believe that <ORG>Gamma Group</ORG> does not provide an exploit tool to
+jailbreak victims’ phones, but it provides advice and support to customers on how to do
+the jailbreaking themselves. Our telemetry shows implant traces in <GEO>Indonesia</GEO> and
+<GEO>Mongolia</GEO>. However, due to the large number of <THREAT_ACTOR>Gamma</THREAT_ACTOR> customers, this is probably only
+a fraction of the victims.
+Following this research, we discovered a new version for Android also dated circa June
+2018. While it is quite similar in terms of functionality, it implements unique capabilities
+speciﬁc to the platform such as obtaining root privileges by abusing the <MALWARE>DirtyCow</MALWARE> exploit
+(CVE-2016-5195). Just like the iOS version, this implant has features to exﬁltrate data
+from Instant Messengers including Threema, Signal, Whatsapp and Telegram, as well as
+internal device information including, but not limited to, emails and SMS messages.
+In February, our AEP (Automatic Exploit Prevention) systems detected an attempt to
+exploit a vulnerability in Windows – the fourth consecutive exploited Local Privilege
+Escalation vulnerability in Windows that we have recently discovered using our
+https://securelist.com/apt-trends-report-q1-2019/90643/ 4/6
+
+5/13/2019 APT trends report Q1 2019 | Securelist
+technologies. Further analysis led us to uncover a zero-day vulnerability in “win32k.sys”.
+We reported this to <ORG>Microsoft</ORG> on 22 February. The company conﬁrmed the vulnerability
+and assigned it CVE-2019-0797. <ORG>Microsoft</ORG> released a patch on 12 March 2019, crediting
+<ORG>Kaspersky Lab</ORG> researchers <IDENTITY>Vasiliy Berdnikov</IDENTITY> and <IDENTITY>Boris</IDENTITY> <IDENTITY>Larin</IDENTITY> with the discovery. We
+believe that this exploit is being used by several threat actors – including, but possibly
+not limited to, <THREAT_ACTOR>FruityArmor</THREAT_ACTOR> and <THREAT_ACTOR>SandCat</THREAT_ACTOR>. <THREAT_ACTOR>FruityArmor</THREAT_ACTOR> is known to have used zero-days
+before, while <THREAT_ACTOR>SandCat</THREAT_ACTOR> is a new APT actor that we discovered only recently. The exploit
+found in the wild was targeting 64-bit operating systems in the Windows 8 to Windows
+10 build 15063 range.
+<THREAT_ACTOR>FrutiyArmor</THREAT_ACTOR> and <THREAT_ACTOR>SandCat</THREAT_ACTOR>, interestingly, seem to follow parallel paths, both having the
+same exploits available at the same time. This seems to point to a third party providing
+both with such artefacts.
+Ransomware has become an interesting tool for APT actors, as it can be used to delete
+traces, conduct cyber-sabotage, or as a powerful distraction. There is an interesting
+wave of ransomware attacks that we have been following, as they seem to be mainly
+interested in big targets. <MALWARE>LockerGoga</MALWARE> recently compromised the systems of <ORG>Altran</ORG>, <ORG>Norsk
+Hydro</ORG> and other companies. It’s unclear who’s behind the attacks, what they want and
+the mechanism used to ﬁrst infect its victims. It’s not even clear if <MALWARE>LockerGoga</MALWARE> is
+ransomware or a wiper. The malware encrypts data and displays a ransom asking
+victims to get in touch to arrange decryption, in return for an (unspeciﬁed) payment in
+bitcoins. However, later versions were observed by researchers that forcibly log victims
+off infected systems by changing their passwords and removing their ability to log back
+into the system. In such cases, the victims may not even get to see the ransom note.
+Final thoughts
+Looking back at what has happened during the ﬁrst months of the year is always a
+surprising experience for us. Even when we have the feeling that “nothing
+groundbreaking” has occurred, we always uncover a threat landscape that is full of many
+interesting stories and evolution on different fronts.
+If we are to provide a few general highlights, we can conclude that:
+Geopolitics keeps gaining weight as the main driver of APT activity
+<GEO>South East Asia</GEO> is still the most active region of the world in terms of APT activity,
+but probably this is also related to the “noise” that some of the less experienced
+groups make
+Russian-speaking groups keep a low proﬁle in comparison with recent years:
+maybe this is part of internal restructuring, but this is just a hypothesis
+Chinese-speaking actors maintain a high level of activity, combining low and high
+sophistication depending on the campaign
+Providers of “commercial” malware available for governments and other entities
+seem to be doing well, with more customers
+If we are to highlight one thing from the whole period, in our opinion operation
+<THREAT_ACTOR>ShadowHammer</THREAT_ACTOR> combines several factors that deﬁne the current status of APT activity.
+This is an advanced and targeted campaign using the supply-chain for distribution on an
+https://securelist.com/apt-trends-report-q1-2019/90643/ 5/6
+
+5/13/2019 APT trends report Q1 2019 | Securelist
+incredibly wide scale. It involves several steps in a combined operation, including the
+initial collection of MAC addresses for their targets. This seems to be a new trend, as the
+actor also targeted other victims for malware distribution, showing how worrisome and
+difﬁcult it is to ﬁght supply-chain attacks.
+As always, this is only our visibility. We always have to keep in mind other sophisticated
+attacks that happen under our radar, but we continue to try and improve, to uncover
+every single one of them.
+https://securelist.com/apt-trends-report-q1-2019/90643/ 6/6
